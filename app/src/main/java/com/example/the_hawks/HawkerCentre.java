@@ -1,13 +1,13 @@
 package com.example.the_hawks;
 
-public class HawkerCenter {
+public class HawkerCentre {
     String name;
     String address;
     int stallCount;
     float aggregate;
 
     //constructor
-    public HawkerCenter(String name, String address, int stallCount, float aggregate){
+    public HawkerCentre(String name, String address, int stallCount, float aggregate){
         this.name = name;
         this.address = address;
         this.stallCount = stallCount;
