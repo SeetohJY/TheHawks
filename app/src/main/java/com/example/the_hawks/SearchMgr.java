@@ -1,7 +1,11 @@
 package com.example.the_hawks;
+
 public class SearchMgr {
     private HCList hcList;
+
     //  private HawkerCentre hawkerCentre;
+
+    //constructor
     public void SearchManager(){
         HCList temp = new HCList();
         this.hcList = temp.getHCList();
@@ -13,7 +17,14 @@ public class SearchMgr {
     }
 
     public HCList getName(String name){
-        return hcList;
+        HCList byName = new HCList();
+        for(String HCname: hcList){
+            if (HCname.contains(name)){
+                byName = (HCList)((HCList)hcList).clone();
+                return byName;
+            }
+        }
+
     }
 
     public HCList filterList(float rating, float xcoord, float ycoord){
@@ -21,8 +32,11 @@ public class SearchMgr {
     }
 
     public HawkerCentre selectCentre(String name){
-        return hcList;
-    }
+        for(String HCname: hcList){
+            if (HCname.contains(name)){
+                return hcList.HawkerCentre;
+            }
+        }
 
     public void selectNavigation(boolean walk, boolean transit, boolean drive){
 
