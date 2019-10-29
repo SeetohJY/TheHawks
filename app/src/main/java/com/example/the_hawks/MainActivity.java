@@ -1,6 +1,6 @@
 package com.example.the_hawks;
 
-public class Display {
+public class MainActivity {
     private void showMap() {
 
     }
