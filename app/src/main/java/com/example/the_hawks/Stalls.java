@@ -1,31 +1,35 @@
 package com.example.the_hawks;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
 
-
-public class MainActivity extends AppCompatActivity {
+public class Stalls extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_stalls);
 
-        final Button stalls = findViewById(R.id.startStalls);
+        final ImageButton stalls = findViewById(R.id.back_button);
         stalls.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startStalls();
+                backtoHome();
             }
         });
+
     }
 
-    public void startStalls () {
-        Intent intent = new Intent(this, Stalls.class);
+    public void backtoHome () {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
 }
