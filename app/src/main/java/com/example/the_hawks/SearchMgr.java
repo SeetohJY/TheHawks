@@ -1,32 +1,47 @@
+import com.example.the_hawks.HCList;
+import com.example.the_hawks.HawkerCenter;
 package com.example.the_hawks;
 
-import java.util.ArrayList;
-
 public class SearchMgr {
-    private ArrayList<HawkerCenter> hcList = new ArrayList<HawkerCenter>();
+    private HCList hcList;
+
     //  private HawkerCentre hawkerCentre;
-    public void SearchManager(){
-        this.hcList = hcList.getHCList();
+
+    //constructor
+    public void SearchManager() {
+        HCList temp = new HCList();
+        this.hcList = temp.getHCList();
     }
 
 
-    public HCList getLocation(float xcoord, float ycoord){
+    public HCList getLocation(float xcoord, float ycoord) {
         return hcList;
     }
 
-    public HCList getName(String name){
+    public HCList getName(String name) {
+        new HCList();
+        HCList byName;
+        for (String HCname : hcList) {
+            if (HCname.contains(name)) {
+                byName = (HCList) ((HCList) hcList).clone();
+                return byName;
+            }
+        }
+    }
+
+    public HCList filterList(float rating, float xcoord, float ycoord) {
         return hcList;
     }
 
-    public HCList filterList(float rating, float xcoord, float ycoord){
-        return hcList;
-    }
+    public HawkerCentre selectCentre(String name) {
+        for (String HCname : hcList) {
+            if (HCname.contains(name)) {
+                return hcList.HawkerCentre;
+            }
+        }
 
-    public HawkerCenter selectCentre(String name){
-        return hcList;
-    }
-
-    public void selectNavigation(boolean walk, boolean transit, boolean drive){
-
+        public void selectNavigation(boolean walk, boolean transit, boolean drive){
+            
+        }
     }
 }
