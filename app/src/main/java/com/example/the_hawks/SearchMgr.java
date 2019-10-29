@@ -17,7 +17,8 @@ public class SearchMgr {
     }
 
     public HCList getName(String name){
-        HCList byName = new HCList();
+        new HCList();
+        HCList byName;
         for(String HCname: hcList){
             if (HCname.contains(name)){
                 byName = (HCList)((HCList)hcList).clone();
