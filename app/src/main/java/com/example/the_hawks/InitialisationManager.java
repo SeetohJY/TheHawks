@@ -6,12 +6,12 @@ package com.example.the_hawks;
 public class InitialisationManager {
     public float Agg;
 
-    private calculateAggregate(float hygieneRating){
+    private float calculateAggregate(float hygieneRating){
         return Agg;
     }
 
-    private HawkerCentre createHawkerCentre(){
-        return HawkerCentre;
+    private HawkerCenter createHawkerCenter(){
+        return HawkerCenter;
     }
 
     private HawkerStall createHawkerStall(){

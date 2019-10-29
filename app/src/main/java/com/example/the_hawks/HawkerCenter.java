@@ -5,6 +5,7 @@ public class HawkerCenter {
     String address;
     int stallCount;
     float aggregate;
+    type enumType;
 
     //constructor
     public HawkerCenter(String name, String address, int stallCount, float aggregate){
@@ -14,25 +15,31 @@ public class HawkerCenter {
         this.aggregate = aggregate;
     }
 
-    enum type{
+    public enum type{
         MHC,
-        HC
+        HC;
     }
 
-    int getStallCount(){
+    public int getStallCount(){
         return stallCount;
     }
 
-    String getName(){
+    public String getName(){
         return name;
     }
 
-    String getAddress(){
+    public String getAddress(){
         return address;
     }
 
-    type getType(){
 
+    public void setEnum(String value){
+        if(value.matches("MHC")){
+            enumType = type.MHC;
+        }
+        if(value.matches("HC")){
+            enumType = type.HC;
+        }
     }
 
     float getAggregate(){

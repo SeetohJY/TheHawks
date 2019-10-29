@@ -1,10 +1,12 @@
 package com.example.the_hawks;
+
+import java.util.ArrayList;
+
 public class SearchMgr {
-    private HCList hcList;
+    private ArrayList<HawkerCenter> hcList = new ArrayList<HawkerCenter>();
     //  private HawkerCentre hawkerCentre;
     public void SearchManager(){
-        HCList temp = new HCList();
-        this.hcList = temp.getHCList();
+        this.hcList = hcList.getHCList();
     }
 
 
@@ -20,7 +22,7 @@ public class SearchMgr {
         return hcList;
     }
 
-    public HawkerCentre selectCentre(String name){
+    public HawkerCenter selectCentre(String name){
         return hcList;
     }
 
