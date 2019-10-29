@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">The-Hawks</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Hawker Map</string>
+    <string name="title_activity_stalls">Stalls</string>
+    <string name="stalls_toolbar">Stalls</string>
+    <string name="google_map_key">AIzaSyDPrZdisPbZll1yGD3RPreV1-YiK0DrgNo</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
     <string name="edit_location">Enter a Location</string>
 </resources>

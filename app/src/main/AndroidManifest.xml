@@ -17,7 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".Stalls"
+            android:label="@string/title_activity_stalls"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity android:name=".SearchResultsActivity"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,8 +55,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
 
+            android:label="@string/title_activity_maps" />
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
