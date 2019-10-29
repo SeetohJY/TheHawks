@@ -1,4 +1,5 @@
-
+import com.example.the_hawks.HCList;
+import com.example.the_hawks.HawkerCenter;
 package com.example.the_hawks;
 
 public class SearchMgr {
@@ -44,4 +45,3 @@ public class SearchMgr {
         }
     }
 }
-
