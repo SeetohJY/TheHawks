@@ -10,12 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     private Button rollButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-// figure out whats wrong with the buttons
+
 //        final Button stalls = findViewById(R.id.startStalls);
 //        stalls.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
@@ -32,19 +33,22 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-
         rollButton = (Button) findViewById(R.id.rollButton);
         rollButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openSearchResultsActivity();
             }
         });
+
+
     }
 
 
     public void openMapsActivity() {
         Intent intent = new Intent(this, MapsActivity.class);
     }
+
+
 
     public void openSearchResultsActivity() {
         Intent intent = new Intent(this, SearchResultsActivity.class);

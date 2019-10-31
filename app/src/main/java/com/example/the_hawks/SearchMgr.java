@@ -1,7 +1,6 @@
-//package com.example.the_hawks;
 //import com.example.the_hawks.HCList;
 //import com.example.the_hawks.HawkerCenter;
-//
+//package com.example.the_hawks;
 //
 //public class SearchMgr {
 //    private HCList hcList;
