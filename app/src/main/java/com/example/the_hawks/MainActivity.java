@@ -1,17 +1,11 @@
 package com.example.the_hawks;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
-
-import android.view.View;
-import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button rollButton;
@@ -21,22 +15,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        final Button stalls = findViewById(R.id.startStalls);
-        stalls.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startStalls();
-            }
-        });
+// figure out whats wrong with the buttons
+//        final Button stalls = findViewById(R.id.startStalls);
+//        stalls.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                startStalls();
+//            }
+//        });
 
         // wire buttonToMap
-        Button btn = (Button) findViewById(R.id.buttonToMap);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMapsActivity();
-            }
-        });
+//        Button btn = (Button) findViewById(R.id.buttonToMap);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openMapsActivity();
+//            }
+//        });
 
 
         rollButton = (Button) findViewById(R.id.rollButton);
