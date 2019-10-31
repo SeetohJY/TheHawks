@@ -16,6 +16,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button rollButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +31,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // wire buttonToMap
-        Button btn = (Button) findViewById(R.id.buttonToMap);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMapsActivity();
-            }
-        });
-
+//        Button btn = (Button) findViewById(R.id.buttonToMap);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openMapsActivity();
+//            }
+//        });
 
         rollButton = (Button) findViewById(R.id.rollButton);
         rollButton.setOnClickListener(new View.OnClickListener() {
@@ -45,12 +45,16 @@ public class MainActivity extends AppCompatActivity {
                 openSearchResultsActivity();
             }
         });
+
+
     }
 
 
     public void openMapsActivity() {
         Intent intent = new Intent(this, MapsActivity.class);
     }
+
+
 
     public void openSearchResultsActivity() {
         Intent intent = new Intent(this, SearchResultsActivity.class);
