@@ -6,4 +6,9 @@
     <string name="google_map_key">AIzaSyDPrZdisPbZll1yGD3RPreV1-YiK0DrgNo</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
     <string name="edit_location">Enter a Location</string>
+    <string name="empty_string"></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Start of Fragment</string>
+    <string name="title_activity_stall_desc">StallDesc</string>
 </resources>

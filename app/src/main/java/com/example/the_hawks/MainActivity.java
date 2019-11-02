@@ -22,21 +22,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final Button stalls = findViewById(R.id.startStalls);
+        Button stalls = findViewById(R.id.startStalls);
         stalls.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
                 startStalls();
             }
         });
 
         // wire buttonToMap
-        Button btn = (Button) findViewById(R.id.buttonToMap);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMapsActivity();
-            }
-        });
+//        Button btn = (Button) findViewById(R.id.buttonToMap);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openMapsActivity();
+//            }
+//        });
 
 
         rollButton = (Button) findViewById(R.id.rollButton);
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SearchResultsActivity.class);
         startActivity(intent);
     }
-      public void startStalls () {
+    public void startStalls () {
         Intent intent = new Intent(this, Stalls.class);
         startActivity(intent);
     }
