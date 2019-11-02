@@ -1,22 +1,20 @@
-import com.example.the_hawks.HCList;
-import com.example.the_hawks.HawkerCenter;
 package com.example.the_hawks;
 
-public class SearchMgr {
-    private HCList hcList;
 
-    //  private HawkerCentre hawkerCentre;
+import java.util.ArrayList;
+
+public class SearchMgr {
+    private ArrayList<HawkerCentre> HCList = new ArrayList<>();
 
     //constructor
 
-    public void SearchManager() {
-        HCList temp = new HCList();
-        this.hcList = temp.getHCList();
+    public void SearchManager(HCList hclist) {
+        HCList = hclist.getHCList();
     }
 
 
-    public HCList getLocation(float xcoord, float ycoord) {
-        return hcList;
+    public ArrayList<HawkerCentre> getLocation(float xcoord, float ycoord) {
+        return HCList;
     }
 
 

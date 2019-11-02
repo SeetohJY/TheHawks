@@ -9,25 +9,25 @@ import java.util.ArrayList;
  * All details about hawker centres will be called from this class.
  */
 public class HCList {
-    private ArrayList<HawkerCenter> HawkerCenterList = new ArrayList<>();
+    private ArrayList<HawkerCentre> HawkerCentreList = new ArrayList<>();
     public HCList(){
 
     }
 
-    public void addHawkerCentre(ArrayList<HawkerCenter> HawkerCentreList, HawkerCenter HCDetails){
+    public void addHawkerCentre(ArrayList<HawkerCentre> HawkerCentreList, HawkerCentre HCDetails){
     }
 
-    public ArrayList<HawkerCenter> getHCList(){
-        HawkerCenter hc1 = new HawkerCenter("A", "Addr1", 10, 10);
+    public ArrayList<HawkerCentre> getHCList(){
+        HawkerCentre hc1 = new HawkerCentre("A", "Addr1", 10, 10);
         hc1.setEnum("HC");
-        HawkerCenter hc2 = new HawkerCenter("B", "Addr2", 20, 20);
+        HawkerCentre hc2 = new HawkerCentre("B", "Addr2", 20, 20);
         hc2.setEnum("HC");
-        HawkerCenter hc3 = new HawkerCenter("C", "Addr3", 30, 30);
+        HawkerCentre hc3 = new HawkerCentre("C", "Addr3", 30, 30);
         hc3.setEnum("HC");
-        HawkerCenterList.add(hc1);
-        HawkerCenterList.add(hc2);
-        HawkerCenterList.add(hc3);
-        return HawkerCenterList;
+        HawkerCentreList.add(hc1);
+        HawkerCentreList.add(hc2);
+        HawkerCentreList.add(hc3);
+        return HawkerCentreList;
 
     }
 }

@@ -3,15 +3,15 @@ package com.example.the_hawks;
 import java.util.ArrayList;
 
 public class HawkerMgr {
-    private ArrayList<HawkerCenter> HCList = new ArrayList<>();
-    private ArrayList<HawkerCenter> filteredList = new ArrayList<>();
+    private ArrayList<HawkerCentre> HCList = new ArrayList<>();
+    private ArrayList<HawkerCentre> filteredList = new ArrayList<>();
 
     public HawkerMgr(HCList hclist){
         HCList = hclist.getHCList();
     }
     //choice is the filter type decided by user
-    public ArrayList<HawkerCenter> searchHawkerCentre(Object input, int choice) {
-        ArrayList<HawkerCenter> filteredHCList = new ArrayList<>();
+    public ArrayList<HawkerCentre> searchHawkerCentre(Object input, int choice) {
+        ArrayList<HawkerCentre> filteredHCList = new ArrayList<>();
         if(choice == 1){
             filteredHCList = filterByType((Enum)input);
         }
@@ -23,8 +23,8 @@ public class HawkerMgr {
         }
         return filteredHCList;
     }
-    private ArrayList<HawkerCenter> filterByType(Object input_type) {
-        HawkerCenter hc;
+    private ArrayList<HawkerCentre> filterByType(Object input_type) {
+        HawkerCentre hc;
         for (int i=0; i < HCList.size();i++){
             hc = HCList.get(i);
             if (input_type.equals(hc.enumType)){
@@ -35,8 +35,8 @@ public class HawkerMgr {
     }
 
 
-    private ArrayList<HawkerCenter> filterByHygieneAggregate(float aggregate) {
-        HawkerCenter hc;
+    private ArrayList<HawkerCentre> filterByHygieneAggregate(float aggregate) {
+        HawkerCentre hc;
         for (int i=0; i < HCList.size();i++){
             hc = HCList.get(i);
             if (aggregate == hc.getAggregate()){
@@ -46,8 +46,8 @@ public class HawkerMgr {
         return filteredList;
 
     }
-    private ArrayList<HawkerCenter> filterByName(String name) {
-        HawkerCenter hc;
+    private ArrayList<HawkerCentre> filterByName(String name) {
+        HawkerCentre hc;
         for (int i=0; i < HCList.size();i++){
             hc = HCList.get(i);
             //case sensitive
