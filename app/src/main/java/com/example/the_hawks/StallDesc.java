@@ -28,10 +28,7 @@ public class StallDesc extends AppCompatActivity {
         Intent intent = getIntent();
         String Name = intent.getStringExtra("Name");
 
-        TextView text = (TextView) findViewById(R.id.stallTitle);
+        TextView text = findViewById(R.id.stallTitle);
         text.setText(Name);
     }
-
-
-
 }
