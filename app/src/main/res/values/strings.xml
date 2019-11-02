@@ -10,6 +10,13 @@
     <string name="google_map_key">AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
     <string name="edit_location">Enter a Location</string>
+
+    <string name="empty_string"></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Start of Fragment</string>
+    <string name="title_activity_stall_desc">StallDesc</string>
+
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -102,4 +109,5 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_hawker_centre">HawkerCentreActivity</string>
+
 </resources>
