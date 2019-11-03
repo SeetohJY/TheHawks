@@ -1,10 +1,11 @@
-package com.example.the_hawks;
+package com.example.the_hawks.Stalls;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.the_hawks.R;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

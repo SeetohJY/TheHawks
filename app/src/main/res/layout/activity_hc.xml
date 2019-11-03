@@ -144,7 +144,7 @@
 
         <!--        <fragment-->
         <!--            android:id="@+id/stallsFragment"-->
-        <!--            android:name="com.example.the_hawks.stallsFragment"-->
+        <!--            android:name="com.example.the_hawks.Stalls.stallsFragment"-->
         <!--            android:layout_width="match_parent"-->
         <!--            android:layout_height="wrap_content"-->
         <!--            android:layout_weight="1" />-->

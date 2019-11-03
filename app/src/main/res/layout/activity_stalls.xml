@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stalls">
+    tools:context=".Stalls.Stalls">
 
     <TextView
         android:id="@+id/stalls_toolbar"
@@ -69,7 +69,7 @@
 
 <!--        <fragment-->
 <!--            android:id="@+id/stallsFragment"-->
-<!--            android:name="com.example.the_hawks.stallsFragment"-->
+<!--            android:name="com.example.the_hawks.Stalls.stallsFragment"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_weight="1" />-->

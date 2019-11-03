@@ -1,29 +1,22 @@
-package com.example.the_hawks;
+package com.example.the_hawks.Stalls;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import com.example.the_hawks.MainActivity;
+import com.example.the_hawks.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
-
-import java.util.ArrayList;
-
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class Stalls extends FragmentActivity {
 

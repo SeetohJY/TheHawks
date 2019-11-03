@@ -1,4 +1,4 @@
-package com.example.the_hawks;
+package com.example.the_hawks.Stalls;
 
 public class StallsItem {
     private int mImageResource;
