@@ -43,4 +43,37 @@
         app:layout_constraintStart_toStartOf="@+id/stalls_toolbar"
         app:layout_constraintTop_toTopOf="@+id/stalls_toolbar" />
 
+    <TextView
+        android:id="@+id/HCName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="176dp"
+        android:text="@string/empty_string"
+        android:textColor="#050505"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stalls_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/stall_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/HCName">
+
+<!--        <fragment-->
+<!--            android:id="@+id/stallsFragment"-->
+<!--            android:name="com.example.the_hawks.stallsFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1" />-->
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

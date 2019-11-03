@@ -1,3 +1,4 @@
+
 package com.example.the_hawks;
 
     /**
@@ -10,12 +11,13 @@ public class InitialisationManager {
         return Agg;
     }
 
-//    private HawkerCenter createHawkerCenter(){
-//        return HawkerCenter;
-//    }
+    private HawkerCentre createHawkerCenter(){
+        return HawkerCentre;
+    }
 
-//    private HawkerStall createHawkerStall(){
-//        return HawkerStall;
-//    }
+    private HawkerStall createHawkerStall(){
+        return HawkerStall;
+    }
 
 }
+

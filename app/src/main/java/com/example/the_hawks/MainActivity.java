@@ -1,17 +1,11 @@
 package com.example.the_hawks;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
-
-import android.view.View;
-import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button rollButton;
@@ -23,12 +17,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final Button stalls = findViewById(R.id.startStalls);
+
+        Button stalls = findViewById(R.id.startStalls);
         stalls.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
                 startStalls();
             }
         });
+
 
         // wire buttonToMap
 //        Button btn = (Button) findViewById(R.id.buttonToMap);
@@ -38,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 //                openMapsActivity();
 //            }
 //        });
+
 
         rollButton = (Button) findViewById(R.id.rollButton);
         rollButton.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SearchResultsActivity.class);
         startActivity(intent);
     }
-      public void startStalls () {
+    public void startStalls () {
         Intent intent = new Intent(this, Stalls.class);
         startActivity(intent);
     }
