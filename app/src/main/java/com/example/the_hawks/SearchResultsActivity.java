@@ -120,11 +120,11 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
-            public void onItemClick(int position) {
-                changeItem(position, "Clicked");
-            }
-        });
+//        mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
+//            public void onItemClick(int position) {
+//                changeItem(position, "Clicked");
+//            }
+//        });
     }
 
 

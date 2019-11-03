@@ -46,12 +46,14 @@ public class SearchMgr {
                 return HC;
             }
         }
+        return null;
     }
+
 
 
         public void selectNavigation(boolean walk, boolean transit, boolean drive){
             
         }
     }
-}
+
 

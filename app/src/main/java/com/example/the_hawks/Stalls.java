@@ -27,7 +27,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class Stalls extends FragmentActivity {
 
-    String jString = new String("{\"hcname\" : \"Jurong West Hawker Centre & Market\",\"stalls\":[{\"ic\":\"01\",\"name\":\"Chicken Rice\",\"rating\":\"3.5\"},{\"ic\":\"02\",\"name\":\"Western\",\"rating\":\"3.0\"}]}");
+    String jString = new String("{\"stallsname\" : \"Jurong West Hawker Centre & Market\",\"stalls\":[{\"ic\":\"01\",\"name\":\"Chicken Rice\",\"rating\":\"3.5\"},{\"ic\":\"02\",\"name\":\"Western\",\"rating\":\"3.0\"}]}");
 
 
     @Override
@@ -44,14 +44,14 @@ public class Stalls extends FragmentActivity {
             }
         });
 
-        String HCName = new String();
+        String stallsName = new String();
         JSONArray stallsdata = new JSONArray();
 
         try {
             JSONArray sdata = new JSONArray(data.getString("stalls"));
             JSONObject index = sdata.getJSONObject(0);
 
-            HCName = data.getString("hcname");
+            stallsName = data.getString("stallsname");
             stallsdata = new JSONArray(data.getString("stalls"));
 
         } catch(JSONException err){
@@ -63,8 +63,8 @@ public class Stalls extends FragmentActivity {
 
         stallsFragmentCreate(savedInstanceState, dataBundle);
 
-        TextView hcname = findViewById(R.id.HCName);
-        hcname.append(HCName);
+//        TextView hcname = findViewById(R.id.HCName);
+//        hcname.append(HCName);
 
     }
 

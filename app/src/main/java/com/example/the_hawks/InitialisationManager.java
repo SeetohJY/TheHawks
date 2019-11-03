@@ -11,13 +11,13 @@ public class InitialisationManager {
         return Agg;
     }
 
-    private HawkerCentre createHawkerCenter(){
-        return HawkerCentre;
-    }
-
-    private HawkerStall createHawkerStall(){
-        return HawkerStall;
-    }
+//    private HawkerCentre createHawkerCenter(){
+//        return HawkerCentre;
+//    }
+//
+//    private HawkerStall createHawkerStall(){
+//        return HawkerStall;
+//    }
 
 }
 

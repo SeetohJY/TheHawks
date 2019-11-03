@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".stallsFragment">
+    tools:context=".HC.HCFragment">
 
 
     <LinearLayout
-        android:id="@+id/stall_layout"
+        android:id="@+id/hc_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stallsName">
+        app:layout_constraintTop_toBottomOf="@id/hcName">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

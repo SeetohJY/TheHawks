@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.the_hawks.HC.HC;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,14 +19,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-        Button stalls = findViewById(R.id.startStalls);
-        stalls.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                startStalls();
-            }
-        });
+//
+//        Button stalls = findViewById(R.id.startStalls);
+//        stalls.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                startStalls();
+//            }
+//        });
 
 
         // wire buttonToMap
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         rollButton = (Button) findViewById(R.id.rollButton);
         rollButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                openSearchResultsActivity();
+                openHC();
             }
         });
 
@@ -54,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void openSearchResultsActivity() {
-        Intent intent = new Intent(this, SearchResultsActivity.class);
+    public void openHC() {
+        Intent intent = new Intent(this, HC.class);
         startActivity(intent);
     }
     public void startStalls () {

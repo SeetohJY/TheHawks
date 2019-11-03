@@ -17,6 +17,9 @@
     <string name="hello_blank_fragment">Start of Fragment</string>
     <string name="title_activity_stall_desc">StallDesc</string>
 
+    <string name="title_activity_hc_desc">HCDesc</string>
+
+
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -109,5 +112,8 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_hawker_centre">HawkerCentreActivity</string>
+    <string name="title_activity_hc">HC</string>
+    <string name="title_activity_hcdesc">HCDesc</string>
+    <string name="hc_toolbar">HC</string>
 
 </resources>
