@@ -14,7 +14,7 @@
         android:layout_marginStart="96dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="@string/edit_location"
+        android:hint="@string/edit_hcname"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

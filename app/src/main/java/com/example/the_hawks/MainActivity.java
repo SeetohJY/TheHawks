@@ -21,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        Button stalls2 = findViewById(R.id.startStalls2);
+        stalls2.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                startStalls2();
+            }
+        });
+
         Button stalls = findViewById(R.id.startStalls);
         stalls.setOnClickListener(new View.OnClickListener() {
 
@@ -61,8 +69,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HC.class);
         startActivity(intent);
     }
-    public void startStalls () {
+    public void startStalls2 () {
         Intent intent = new Intent(this, Stalls.class);
+        startActivity(intent);
+    }
+
+    public void startStalls () {
+        Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
 }

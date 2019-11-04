@@ -12,11 +12,13 @@
         <activity
             android:name=".HC.HCDesc"
             android:label="@string/title_activity_hcdesc"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".HC.HC"
             android:label="@string/title_activity_hc"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
         <activity

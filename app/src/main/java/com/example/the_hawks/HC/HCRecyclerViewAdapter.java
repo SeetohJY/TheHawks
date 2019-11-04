@@ -28,7 +28,7 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_hc, parent, false);
         ExampleViewHolder evh = new ExampleViewHolder(v, mListener);
 
         return evh;
@@ -40,6 +40,7 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
 
         holder.mTextView1.setText(currentItem.getText1());
         holder.mTextView2.setText(currentItem.getText2());
+        holder.mTextView4.setText(currentItem.getText2());
 
     }
 
@@ -51,11 +52,13 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
         public TextView mTextView1;
         public TextView mTextView2;
+        public TextView mTextView4;
 
         public ExampleViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             mTextView1 = itemView.findViewById(R.id.Text1);
             mTextView2 = itemView.findViewById(R.id.Text2);
+            mTextView4 = itemView.findViewById(R.id.text4);
 
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override

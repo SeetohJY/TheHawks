@@ -9,7 +9,7 @@
     <string name="stalls_toolbar">Stalls</string>
     <string name="google_map_key">AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
-    <string name="edit_location">Enter a Location</string>
+    <string name="edit_hcname">Enter a Hawker Centre name</string>
 
     <string name="empty_string"></string>
 
