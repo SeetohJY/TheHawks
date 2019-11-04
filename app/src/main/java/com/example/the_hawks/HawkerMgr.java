@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class HawkerMgr {
     private ArrayList<HawkerCentre> HCList = new ArrayList<>();
-    private ArrayList<HawkerCentre> filteredList = new ArrayList<>();
 
-    public HawkerMgr(HCList hclist){
-        HCList = hclist.getHCList();
+    public HawkerMgr(ArrayList<HawkerCentre> hclist){
+        this.HCList = hclist;
     }
     //choice is the filter type decided by user
     public ArrayList<HawkerCentre> searchHawkerCentre(Object input, int choice) {
@@ -25,6 +24,7 @@ public class HawkerMgr {
     }
     private ArrayList<HawkerCentre> filterByType(Object input_type) {
         HawkerCentre hc;
+        ArrayList<HawkerCentre> filteredList = new ArrayList<>();
         for (int i=0; i < HCList.size();i++){
             hc = HCList.get(i);
             if (input_type.equals(hc.enumType)){
@@ -37,6 +37,7 @@ public class HawkerMgr {
 
     private ArrayList<HawkerCentre> filterByHygieneAggregate(float aggregate) {
         HawkerCentre hc;
+        ArrayList<HawkerCentre> filteredList = new ArrayList<>();
         for (int i=0; i < HCList.size();i++){
             hc = HCList.get(i);
             if (aggregate == hc.getAggregate()){
@@ -48,10 +49,11 @@ public class HawkerMgr {
     }
     private ArrayList<HawkerCentre> filterByName(String name) {
         HawkerCentre hc;
+        ArrayList<HawkerCentre> filteredList = new ArrayList<>();
         for (int i=0; i < HCList.size();i++){
             hc = HCList.get(i);
             //case sensitive
-            if (name.toLowerCase().contains(hc.getName().toLowerCase())){
+            if (hc.getName().toLowerCase().contains(name.toLowerCase())){
                 filteredList.add(hc);
             }
         }
