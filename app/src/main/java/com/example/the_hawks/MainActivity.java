@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//
-//        Button stalls = findViewById(R.id.startStalls);
-//        stalls.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                startStalls();
-//            }
-//        });
+
+        Button stalls = findViewById(R.id.startStalls);
+        stalls.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                startStalls();
+            }
+        });
 
 
         // wire buttonToMap

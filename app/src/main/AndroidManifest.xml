@@ -26,7 +26,15 @@
         <activity
             android:name=".Stalls.Stalls"
             android:label="@string/title_activity_stalls"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".Stalls.StallDesc"
+            android:label="Stalls Desc"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+
 <!--        <activity android:name=".SearchResultsActivity" />-->
         <activity android:name=".MainActivity">
             <intent-filter>
