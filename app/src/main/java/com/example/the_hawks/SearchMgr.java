@@ -9,8 +9,8 @@ public class SearchMgr {
 
     //constructor
 
-    public void SearchManager(HCList hclist) {
-        HCList = hclist.getHCList();
+    public void SearchManager(ArrayList<HawkerCentre> hcList) {
+        HCList = hcList;
     }
 
 

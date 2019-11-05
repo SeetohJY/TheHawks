@@ -47,7 +47,7 @@ public class HawkerCentre {
         }
     }
 
-    double getAggregate(){
+    public double getAggregate(){
         return aggregate;
     }
 

@@ -20,7 +20,7 @@ public class InitMgr {
         createHCList();
     }
 
-    public static void createHCList() throws JSONException{
+    private static void createHCList() throws JSONException{
         for (int i =0; i<jsonList1.length(); i++) {
             String name = jsonList1.getJSONObject(i).getString("name_of_centre");
             if (i==0) {
@@ -36,7 +36,7 @@ public class InitMgr {
         return HawkerCentreList;
     }
 
-    public static HawkerCentre createHawkerCentre(int i) throws JSONException{
+    private static HawkerCentre createHawkerCentre(int i) throws JSONException{
         String name = jsonList1.getJSONObject(i).getString("name_of_centre");
         String addr;
         int stallCount;
@@ -51,7 +51,7 @@ public class InitMgr {
 
     }
 
-    public static ArrayList<HawkerStall> createHawkerStallList(int i, String name) throws JSONException{
+    private static ArrayList<HawkerStall> createHawkerStallList(int i, String name) throws JSONException{
         ArrayList<HawkerStall> HawkerCentreStalls = new ArrayList<>();
         while(jsonList1.getJSONObject(i).getString("name_of_centre").equals(name)) {
             HawkerCentreStalls.add(createHawkerStall(i, name));
@@ -63,7 +63,7 @@ public class InitMgr {
         return HawkerCentreStalls;
     }
 
-    public static HawkerStall createHawkerStall(int i, String name) throws JSONException{
+    private static HawkerStall createHawkerStall(int i, String name) throws JSONException{
         HawkerStall hawkerstall;
 
         String rating = jsonList2.getJSONObject(i).getString("grade");
