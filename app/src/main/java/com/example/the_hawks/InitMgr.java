@@ -90,8 +90,8 @@ public class InitMgr {
             }
         }
         agg /= count;
-        //limit to 2 dp
-        BigDecimal bd = new BigDecimal(agg).setScale(2, RoundingMode.HALF_UP);
+        //round to whole number
+        BigDecimal bd = new BigDecimal(agg).setScale(0, RoundingMode.HALF_UP);
         double newAgg = bd.doubleValue();
         return newAgg;
 
