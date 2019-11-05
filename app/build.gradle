@@ -63,9 +63,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (3)', include: ['*.aar', '*.jar'], exclude: [])
-    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (5)', include: ['*.aar', '*.jar'], exclude: [])
-    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (7)', include: ['*.aar', '*.jar'], exclude: [])
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:22.2.0'
+//    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (3)', include: ['*.aar', '*.jar'], exclude: [])
+//    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (5)', include: ['*.aar', '*.jar'], exclude: [])
+//    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (7)', include: ['*.aar', '*.jar'], exclude: [])
 
 }
 

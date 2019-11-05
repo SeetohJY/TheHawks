@@ -23,28 +23,36 @@
         android:layout_width="match_parent"
         android:layout_height="89dp" />
 
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout
-        android:id="@+id/sliding_layout"
-        android:layout_width="match_parent"
-        android:layout_height="437dp"
-        android:gravity="bottom"
-        map:umanoPanelHeight="68dp"
-        map:umanoShadowHeight="4dp">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <TextView
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            android:id="@+id/sliding_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Main Content"
-            android:textSize="16sp" />
+            android:gravity="bottom"
+            map:umanoPanelHeight="68dp"
+            map:umanoShadowHeight="4dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|top"
-            android:text="The Awesome Sliding Up Panel"
-            android:textSize="16sp" />
-    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Main Content"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|top"
+                android:text="The Awesome Sliding Up Panel"
+                android:textSize="16sp" />
+
+
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+    </FrameLayout>
 
 </FrameLayout>
 

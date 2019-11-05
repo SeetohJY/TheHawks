@@ -47,6 +47,9 @@ import com.google.android.gms.tasks.Task;
 public class MapsActivity extends AppCompatActivity
         implements OnMapReadyCallback {
 
+
+
+
     private static final String TAG = MapsActivity.class.getSimpleName();
     private GoogleMap mMap;
     private CameraPosition mCameraPosition;
@@ -106,6 +109,8 @@ public class MapsActivity extends AppCompatActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
 
     }
 

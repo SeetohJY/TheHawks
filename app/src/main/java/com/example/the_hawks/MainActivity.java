@@ -2,11 +2,13 @@ package com.example.the_hawks;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.the_hawks.HC.HC;
 import com.example.the_hawks.Stalls.Stalls;
+import com.example.the_hawks.Main2Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -78,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation_menu, menu);
+        return true;
+    }
+
 }
 
 //
