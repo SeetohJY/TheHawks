@@ -103,4 +103,22 @@
         tools:layout_editor_absoluteX="17dp"
         tools:layout_editor_absoluteY="14dp" />
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:text="ANDROID SEARCH DIALOG EXAMPLE"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Headline"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/toolbar"/>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

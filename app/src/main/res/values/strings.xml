@@ -115,5 +115,6 @@
     <string name="title_activity_hc">HC</string>
     <string name="title_activity_hcdesc">HCDesc</string>
     <string name="hc_toolbar">HC</string>
+    <string name="search_hint">Search Hawker Stalls</string>
 
 </resources>

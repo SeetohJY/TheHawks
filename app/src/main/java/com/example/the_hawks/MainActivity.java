@@ -2,13 +2,16 @@ package com.example.the_hawks;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.the_hawks.HC.HC;
 import com.example.the_hawks.Stalls.Stalls;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button rollButton;
@@ -18,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         Button stalls = findViewById(R.id.startStalls);
         stalls.setOnClickListener(new View.OnClickListener() {
 
@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
                 startStalls();
             }
         });
+//
+//        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(myToolbar);
 
 
         // wire buttonToMap
@@ -46,8 +49,24 @@ public class MainActivity extends AppCompatActivity {
                 openHC();
             }
         });
+    }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.option_search:
+                //start search dialog
+                super.onSearchRequested();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
