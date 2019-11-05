@@ -17,15 +17,19 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".HC.HCDesc"
             android:label="@string/title_activity_hcdesc"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".HC.HC"
             android:label="@string/title_activity_hc"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".HawkerCentreActivity"
             android:label="@string/title_activity_hawker_centre"
@@ -33,16 +37,11 @@
         <activity
             android:name=".Stalls.Stalls"
             android:label="@string/title_activity_stalls"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Stalls.StallDesc"
             android:label="Stalls Desc"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-
-<!--        <activity android:name=".SearchResultsActivity" />-->
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity android:name=".SearchResultsActivity" /> -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -79,7 +78,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

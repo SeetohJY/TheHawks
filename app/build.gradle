@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion '28.0.3'
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
 
         applicationId "com.example.the_hawks"
@@ -28,6 +29,12 @@ android {
 
 
 dependencies {
+
+    repositories {
+        mavenCentral()
+    }
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'
+
     def recyclerview_version = "1.0.0"
     def cardview_version = "1.0.0"
 
@@ -38,6 +45,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -55,6 +63,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.multidex:multidex:2.0.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:22.2.0'
+//    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (3)', include: ['*.aar', '*.jar'], exclude: [])
+//    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (5)', include: ['*.aar', '*.jar'], exclude: [])
+//    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (7)', include: ['*.aar', '*.jar'], exclude: [])
 
 }
 

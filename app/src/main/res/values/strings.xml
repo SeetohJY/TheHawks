@@ -9,7 +9,7 @@
     <string name="stalls_toolbar">Stalls</string>
     <string name="google_map_key">AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
-    <string name="edit_location">Enter a Location</string>
+    <string name="edit_hcname">Enter a Hawker Centre name</string>
 
     <string name="empty_string"></string>
 
@@ -115,5 +115,8 @@
     <string name="title_activity_hc">HC</string>
     <string name="title_activity_hcdesc">HCDesc</string>
     <string name="hc_toolbar">HC</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="Open">open</string>
+    <string name="Close">close</string>
 
 </resources>

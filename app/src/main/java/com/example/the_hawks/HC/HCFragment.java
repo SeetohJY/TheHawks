@@ -143,17 +143,19 @@ public class HCFragment extends Fragment {
 //        LinearLayout HC_vertical = (LinearLayout) v.findViewById(R.id.HC_layout);
         for (int i = 0; i < hcdata.length(); i++) {
             String name = new String();
-            String rating = new String();
+            String address = new String();
+            String cleanliness = new String();
             try {
                 JSONObject temp = hcdata.getJSONObject(i);
                 name = temp.getString("name");
-                rating = temp.getString("rating");
+                address = temp.getString("address");
             } catch(JSONException err){
                 Log.e("Error", err.toString());
             }
             Log.e("name", name);
-            Log.e("rating", rating);
-            exampleList.add(new HCItem(name, rating));
+            Log.e("address", address);
+            Log.e("cleanliness", cleanliness);
+            exampleList.add(new HCItem(name, address, cleanliness));
 //            CardView cardView = new CardView(getActivity());
 //            cardView.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
 //

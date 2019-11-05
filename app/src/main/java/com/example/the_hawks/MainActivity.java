@@ -2,11 +2,13 @@ package com.example.the_hawks;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.the_hawks.HC.HC;
 import com.example.the_hawks.Stalls.Stalls;
+import com.example.the_hawks.Main2Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +22,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+        Button stalls2 = findViewById(R.id.startStalls2);
+        stalls2.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                startStalls2();
+            }
+        });
 
         Button stalls = findViewById(R.id.startStalls);
         stalls.setOnClickListener(new View.OnClickListener() {
@@ -61,10 +71,21 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HC.class);
         startActivity(intent);
     }
-    public void startStalls () {
+    public void startStalls2 () {
         Intent intent = new Intent(this, Stalls.class);
         startActivity(intent);
     }
+
+    public void startStalls () {
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation_menu, menu);
+        return true;
+    }
+
 }
 
 //
