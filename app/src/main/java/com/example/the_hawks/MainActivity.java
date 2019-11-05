@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.example.the_hawks.HC.HC;
 import com.example.the_hawks.Stalls.Stalls;
+import com.example.the_hawks.NearbyHC.NearbyHC;
 import com.example.the_hawks.Main2Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button nearbyHC = findViewById(R.id.nearby_hc);
+        nearbyHC.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                nearbyHC();
+            }
+        });
+
+
 
         // wire buttonToMap
 //        Button btn = (Button) findViewById(R.id.buttonToMap);
@@ -69,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openHC() {
         Intent intent = new Intent(this, HC.class);
+        startActivity(intent);
+    }
+
+    public void nearbyHC() {
+        Intent intent = new Intent(this, NearbyHC.class);
         startActivity(intent);
     }
     public void startStalls2 () {
