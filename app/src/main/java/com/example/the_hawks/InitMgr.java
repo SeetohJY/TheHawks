@@ -1,5 +1,7 @@
 package com.example.the_hawks;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -11,24 +13,29 @@ import java.util.ArrayList;
 public class InitMgr {
     private static JSONArray jsonList1 = new JSONArray();
     private static JSONArray jsonList2 = new JSONArray();
-    private static ArrayList<HawkerCentre> HawkerCentreList = new ArrayList<>();
+    public static ArrayList<HawkerCentre> HawkerCentreList = new ArrayList<>();
 
     public InitMgr() throws JSONException, IOException {
         HttpClient.initData();
         this.jsonList1 = HttpClient.getArray1();
         this.jsonList2 = HttpClient.getArray2();
+        Log.e("jsonList1:", jsonList1.toString());
+        Log.e("jsonList2:", jsonList2.toString());
         createHCList();
+        Log.e("HCList:", HawkerCentreList.toString());
     }
 
     private static void createHCList() throws JSONException{
         for (int i =0; i<jsonList1.length(); i++) {
             String name = jsonList1.getJSONObject(i).getString("name_of_centre");
+            //Log.e("objects:", name);
             if (i==0) {
                 HawkerCentreList.add(createHawkerCentre(i));
             }
             else if (!name.equals(jsonList1.getJSONObject(i-1).getString("name_of_centre"))) {
                 HawkerCentreList.add(createHawkerCentre(i));
             }
+            //Log.e("List1:", HawkerCentreList.toString());
         }
     }
 

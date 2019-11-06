@@ -1,5 +1,7 @@
 package com.example.the_hawks;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -88,7 +90,7 @@ public class HttpClient {
             jsonArray.put(result.get(key));
 
         }
-        String newStr = jsonArray.get(1).toString();
+        String newStr = jsonArray.get(2).toString();
         response_body = new JSONArray(newStr);
 
         client.newCall(request).enqueue(new Callback() {
@@ -106,6 +108,7 @@ public class HttpClient {
                 }
             }
         });
+        //Log.e("Printing-1:", response_body.toString());
 
         return response_body;
     }
@@ -118,8 +121,11 @@ public class HttpClient {
         jsonArray_list1 = getJSONArray("https://data.gov.sg/api/action/datastore_search?resource_id=8f6bba57-19fc-4f36-8dcf-c0bda382364d&limit=200");
         jsonArray_list2 = getJSONArray("https://data.gov.sg/api/action/datastore_search?resource_id=34f86c3e-a90c-4de9-a69f-afc86b7f31b6&limit=40000");
         JSONArray jsonArray_list2_reduced = new JSONArray();
-        jsonArray_list2_reduced = reduceList(jsonArray_list2);
-        filter(jsonArray_list1, jsonArray_list2_reduced);
+//        Log.e("List1:", jsonArray_list1.toString());
+//        Log.e("List2:", jsonArray_list2.toString());
+//        jsonArray_list2_reduced = reduceList(jsonArray_list2);
+        filter(jsonArray_list1,jsonArray_list2);
+//        filter(jsonArray_list1, jsonArray_list2_reduced);
     }
 
 
@@ -170,12 +176,17 @@ public class HttpClient {
 
     private static void filter(JSONArray jsonArray_list1, JSONArray jsonArray_list2) throws JSONException{
         boolean ismatch = false;
+        //Log.e("Printing1:", jsonArray_list1.toString());
+        //Log.e("Printing2:", jsonArray_list2.toString());
         for (int i=0; i<jsonArray_list1.length(); i++) {
             double similarity = 0;
             for (int j=0; j<jsonArray_list2.length(); j++) {
                 String s1 = cleanString_1(jsonArray_list1.getJSONObject(i).getString("location_of_centre"));
                 String s2 = cleanString_2(jsonArray_list2.getJSONObject(j).getString("premises_address"));
                 String s3 = jsonArray_list1.getJSONObject(i).getString("name_of_centre");
+                //Log.e("s1:", s1);
+                //Log.e("s2:", s2);
+//                Log.e("s3:", s3);
                 if (similarity(s1, s2) >= 0.7 || similarity(s2, s3) >= 0.7) {
 
                     ismatch = true;

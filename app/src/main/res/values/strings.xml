@@ -118,6 +118,7 @@
     <string name="hc_toolbar">HC</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="Open">open</string>
+    <string name="clean">Cleanliness:</string>
     <string name="Close">close</string>
     <string name="title_activity_nearby_hcdesc">NearbyHCDesc</string>
     <string name="title_activity_nearby_hc">NearbyHC</string>
