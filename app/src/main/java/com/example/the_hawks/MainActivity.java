@@ -10,6 +10,12 @@ import com.example.the_hawks.HC.HC;
 import com.example.the_hawks.Stalls.Stalls;
 import com.example.the_hawks.NearbyHC.NearbyHC;
 import com.example.the_hawks.Main2Activity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -100,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.navigation_menu, menu);
         return true;
     }
+
 
 }
 

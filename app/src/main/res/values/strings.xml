@@ -7,7 +7,7 @@
     <string name="title_activity_maps">Hawker Map</string>
     <string name="title_activity_stalls">Stalls</string>
     <string name="stalls_toolbar">Stalls</string>
-    <string name="google_map_key">AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI</string>
+    <string name="google_maps_key">AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI</string>
     <string name="title_activity_search_results">SearchResultsActivity</string>
     <string name="edit_hcname">Enter a Hawker Centre name</string>
 
@@ -117,6 +117,7 @@
     <string name="title_activity_hcdesc">HCDesc</string>
     <string name="hc_toolbar">HC</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main3">Main3Activity</string>
     <string name="Open">open</string>
     <string name="Close">close</string>
     <string name="title_activity_nearby_hcdesc">NearbyHCDesc</string>
