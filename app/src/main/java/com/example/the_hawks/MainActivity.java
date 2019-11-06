@@ -1,5 +1,6 @@
 package com.example.the_hawks;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,14 +23,30 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button rollButton;
-    public ArrayList<HawkerCentre> HCList = new ArrayList<>();
-
+    public ArrayList<HawkerCentre> HCList = new ArrayList<HawkerCentre>();
+    public int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("count1", Integer.toString(count));
+//        setContentView(R.layout.activity_main);
+
+//        initialiseTempData();
+
+
+        Intent test = new Intent(this, LoadingActivity.class);
+        startActivity(test);
+        Context context = this.getApplicationContext();
+
+        if (HCList.isEmpty()){
+            RetrieveDataTask AsyncInitialiseData = new RetrieveDataTask(context);
+            AsyncInitialiseData.execute();
+            Intent intent = new Intent(this, LoadingActivity.class);
+            startActivity(intent);
+        }
+
         setContentView(R.layout.activity_main);
-        initialiseTempData();
 
         Button stalls2 = findViewById(R.id.startStalls2);
         stalls2.setOnClickListener(new View.OnClickListener() {
@@ -54,19 +71,12 @@ public class MainActivity extends AppCompatActivity {
         HawkerCentreActivity.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-            HawkerCentre hawkerCentre = HCList.get(0);
-            startHawkerCentreActivity(hawkerCentre);
+                Log.e("1st element:", HCList.toString());
+                HawkerCentre hawkerCentre = HCList.get(0);
+                startHawkerCentreActivity(hawkerCentre);
             }
         });
-
-//        if (HCList.isEmpty()){
-//            RetrieveDataTask AsyncInitialiseData = new RetrieveDataTask();
-//            AsyncInitialiseData.execute();
-//        }
-
-
-
-
+//
 
 
         // wire buttonToMap
@@ -78,6 +88,59 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        rollButton = (Button) findViewById(R.id.rollButton);
+        rollButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openHC();
+            }
+        });
+    }
+
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        Log.e("Count", Integer.toString(count));
+
+        setContentView(R.layout.activity_main);
+
+        Button stalls2 = findViewById(R.id.startStalls2);
+        stalls2.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                startStalls2();
+            }
+        });
+
+
+
+        Button nearbyHC = findViewById(R.id.nearby_hc);
+        nearbyHC.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                nearbyHC();
+            }
+        });
+
+
+        Button HawkerCentreActivity = findViewById(R.id.HawkerCentreActivity);
+        HawkerCentreActivity.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                HawkerCentre hawkerCentre = HCList.get(0);
+                startHawkerCentreActivity(hawkerCentre);
+            }
+        });
+//
+
+
+        // wire buttonToMap
+//        Button btn = (Button) findViewById(R.id.buttonToMap);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openMapsActivity();
+//            }
+//        });
 
         rollButton = (Button) findViewById(R.id.rollButton);
         rollButton.setOnClickListener(new View.OnClickListener() {
@@ -85,19 +148,26 @@ public class MainActivity extends AppCompatActivity {
                 openHC();
             }
         });
-
-
     }
+
+
+//    public void toMain(ArrayList<HawkerCentre> data){
+//        HCList = data;
+//        Intent intent = new Intent(LoadingActivity.this,MainActivity.class).putParcelableArrayListExtra("toMain",HCList);
+//        startActivity(intent);
+//    }
 
 
     public void openMapsActivity() {
         Intent intent = new Intent(this, MapsActivity.class);
     }
 
+    public void addCount(){
+        count = 1;
+    }
 
-    public void storeData(ArrayList<HawkerCentre> data){
-        HCList = data;
-        Log.e("Log:", HCList.toString());
+    public void storeData(ArrayList<HawkerCentre> hclist){
+        HCList = hclist;
     }
 
     public void openHC() {
@@ -147,38 +217,47 @@ public class MainActivity extends AppCompatActivity {
         HCList.add(hc1);
         HCList.add(hc2);
 
-        //Log.e("temp data:", HCList.get(0).toString());
-
     }
 
-    private class RetrieveDataTask extends AsyncTask<Void, Void, ArrayList<HawkerCentre>> {
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation_menu, menu);
+        return true;
+    }
+
+    private class RetrieveDataTask extends AsyncTask<Void, Void,  ArrayList<HawkerCentre>> {
 
         private Exception exception;
         InitMgr DataInitialised;
         ArrayList<HawkerCentre> HCList = new ArrayList<>();
+        Context context;
+
+        private RetrieveDataTask(Context context){this.context = context;}
+
         @Override
         protected ArrayList<HawkerCentre> doInBackground(Void... strings) {
 
             try{
                 DataInitialised = new InitMgr();
 
-
             } catch(JSONException | IOException err){
                 Log.e("Error Here", err.toString());
             }
-            return HCList;
+            ArrayList<HawkerCentre> hclist = DataInitialised.getHCList();
+            return hclist;
         }
 
-        protected void onPostExecute() {
+
+        protected void onPostExecute(ArrayList<HawkerCentre> hclist) {
             HCList = DataInitialised.getHCList();
             storeData(HCList);
+            addCount();
+            Intent intent = new Intent(context,MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
 
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.navigation_menu, menu);
-        return true;
     }
 
 }
