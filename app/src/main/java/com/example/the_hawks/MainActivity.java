@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     public void checkGPSLocation(){
         AlertDialog.Builder builder =new AlertDialog.Builder(this);
         builder.setTitle("Location Services Not Enabled");
-        builder.setMessage("Please enable Location Services to use all functions in the App.");
+        builder.setMessage("Please Enable Location Services To Use All Functions In The App.");
         builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -220,8 +220,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkNetworkConnection(){
         AlertDialog.Builder builder =new AlertDialog.Builder(this);
-        builder.setTitle("No internet Connection");
-        builder.setMessage("Please turn on internet connection to continue");
+        builder.setTitle("No Internet Connection");
+        builder.setMessage("Please Turn On Internet Connection To Continue");
         builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
