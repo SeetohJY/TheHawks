@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.the_hawks.HC.HC;
+import com.example.the_hawks.Maps.MapsActivity;
 import com.example.the_hawks.Stalls.Stalls;
 import com.example.the_hawks.NearbyHC.NearbyHC;
-import com.example.the_hawks.Main2Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
