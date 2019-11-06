@@ -16,12 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Main3Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         <activity android:name=".SearchableActivity" >
             <intent-filter>
@@ -31,9 +25,14 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity
+            android:name=".LoadingActivity"
+            android:label="@string/title_activity_loading"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".NearbyHC.NearbyHCDesc"
             android:label="@string/title_activity_nearby_hcdesc"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".NearbyHC.NearbyHC"
             android:label="@string/title_activity_nearby_hc"
@@ -66,9 +65,15 @@
             android:name=".Stalls.StallDesc"
             android:label="Stalls Desc"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity android:name=".SearchResultsActivity" /> -->
-        <activity android:name=".MainActivity">
 
-        </activity>
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         <activity
             android:name=".Maps.MapsActivity"
             android:exported="true"
