@@ -15,12 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Main3Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        <activity android:name=".SearchableActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
         </activity>
         <activity
             android:name=".NearbyHC.NearbyHCDesc"
@@ -30,15 +38,8 @@
             android:name=".NearbyHC.NearbyHC"
             android:label="@string/title_activity_nearby_hc"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".NearbyHCs.NearbyHCFragment" />
-        <activity
-            android:name=".NearbyHCs.NearbyHC"
-            android:label="@string/title_activity_nearby_hc"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".NearbyHCs.NearbyHCDesc"
-            android:label="@string/title_activity_nearby_hcdesc"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".NearbyHC.NearbyHCFragment" />
+
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
@@ -69,7 +70,7 @@
 
         </activity>
         <activity
-            android:name=".MapsActivity"
+            android:name=".Maps.MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps" />
         <!--

@@ -120,4 +120,12 @@
         app:layout_constraintVertical_bias="0.229"
         app:srcCompat="@drawable/thehawkslogo" />
 
+    <Button
+        android:id="@+id/HawkerCentreActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HawkerCentreActivity"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="190dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

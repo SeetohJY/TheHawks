@@ -119,10 +119,13 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_main3">Main3Activity</string>
     <string name="Open">open</string>
+    <string name="clean">Cleanliness:</string>
     <string name="Close">close</string>
     <string name="title_activity_nearby_hcdesc">NearbyHCDesc</string>
     <string name="title_activity_nearby_hc">NearbyHC</string>
     <string name="nearbyHC_toolbar">List of Hawker Centres</string>
     <string name="nearby_hc_toolbar">Nearby Hawker Centres</string>
 
+    <string name="app_label">Hawker Centres</string>
+    <string name ="search_hint">Hawker Centres</string>
 </resources>
