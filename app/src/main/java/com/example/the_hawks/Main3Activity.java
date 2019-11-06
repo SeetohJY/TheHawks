@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.the_hawks.Maps.MapsActivity;
 
 import android.os.Bundle;
 

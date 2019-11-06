@@ -34,7 +34,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private Button rollButton;
+    private Button buttonToHCList;
+    private Button buttonToMap;
     public ArrayList<HawkerCentre> HCList = new ArrayList<HawkerCentre>();
     public int count = 0;
 
@@ -81,34 +82,34 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        Button stalls2 = findViewById(R.id.startStalls2);
-        stalls2.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                startStalls2();
-            }
-        });
-
-
-
-        Button nearbyHC = findViewById(R.id.nearby_hc);
-        nearbyHC.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                nearbyHC();
-            }
-        });
+//        Button stalls2 = findViewById(R.id.startStalls2);
+//        stalls2.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                startStalls2();
+//            }
+//        });
 
 
-        Button HawkerCentreActivity = findViewById(R.id.HawkerCentreActivity);
-        HawkerCentreActivity.setOnClickListener(new View.OnClickListener() {
+//
+//        Button nearbyHC = findViewById(R.id.nearby_hc);
+//        nearbyHC.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                nearbyHC();
+//            }
+//        });
 
-            public void onClick(View v) {
-                Log.e("1st element:", HCList.toString());
-                HawkerCentre hawkerCentre = HCList.get(0);
-                startHawkerCentreActivity(hawkerCentre);
-            }
-        });
+
+//        Button HawkerCentreActivity = findViewById(R.id.HawkerCentreActivity);
+//        HawkerCentreActivity.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                Log.e("1st element:", HCList.toString());
+//                HawkerCentre hawkerCentre = HCList.get(0);
+//                startHawkerCentreActivity(hawkerCentre);
+//            }
+//        });
 //
 
 
@@ -121,12 +122,19 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        rollButton = (Button) findViewById(R.id.rollButton);
-        rollButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                openHC();
-            }
-        });
+//        buttonToHCList = (Button) findViewById(R.id.buttonToHCList);
+//        buttonToHCList.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                openHC();
+//            }
+//        });
+//
+//        buttonToMap = (Button) findViewById(R.id.buttonToMap);
+//        buttonToMap.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                openMap();
+//            }
+//        });
     }
 
     protected void onNewIntent(Intent intent) {
@@ -136,33 +144,33 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        Button stalls2 = findViewById(R.id.startStalls2);
-        stalls2.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                startStalls2();
-            }
-        });
-
-
-
-        Button nearbyHC = findViewById(R.id.nearby_hc);
-        nearbyHC.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                nearbyHC();
-            }
-        });
+//        Button stalls2 = findViewById(R.id.startStalls2);
+//        stalls2.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                startStalls2();
+//            }
+//        });
 
 
-        Button HawkerCentreActivity = findViewById(R.id.HawkerCentreActivity);
-        HawkerCentreActivity.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-                HawkerCentre hawkerCentre = HCList.get(0);
-                startHawkerCentreActivity(hawkerCentre);
-            }
-        });
+//        Button nearbyHC = findViewById(R.id.nearby_hc);
+//        nearbyHC.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                nearbyHC();
+//            }
+//        });
+
+
+//        Button HawkerCentreActivity = findViewById(R.id.HawkerCentreActivity);
+//        HawkerCentreActivity.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                HawkerCentre hawkerCentre = HCList.get(0);
+//                startHawkerCentreActivity(hawkerCentre);
+//            }
+//        });
 //
 
 
@@ -175,10 +183,17 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        rollButton = (Button) findViewById(R.id.rollButton);
-        rollButton.setOnClickListener(new View.OnClickListener() {
+        buttonToHCList = (Button) findViewById(R.id.buttonToHCList);
+        buttonToHCList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openHC();
+            }
+        });
+
+        buttonToMap = (Button) findViewById(R.id.buttonToMap);
+        buttonToMap.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                openMap();
             }
         });
     }
@@ -207,17 +222,17 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HC.class);
         startActivity(intent);
     }
+//
+//    public void nearbyHC() {
+//        Intent intent = new Intent(this, NearbyHC.class);
+//        startActivity(intent);
+//    }
+//    public void startStalls2 () {
+//        Intent intent = new Intent(this, Stalls.class);
+//        startActivity(intent);
+//    }
 
-    public void nearbyHC() {
-        Intent intent = new Intent(this, NearbyHC.class);
-        startActivity(intent);
-    }
-    public void startStalls2 () {
-        Intent intent = new Intent(this, Stalls.class);
-        startActivity(intent);
-    }
-
-    public void startStalls () {
+    public void openMap () {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
