@@ -125,4 +125,6 @@
     <string name="nearbyHC_toolbar">List of Hawker Centres</string>
     <string name="nearby_hc_toolbar">Nearby Hawker Centres</string>
 
+    <string name="app_label">Hawker Centres</string>
+    <string name ="search_hint">Hawker Centres</string>
 </resources>

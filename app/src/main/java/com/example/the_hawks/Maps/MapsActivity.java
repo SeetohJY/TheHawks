@@ -1,4 +1,4 @@
-package com.example.the_hawks;
+package com.example.the_hawks.Maps;
 
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -17,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.the_hawks.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.GeoDataClient;
@@ -28,6 +26,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -46,9 +45,6 @@ import com.google.android.gms.tasks.Task;
  */
 public class MapsActivity extends AppCompatActivity
         implements OnMapReadyCallback {
-
-
-
 
     private static final String TAG = MapsActivity.class.getSimpleName();
     private GoogleMap mMap;
@@ -110,8 +106,6 @@ public class MapsActivity extends AppCompatActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
-
     }
 
     /**
@@ -158,31 +152,27 @@ public class MapsActivity extends AppCompatActivity
     public void onMapReady(GoogleMap map) {
         mMap = map;
 
-        // Use a custom info window adapter to handle multiple lines of text in the
-        // info window contents.
-        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+        LatLng hc1 = new LatLng(1.337146, 103.697001);
 
-            @Override
-            // Return null here, so that getInfoContents() is called next.
-            public View getInfoWindow(Marker arg0) {
-                return null;
-            }
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(hc1)
+                .title("Pioneer Hawker Centre")
+                .snippet("ABC Hawker Centre has the best BCM")
+                .icon(BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_BLUE));
 
-            @Override
-            public View getInfoContents(Marker marker) {
-                // Inflate the layouts for the info window, title and snippet.
-                View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents,
-                        (FrameLayout) findViewById(R.id.map), false);
+        PopupInfo info = new PopupInfo();
+        info.setImage("hc1");
+        info.setFood("Food : Ah Lian beehoon is here");
+        info.setTransport("Reach the site by bus, car, train or plane.");
 
-                TextView title = ((TextView) infoWindow.findViewById(R.id.title));
-                title.setText(marker.getTitle());
+        MarkerPopupWindow customInfoWindow = new MarkerPopupWindow(this);
+        mMap.setInfoWindowAdapter(customInfoWindow);
 
-                TextView snippet = ((TextView) infoWindow.findViewById(R.id.snippet));
-                snippet.setText(marker.getSnippet());
+        Marker m = mMap.addMarker(markerOptions);
+        m.setTag(info);
+        m.showInfoWindow();
 
-                return infoWindow;
-            }
-        });
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(hc1));
 
         // Prompt the user for permission.
         getLocationPermission();
@@ -192,6 +182,42 @@ public class MapsActivity extends AppCompatActivity
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+
+//        // Use a custom info window adapter to handle multiple lines of text in the
+//        // info window contents.
+//        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+//
+//            @Override
+//            // Return null here, so that getInfoContents() is called next.
+//            public View getInfoWindow(Marker arg0) {
+//                return null;
+//            }
+
+
+//            @Override
+//            public View getInfoContents(Marker marker) {
+//                // Inflate the layouts for the info window, title and snippet.
+//                View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents,
+//                        (FrameLayout) findViewById(R.id.map), false);
+//
+//                TextView title = ((TextView) infoWindow.findViewById(R.id.title));
+//                title.setText(marker.getTitle());
+//
+//                TextView snippet = ((TextView) infoWindow.findViewById(R.id.snippet));
+//                snippet.setText(marker.getSnippet());
+//
+//                return infoWindow;
+//            }
+//        });
+
+        // Prompt the user for permission.
+//        getLocationPermission();
+//
+//        // Turn on the My Location layer and the related control on the map.
+//        updateLocationUI();
+//
+//        // Get the current location of the device and set the position of the map.
+//        getDeviceLocation();
     }
 
     /**
