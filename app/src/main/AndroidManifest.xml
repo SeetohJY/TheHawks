@@ -17,9 +17,26 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity
+            android:name=".NearbyHC.NearbyHCDesc"
+            android:label="@string/title_activity_nearby_hcdesc"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".NearbyHC.NearbyHC"
+            android:label="@string/title_activity_nearby_hc"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".NearbyHCs.NearbyHCFragment" />
+        <activity
+            android:name=".NearbyHCs.NearbyHC"
+            android:label="@string/title_activity_nearby_hc"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NearbyHCs.NearbyHCDesc"
+            android:label="@string/title_activity_nearby_hcdesc"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HC.HCDesc"
             android:label="@string/title_activity_hcdesc"
@@ -29,7 +46,7 @@
             android:name=".HC.HC"
             android:label="@string/title_activity_hc"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".HawkerCentreActivity"
             android:label="@string/title_activity_hawker_centre"
@@ -37,7 +54,7 @@
         <activity
             android:name=".Stalls.Stalls"
             android:label="@string/title_activity_stalls"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Stalls.StallDesc"
             android:label="Stalls Desc"

@@ -18,6 +18,7 @@
     <string name="title_activity_stall_desc">StallDesc</string>
 
     <string name="title_activity_hc_desc">HCDesc</string>
+    <string name="title_activity_nearby_hc_desc">NearbyHCDesc</string>
 
 
     <string name="title_activity_scrolling">ScrollingActivity</string>
@@ -118,5 +119,9 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="Open">open</string>
     <string name="Close">close</string>
+    <string name="title_activity_nearby_hcdesc">NearbyHCDesc</string>
+    <string name="title_activity_nearby_hc">NearbyHC</string>
+    <string name="nearbyHC_toolbar">List of Hawker Centres</string>
+    <string name="nearby_hc_toolbar">Nearby Hawker Centres</string>
 
 </resources>
