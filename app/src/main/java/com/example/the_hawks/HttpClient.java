@@ -119,7 +119,7 @@ public class HttpClient {
         JSONArray jsonArray_list2 = new JSONArray();
         //read in datasets
         jsonArray_list1 = getJSONArray("https://data.gov.sg/api/action/datastore_search?resource_id=8f6bba57-19fc-4f36-8dcf-c0bda382364d&limit=200");
-        jsonArray_list2 = getJSONArray("https://data.gov.sg/api/action/datastore_search?resource_id=34f86c3e-a90c-4de9-a69f-afc86b7f31b6&offset=25000&limit=10000");
+        jsonArray_list2 = getJSONArray("https://data.gov.sg/api/action/datastore_search?resource_id=34f86c3e-a90c-4de9-a69f-afc86b7f31b6&offset=30000&limit=6000");
         JSONArray jsonArray_list2_reduced = new JSONArray();
 //        Log.e("List1:", jsonArray_list1.toString());
 //        Log.e("List2:", jsonArray_list2.toString());

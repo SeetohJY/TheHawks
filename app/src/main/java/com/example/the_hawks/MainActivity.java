@@ -17,15 +17,12 @@ import com.example.the_hawks.Stalls.Stalls;
 import com.example.the_hawks.NearbyHC.NearbyHC;
 import com.example.the_hawks.Main2Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
@@ -47,30 +44,9 @@ public class MainActivity extends AppCompatActivity {
 //        initialiseTempData();
 
 
-
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.action_recents:
-//                        Toast.makeText(MainActivity.this, "Recents", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.action_favorites:
-//                        Toast.makeText(MainActivity.this, "Favorites", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.action_nearby:
-//                        Toast.makeText(MainActivity.this, "Nearby", Toast.LENGTH_SHORT).show();
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
-
         Intent test = new Intent(this, LoadingActivity.class);
         startActivity(test);
         Context context = this.getApplicationContext();
-
 
         if (HCList.isEmpty()){
             RetrieveDataTask AsyncInitialiseData = new RetrieveDataTask(context);
@@ -190,6 +166,9 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
 
+    public ArrayList<HawkerCentre> getData(){
+        return HCList;
+    }
 
     public void openMapsActivity() {
         Intent intent = new Intent(this, MapsActivity.class);

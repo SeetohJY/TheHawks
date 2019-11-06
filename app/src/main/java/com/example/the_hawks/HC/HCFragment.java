@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.the_hawks.HawkerCentre;
+import com.example.the_hawks.HawkerStall;
 import com.example.the_hawks.R;
 import com.example.the_hawks.HC.HCFragment;
 
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HCFragment.OnFragmentInteractionListener} interface
+ * {@link /*HCFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link HCFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -35,6 +37,7 @@ public class HCFragment extends Fragment {
     RecyclerView mRecyclerView;
     HCRecyclerViewAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
+
 
 
 //    private OnFragmentInteractionListener mListener;
@@ -68,11 +71,12 @@ public class HCFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hc, container, false);
 
-        String datatext = getArguments().getString("hctext");
+//        String datatext = getArguments().getString("hctext");
+        ArrayList<HawkerCentre> hawkerCentreArrayList = getArguments().getParcelableArrayList("hclist");
 
         buildRecyclerView(view);
-        createHCList(view, datatext);
-
+//        createHCList(view, datatext);
+        loopingTextViewCreate(view, hawkerCentreArrayList);
 
         return view;
 
@@ -135,39 +139,36 @@ public class HCFragment extends Fragment {
 //        exampleList.add(new ExampleItem("Line 1", "Line 2"));
 //        exampleList.add(new ExampleItem("Line 3", "Line 4"));
 //        exampleList.add(new ExampleItem("Line 5", "Line 6"));
-        loopingTextViewCreate(view, hcdata);
+//        loopingTextViewCreate(view, hcdata);
     }
 
-    public void loopingTextViewCreate(View v, JSONArray hcdata){
+    public void loopingTextViewCreate(View v, ArrayList<HawkerCentre> hcList){
 
         Log.e("Test", "LoopingText running");
 
-//        LinearLayout stall_vertical = (LinearLayout) v.findViewById(R.id.stall_layout);
-        for (int i = 0; i < hcdata.length(); i++) {
-            String name = new String();
-                String address = new String();
-                String cleanliness = new String();
-                try {
-                    JSONObject temp = hcdata.getJSONObject(i);
-                    name = temp.getString("name");
-                    address = temp.getString("address");
-                    cleanliness = temp.getString("cleanliness");
-                } catch(JSONException err){
-                Log.e("Error", err.toString());
-            }
-            Log.e("name", name);
-            Log.e("address", address);
-            Log.e("cleanliness", cleanliness);
-            exampleList.add(new HCItem(name, address, cleanliness));
-//            CardView cardView = new CardView(getActivity());
-//            cardView.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-//
-//
-//            TextView text = new TextView(getActivity());
-//            text.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-//            text.setText(name);
-//            stall_vertical.addView(text);
 
+//        for (int i = 0; i < hcdata.length(); i++) {
+//
+//            String name = new String();
+//            String address = new String();
+//            String cleanliness = new String();
+//            try {
+//                JSONObject temp = hcdata.getJSONObject(i);
+//                name = temp.getString("name");
+//                address = temp.getString("address");
+//                cleanliness = temp.getString("cleanliness");
+//            } catch(JSONException err){
+//                Log.e("Error", err.toString());
+//            }
+//            Log.e("name", name);
+//            Log.e("address", address);
+//            Log.e("cleanliness", cleanliness);
+//            exampleList.add(new HCItem(name, address, cleanliness));
+        for (int i = 0; i < hcList.size(); i++) {
+            HawkerCentre hc = hcList.get(i);
+
+            exampleList.add(new HCItem( hc.getName(), hc.getAddress(), Double.toString(hc.getAggregate())));
+            Log.e("aggregate", Double.toString(hc.getAggregate()));
         }
     }
 

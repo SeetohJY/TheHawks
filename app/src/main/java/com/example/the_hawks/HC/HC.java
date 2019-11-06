@@ -1,9 +1,11 @@
 package com.example.the_hawks.HC;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
+import com.google.gson.Gson;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -14,12 +16,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import com.example.the_hawks.HawkerCentre;
+import com.example.the_hawks.HawkerStall;
 import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class HC extends FragmentActivity {
     String jString = new String(
@@ -47,12 +54,21 @@ public class HC extends FragmentActivity {
     private Spinner spinner2;
     private static final String[] paths = {"Name (A to Z)", "Name (Z to A)", "Hygiene (Best to Worst)", "Hygiene (Best to Worst)"};
     private static final String[] paths2 = {"All", "HC", "MHC"};
+    public ArrayList<HawkerCentre> hcList = new ArrayList<>();
+    private static WeakReference<MainActivity> mActivityRef;
+    public static void updateActivity(MainActivity activity) {
+        mActivityRef = new WeakReference<>(activity);
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hc);
+
+        MainActivity activity = mActivityRef.get();
+        hcList = activity.getData();
+        Log.e("Weird Test", hcList.toString());
 
         spinner = (Spinner)findViewById(R.id.spinner);
         spinner2 = (Spinner)findViewById(R.id.spinner2);
@@ -93,7 +109,7 @@ public class HC extends FragmentActivity {
         }
 
         Bundle dataBundle = new Bundle();
-        dataBundle.putString("hctext", hcdata.toString());
+        dataBundle.putParcelableArrayList("hclist", hcList);
 
         HCFragmentCreate(savedInstanceState, dataBundle);
 
