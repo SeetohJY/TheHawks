@@ -1,32 +1,25 @@
 package com.example.the_hawks;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.the_hawks.HC.HC;
 import com.example.the_hawks.Maps.MapsActivity;
-import com.example.the_hawks.Stalls.Stalls;
 import com.example.the_hawks.NearbyHC.NearbyHC;
-import com.example.the_hawks.Main2Activity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.annotation.NonNull;
-import androidx.drawerlayout.widget.DrawerLayout;
-import android.view.MenuItem;
-
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import com.example.the_hawks.Stalls.Stalls;
 
 import org.json.JSONException;
 
@@ -42,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e("count1", Integer.toString(count));
+        checkLocationServices();
+        isNetworkConnectionAvailable();
+
+
 //        setContentView(R.layout.activity_main);
 
 //        initialiseTempData();
@@ -190,6 +187,70 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
 
+    public void checkLocationServices(){
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        }catch (Exception ex){}
+        try{
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        }catch (Exception ex){}
+        if(!gps_enabled && !network_enabled){
+            checkGPSLocation();
+        }
+    }
+
+    public void checkGPSLocation(){
+        AlertDialog.Builder builder =new AlertDialog.Builder(this);
+        builder.setTitle("Location Services Not Enabled");
+        builder.setMessage("Please enable Location Services to use all functions in the App.");
+        builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+
+
+    public void checkNetworkConnection(){
+        AlertDialog.Builder builder =new AlertDialog.Builder(this);
+        builder.setTitle("No internet Connection");
+        builder.setMessage("Please turn on internet connection to continue");
+        builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+
+    public boolean isNetworkConnectionAvailable(){
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnected();
+        if(isConnected) {
+            Log.d("Network", "Connected");
+            return true;
+        }
+        else{
+            checkNetworkConnection();
+            Log.d("Network","Not Connected");
+            return false;
+        }
+    }
 
     public void openMapsActivity() {
         Intent intent = new Intent(this, MapsActivity.class);
