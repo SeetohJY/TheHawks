@@ -40,7 +40,7 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
 
         holder.mTextView1.setText(currentItem.getText1());
         holder.mTextView2.setText(currentItem.getText2());
-        holder.mTextView4.setText(currentItem.getText2());
+        holder.mTextView4.setText(currentItem.getText4());
 
     }
 

@@ -2,7 +2,6 @@ package com.example.the_hawks;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.the_hawks.Stalls.Stalls;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -37,6 +34,9 @@ public class HawkerCentreActivity extends AppCompatActivity {
 
         TextView tv2 = findViewById((R.id.CRating));
         tv2.setText(Double.toString(hc.getAggregate()));
+
+        TextView tv3 = findViewById((R.id.Addr));
+        tv3.setText(hc.getAddress());
 
         Button stalls = findViewById(R.id.startStalls);
         stalls.setOnClickListener(new View.OnClickListener() {
