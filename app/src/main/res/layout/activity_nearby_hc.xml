@@ -62,7 +62,7 @@
         android:layout_width="409dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:background="@color/colorAccent"
+        android:background="?attr/colorPrimary"
         android:fontFamily="@font/cream_peach"
         android:gravity="center"
         android:text="@string/nearby_hc_toolbar"
