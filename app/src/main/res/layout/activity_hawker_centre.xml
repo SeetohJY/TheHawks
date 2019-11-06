@@ -15,32 +15,32 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="427dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="-2dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginStart="-9dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-7dp"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <TextView
         android:id="@+id/hcTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="92dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="7dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="119dp"
         android:layout_marginEnd="4dp"
         android:gravity="center"
-        android:textSize="36dp" />
+        android:textSize="30dp" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/HawkerCentrePhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="54dp"
         android:layout_marginEnd="-6dp"
-        android:src="@drawable/nothing" />
+        android:src="@drawable/nothing" />-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,11 +59,21 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="366dp"
-        android:fontFamily="@font/cream_peach"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="242dp"
         android:text="@string/clean"
-        android:textSize="40dp" />
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="298dp"
+        android:text="Address:"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/CRating"
@@ -71,23 +81,50 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="308dp"
-        android:fontFamily="@font/cream_peach"
+        android:layout_marginEnd="204dp"
+        android:layout_marginBottom="383dp"
         android:text="here"
-        android:textColor="#1DCE23"
-        android:textSize="40dp" />
+        android:textColor="#5cadec"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/Addr"
+        android:layout_width="230dp"
+        android:layout_height="159dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="202dp"
+        android:text="here"
+        android:textColor="#5cadec"
+        android:textSize="22dp" />
 
     <Button
         android:id="@+id/startStalls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="92dp"
+        android:layout_marginEnd="149dp"
+        android:layout_marginBottom="123dp"
         android:text="Stalls"
-        android:fontFamily="@font/drift"
-        android:textSize="40dp"/>
+        android:textAllCaps="false"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/getDirections"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="118dp"
+        android:layout_marginBottom="55dp"
+        android:background="?attr/colorPrimary"
+        android:text="Get Directions"
+        android:textAllCaps="false"
+        android:textSize="25dp" />
 
 
 </RelativeLayout>
