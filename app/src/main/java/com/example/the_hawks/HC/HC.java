@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -68,6 +69,33 @@ public class HC extends FragmentActivity {
 
         spinner.setAdapter(adapter);
         spinner2.setAdapter(adapter2);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public int i = 0 ;
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                switch((String) parent.getItemAtPosition(position)){
+                    case "Name (A to Z)":
+                        //sort HCItem sort to find what's clicked
+
+
+
+                        Log.v("item", (String) parent.getItemAtPosition(position));
+                        break;
+                    case "Name (Z to A)":
+                        Log.v("item333", (String) parent.getItemAtPosition(position));
+
+                        break;
+                    case "Hygiene (Best to Worst)":
+                        break;
+                    case "Hygiene (Worst to Best)":
+                        break;
+
+
+                }
+                Log.v("item", (String) parent.getItemAtPosition(position));
+            }
 
         JSONObject data = createData(jString);
 
