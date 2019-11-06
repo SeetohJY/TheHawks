@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InitMgr {
     private static JSONArray jsonList1 = new JSONArray();
@@ -61,7 +63,7 @@ public class InitMgr {
     private static ArrayList<HawkerStall> createHawkerStallList(int i, String name) throws JSONException{
         ArrayList<HawkerStall> HawkerCentreStalls = new ArrayList<>();
         while(jsonList1.getJSONObject(i).getString("name_of_centre").equals(name)) {
-            HawkerCentreStalls.add(createHawkerStall(i, name));
+            HawkerCentreStalls.add(createHawkerStall(i));
             i++;
             if (i == jsonList1.length()) {
                 break;
@@ -70,15 +72,26 @@ public class InitMgr {
         return HawkerCentreStalls;
     }
 
-    private static HawkerStall createHawkerStall(int i, String name) throws JSONException{
+    private static HawkerStall createHawkerStall(int i) throws JSONException{
         HawkerStall hawkerstall;
 
+        String name = getStallName(jsonList2.getJSONObject(i).getString("premises_address"));
         String rating = jsonList2.getJSONObject(i).getString("grade");
         int demeritPoints = Integer.parseInt(jsonList2.getJSONObject(i).getString("demerit_points").replaceAll("na", "0"));
         String addr = jsonList1.getJSONObject(i).getString("location_of_centre");
         hawkerstall = new HawkerStall(name, rating, demeritPoints, addr);
         return hawkerstall;
 
+    }
+
+    private static String getStallName(String name){
+        String result = null;
+        Pattern stallname_pattern = Pattern.compile("Stall No .+");
+        Matcher match = stallname_pattern.matcher(name);
+        if (match.find()){
+            result = match.group(0);
+        }
+        return result;
     }
 
 

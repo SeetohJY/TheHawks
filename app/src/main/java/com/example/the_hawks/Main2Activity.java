@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.the_hawks.HC.HC;
-import com.example.the_hawks.MapsActivity;
+import com.example.the_hawks.Maps.MapsActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
