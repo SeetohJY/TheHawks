@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.util.Log;
 
+import com.example.the_hawks.Maps.MapsActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
