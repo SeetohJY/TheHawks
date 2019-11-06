@@ -13,7 +13,10 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_hcdesc" />
+    <include
+        layout="@layout/content_hcdesc"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/hcTitle"
@@ -21,9 +24,45 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="133dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="135dp"
         android:text=""
-        android:textSize="36dp"/>
+        android:textSize="36dp" />
+
+    <TextView
+        android:id="@+id/hcCleanliness"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="415dp"
+        android:text=""
+        android:textSize="36dp" />
+
+    <TextView
+        android:id="@+id/hcAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="7dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="212dp"
+        android:text=""
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/cleanlinessText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="421dp"
+        android:text="Cleanliness:"
+        android:textSize="26sp" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -31,6 +70,21 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="142dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="541dp"
+        android:text="Button" />
 
 
 </RelativeLayout>

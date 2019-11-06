@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.the_hawks.R;
+import com.example.the_hawks.HC.HCFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -140,16 +142,17 @@ public class HCFragment extends Fragment {
 
         Log.e("Test", "LoopingText running");
 
-//        LinearLayout HC_vertical = (LinearLayout) v.findViewById(R.id.HC_layout);
+//        LinearLayout stall_vertical = (LinearLayout) v.findViewById(R.id.stall_layout);
         for (int i = 0; i < hcdata.length(); i++) {
             String name = new String();
-            String address = new String();
-            String cleanliness = new String();
-            try {
-                JSONObject temp = hcdata.getJSONObject(i);
-                name = temp.getString("name");
-                address = temp.getString("address");
-            } catch(JSONException err){
+                String address = new String();
+                String cleanliness = new String();
+                try {
+                    JSONObject temp = hcdata.getJSONObject(i);
+                    name = temp.getString("name");
+                    address = temp.getString("address");
+                    cleanliness = temp.getString("cleanliness");
+                } catch(JSONException err){
                 Log.e("Error", err.toString());
             }
             Log.e("name", name);
@@ -163,7 +166,7 @@ public class HCFragment extends Fragment {
 //            TextView text = new TextView(getActivity());
 //            text.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
 //            text.setText(name);
-//            HC_vertical.addView(text);
+//            stall_vertical.addView(text);
 
         }
     }
@@ -173,6 +176,8 @@ public class HCFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), HCDesc.class);
         intent.putExtra("Name", temp.getText1());
+        intent.putExtra("Address", temp.getText2());
+        intent.putExtra("Cleanliness", temp.getText4());
         startActivity(intent);
     }
 }

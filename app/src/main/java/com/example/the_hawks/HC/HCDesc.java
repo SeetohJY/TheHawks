@@ -38,11 +38,6 @@ public class HCDesc extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
-        String Name = intent.getStringExtra("Name");
-
-        TextView text = findViewById(R.id.hcTitle);
-        text.setText(Name);
 
         // Dropdown List
         spinner = (Spinner)findViewById(R.id.spinner);
@@ -56,28 +51,47 @@ public class HCDesc extends AppCompatActivity {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//        spinner.setAdapter(adapter);
+//        spinner2.setAdapter(adapter2);
 
-        spinner.setAdapter(adapter);
-        spinner2.setAdapter(adapter2);
+        Intent intent = getIntent();
+        String Name = intent.getStringExtra("Name");
+
+        TextView text = findViewById(R.id.hcTitle);
+        text.setText(Name);
+
+        String Cleanliness = intent.getStringExtra("Cleanliness");
+        String Address = intent.getStringExtra("Address");
+
+        TextView cleanlinessText = findViewById(R.id.hcCleanliness);
+        cleanlinessText.setText(Cleanliness);
+
+        TextView addressText = findViewById(R.id.hcAddress);
+        addressText.setText(Address);
+
+
+
+
     }
-
-
-    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-
-        switch (position) {
-            case 0:
-                // Whatever you want to happen when the first item gets selected
-                break;
-            case 1:
-                // Whatever you want to happen when the second item gets selected
-                break;
-            case 2:
-                // Whatever you want to happen when the thrid item gets selected
-                break;
-
-        }
-    }
-    public void onNothingSelected(AdapterView<?> parent) {
-        // TODO Auto-generated method stub
-    }
+//
+//
+//    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+//
+//        switch (position) {
+//            case 0:
+//                // Whatever you want to happen when the first item gets selected
+//                break;
+//            case 1:
+//                // Whatever you want to happen when the second item gets selected
+//                break;
+//            case 2:
+//                // Whatever you want to happen when the thrid item gets selected
+//                break;
+//
+//        }
+//    }
+//    public void onNothingSelected(AdapterView<?> parent) {
+//        // TODO Auto-generated method stub
+//    }
 }
