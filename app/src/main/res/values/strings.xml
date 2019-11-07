@@ -7,9 +7,9 @@
     <string name="title_activity_maps">Hawker Map</string>
     <string name="title_activity_stalls">Stalls</string>
     <string name="stalls_toolbar">Stalls</string>
-    <string name="google_map_key">AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI</string>
+
     <string name="title_activity_search_results">SearchResultsActivity</string>
-    <string name="edit_location">Enter a Location</string>
+    <string name="edit_hcname">Enter a Hawker Centre name</string>
 
     <string name="empty_string"></string>
 
@@ -18,6 +18,7 @@
     <string name="title_activity_stall_desc">StallDesc</string>
 
     <string name="title_activity_hc_desc">HCDesc</string>
+    <string name="title_activity_nearby_hc_desc">NearbyHCDesc</string>
 
 
     <string name="title_activity_scrolling">ScrollingActivity</string>
@@ -115,6 +116,16 @@
     <string name="title_activity_hc">HC</string>
     <string name="title_activity_hcdesc">HCDesc</string>
     <string name="hc_toolbar">HC</string>
-    <string name="search_hint">Search Hawker Stalls</string>
 
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="Open">open</string>
+    <string name="clean">Cleanliness:</string>
+    <string name="Close">close</string>
+    <string name="title_activity_nearby_hcdesc">NearbyHCDesc</string>
+    <string name="title_activity_nearby_hc">NearbyHC</string>
+    <string name="nearbyHC_toolbar">List of Hawker Centres</string>
+    <string name="nearby_hc_toolbar">Nearby Hawker Centres</string>
+
+    <string name="app_label">Hawker Centres</string>
+    <string name="search_hint">Hawker Centres</string>
 </resources>

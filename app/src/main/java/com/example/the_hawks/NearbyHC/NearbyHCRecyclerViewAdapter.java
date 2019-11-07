@@ -1,10 +1,12 @@
-package com.example.the_hawks.HC;
+package com.example.the_hawks.NearbyHC;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.the_hawks.NearbyHC.NearbyHCItem;
+import com.example.the_hawks.NearbyHC.NearbyHCRecyclerViewAdapter;
 import com.example.the_hawks.R;
 
 import androidx.annotation.NonNull;
@@ -12,31 +14,32 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAdapter.ExampleViewHolder> {
+public class NearbyHCRecyclerViewAdapter extends RecyclerView.Adapter<NearbyHCRecyclerViewAdapter.ExampleViewHolder>  {
 
-    private ArrayList<HCItem> mHCList;
-    private OnItemClickListener mListener;
+
+    private ArrayList<NearbyHCItem> mNearbyHCList;
+    private NearbyHCRecyclerViewAdapter.OnItemClickListener mListener;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
+    public void setOnItemClickListener(NearbyHCRecyclerViewAdapter.OnItemClickListener listener) {
         mListener = listener;
     }
 
     @NonNull
     @Override
-    public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_hc, parent, false);
-        ExampleViewHolder evh = new ExampleViewHolder(v, mListener);
+    public NearbyHCRecyclerViewAdapter.ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_nearby_hc, parent, false);
+        NearbyHCRecyclerViewAdapter.ExampleViewHolder evh = new NearbyHCRecyclerViewAdapter.ExampleViewHolder(v, mListener);
 
         return evh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
-        HCItem currentItem = mHCList.get(position);
+    public void onBindViewHolder(@NonNull NearbyHCRecyclerViewAdapter.ExampleViewHolder holder, int position) {
+        NearbyHCItem currentItem = mNearbyHCList.get(position);
 
         holder.mTextView1.setText(currentItem.getText1());
         holder.mTextView2.setText(currentItem.getText2());
@@ -46,7 +49,7 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
 
     @Override
     public int getItemCount() {
-        return mHCList.size();
+        return mNearbyHCList.size();
     }
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
@@ -54,7 +57,7 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
         public TextView mTextView2;
         public TextView mTextView4;
 
-        public ExampleViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
+        public ExampleViewHolder(@NonNull View itemView, final NearbyHCRecyclerViewAdapter.OnItemClickListener listener) {
             super(itemView);
             mTextView1 = itemView.findViewById(R.id.Text1);
             mTextView2 = itemView.findViewById(R.id.Text2);
@@ -74,8 +77,7 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
         }
     }
 
-    public HCRecyclerViewAdapter(ArrayList<HCItem> exampleList) {
-        mHCList = exampleList;
+    public NearbyHCRecyclerViewAdapter(ArrayList<NearbyHCItem> exampleList) {
+        mNearbyHCList = exampleList;
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.the_hawks;
+package com.example.the_hawks.Search;
 
 import android.content.Context;
 import android.view.LayoutInflater;

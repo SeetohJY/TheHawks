@@ -5,6 +5,7 @@
         android:id="@+id/option_search"
         android:icon="@android:drawable/ic_menu_search"
         android:orderInCategory="100"
-        app:showAsAction="always"
-        android:title="Search" />
+        app:showAsAction="ifRoom"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"/>
 </menu>

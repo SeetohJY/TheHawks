@@ -1,26 +1,31 @@
-package com.example.the_hawks.HC;
+package com.example.the_hawks.NearbyHC;
 
 
 import android.content.Intent;
 import android.os.Bundle;
+
+
+import androidx.fragment.app.FragmentActivity;
+
+
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-import androidx.fragment.app.FragmentActivity;
-
+import com.example.the_hawks.NearbyHC.NearbyHC;
+import com.example.the_hawks.NearbyHC.NearbyHCFragment;
 import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONException;
 
-public class HC extends FragmentActivity {
+public class NearbyHC extends FragmentActivity {
     String jString = new String(
-            "{\"hcname\" : \"Jurong West Hawker Centre & Market\",\"hc\":[{\"ic\":\"01\",\"name\":\"Kim Keat Market\",\"address\":\"22A Lor 7 Toa Pa Yoh\",\"cleanliness\":\"C\"},{\"ic\":\"02\",\"name\":\"Toh Kim Food Court\",\"address\":\"4 Jelapang Drive\",\"cleanliness\":\"A\"}]}");
+            "{\"nearbyhcname\" : \"Jurong West Hawker Centre & Market\",\"nearbyhc\":[{\"ic\":\"01\",\"name\":\"Kim Keat Market\",\"address\":\"22A Lor 7 Toa Pa Yoh\",\"cleanliness\":\"C\"},{\"ic\":\"02\",\"name\":\"Toh Kim Food Court\",\"address\":\"4 Jelapang Drive\",\"cleanliness\":\"A\"}]}");
     private Spinner spinner;
     private Spinner spinner2;
     private static final String[] paths = {"Name (A to Z)", "Name (Z to A)", "Hygiene (Best to Worst)", "Hygiene (Best to Worst)"};
@@ -30,15 +35,15 @@ public class HC extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hc);
+        setContentView(R.layout.activity_nearby_hc);
 
         spinner = (Spinner)findViewById(R.id.spinner);
         spinner2 = (Spinner)findViewById(R.id.spinner2);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(HC.this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(NearbyHC.this,
                 android.R.layout.simple_spinner_item,paths);
 
-        ArrayAdapter<String>adapter2 = new ArrayAdapter<String>(HC.this,
+        ArrayAdapter<String>adapter2 = new ArrayAdapter<String>(NearbyHC.this,
                 android.R.layout.simple_spinner_item,paths2);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -49,31 +54,31 @@ public class HC extends FragmentActivity {
 
         JSONObject data = createData(jString);
 
-        final ImageButton hc = findViewById(R.id.back_button);
-        hc.setOnClickListener(new View.OnClickListener() {
+        final ImageButton nearbyhc = findViewById(R.id.back_button);
+        nearbyhc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 backtoHome();
             }
         });
 
-        String HCName = new String();
-        JSONArray hcdata = new JSONArray();
+        String NearbyHCName = new String();
+        JSONArray nearbyhcdata = new JSONArray();
 
         try {
-            JSONArray sdata = new JSONArray(data.getString("hc"));
+            JSONArray sdata = new JSONArray(data.getString("nearbyhc"));
             JSONObject index = sdata.getJSONObject(0);
 
-            HCName = data.getString("hcname");
-            hcdata = new JSONArray(data.getString("hc"));
+            NearbyHCName = data.getString("nearbyhcname");
+            nearbyhcdata = new JSONArray(data.getString("nearbyhc"));
 
         } catch(JSONException err){
             Log.e("Error", err.toString());
         }
 
         Bundle dataBundle = new Bundle();
-        dataBundle.putString("hctext", hcdata.toString());
+        dataBundle.putString("nearbyhctext", nearbyhcdata.toString());
 
-        hcFragmentCreate(savedInstanceState, dataBundle);
+        nearbyhcFragmentCreate(savedInstanceState, dataBundle);
 
 //        TextView hcname = findViewById(R.id.HCName);
 //        hcname.append(HCName);
@@ -85,17 +90,17 @@ public class HC extends FragmentActivity {
         startActivity(intent);
     }
 
-    public void hcFragmentCreate (Bundle savedInstanceState, Bundle hcData){
-        if (findViewById(R.id.hc_layout) != null) {
+    public void nearbyhcFragmentCreate (Bundle savedInstanceState, Bundle nearbyhcData){
+        if (findViewById(R.id.nearby_hc_layout) != null) {
             if (savedInstanceState != null) {
                 return;
             }
-            HCFragment firstFragment = new HCFragment();
+            NearbyHCFragment firstFragment = new NearbyHCFragment();
 
 //            firstFragment.setArguments(getIntent().getExtras());
-            firstFragment.setArguments(hcData);
+            firstFragment.setArguments(nearbyhcData);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.hc_layout, firstFragment).commit();
+                    .add(R.id.nearby_hc_layout, firstFragment).commit();
         }
     }
 

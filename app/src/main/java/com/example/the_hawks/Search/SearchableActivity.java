@@ -1,4 +1,4 @@
-package com.example.the_hawks;
+package com.example.the_hawks.Search;
 
 import android.app.SearchManager;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.the_hawks.R;
 
 
 public class SearchableActivity extends AppCompatActivity {
@@ -31,6 +33,7 @@ public class SearchableActivity extends AppCompatActivity {
                 Toast.makeText(SearchableActivity.this,
                         "clicked search result item is"+((TextView)view).getText(),
                         Toast.LENGTH_SHORT).show();
+
             }
         });
         // search

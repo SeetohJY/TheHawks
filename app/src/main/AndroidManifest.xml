@@ -16,10 +16,11 @@
             </intent-filter>
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".SearchableActivity" />
+                android:value=".Search.SearchableActivity" />
         </activity>
 
-        <activity android:name=".SearchableActivity" >
+
+        <activity android:name=".Search.SearchableActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -29,17 +30,29 @@
 
 
         <activity
+            android:name=".NearbyHC.NearbyHCDesc"
+            android:label="@string/title_activity_nearby_hcdesc"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".NearbyHC.NearbyHC"
+            android:label="@string/title_activity_nearby_hc"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".NearbyHC.NearbyHCFragment" />
+
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".HC.HCDesc"
             android:label="@string/title_activity_hcdesc"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".HC.HC"
             android:label="@string/title_activity_hc"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".HawkerCentreActivity"
             android:label="@string/title_activity_hawker_centre"
@@ -47,20 +60,25 @@
         <activity
             android:name=".Stalls.Stalls"
             android:label="@string/title_activity_stalls"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Stalls.StallDesc"
             android:label="Stalls Desc"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity android:name=".SearchResultsActivity" /> -->
 
-<!--        <activity android:name=".SearchResultsActivity" />-->
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".Maps.MapsActivity"
             android:exported="true"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".Search.SearchableActivity" />
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -74,7 +92,7 @@
             android:value="com.example.the_hawks.Stalls.Stalls" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -86,7 +104,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

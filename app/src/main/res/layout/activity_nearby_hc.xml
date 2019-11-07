@@ -5,19 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HC.HC">
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="61dp"
-        android:layout_height="25dp"
-        android:text="Filter by:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.182"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
+    tools:context=".NearbyHC.NearbyHC">
 
     <TextView
         android:id="@+id/textView3"
@@ -29,20 +17,19 @@
         app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.233" />
+        app:layout_constraintVertical_bias="0.144" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="61dp"
+        android:layout_height="25dp"
+        android:text="Filter by:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintVertical_bias="0.22" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -55,17 +42,30 @@
         app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintVertical_bias="0.147" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.222" />
 
     <TextView
-        android:id="@+id/hc_toolbar"
+        android:id="@+id/nearby_hc_toolbar"
         android:layout_width="409dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="@color/colorAccent"
         android:fontFamily="@font/cream_peach"
         android:gravity="center"
-        android:text="@string/hc_toolbar"
+        android:text="@string/nearby_hc_toolbar"
         android:textColor="#FFFFFF"
         android:textIsSelectable="false"
         android:textSize="24sp"
@@ -89,12 +89,12 @@
         android:scaleType="fitStart"
         android:src="@drawable/back_button"
         android:onClick="backtoHome"
-        app:layout_constraintBottom_toBottomOf="@+id/hc_toolbar"
-        app:layout_constraintStart_toStartOf="@+id/hc_toolbar"
-        app:layout_constraintTop_toTopOf="@+id/hc_toolbar" />
+        app:layout_constraintBottom_toBottomOf="@+id/nearby_hc_toolbar"
+        app:layout_constraintStart_toStartOf="@+id/nearby_hc_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/nearby_hc_toolbar" />
 
     <TextView
-        android:id="@+id/hcName"
+        android:id="@+id/nearbyhcName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
@@ -108,15 +108,16 @@
         app:layout_constraintTop_toBottomOf="@+id/hc_toolbar" />
 
     <LinearLayout
-        android:id="@+id/hc_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="288dp"
+        android:id="@+id/nearby_hc_layout"
+        android:layout_width="414dp"
+        android:layout_height="457dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hcName">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99">
 
         <!--        <fragment-->
         <!--            android:id="@+id/stallsFragment"-->
@@ -126,17 +127,5 @@
         <!--            android:layout_weight="1" />-->
 
     </LinearLayout>
-
-    <SearchView
-        android:layout_width="294dp"
-        android:layout_height="35dp"
-        android:background="@color/cast_libraries_material_featurehighlight_text_header_color"
-        android:queryHint="Hawker Centre name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

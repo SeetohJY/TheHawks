@@ -3,6 +3,6 @@
     android:label="@string/app_name"
 
     android:searchSuggestAuthority="com.zoftino.coupons.search"
-    android:searchSuggestPath="stores"
+    android:searchSuggestPath="storesdata"
     android:searchSuggestIntentAction="android.intent.action.VIEW">
 </searchable> 
