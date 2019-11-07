@@ -3,6 +3,7 @@ package com.example.the_hawks;
 
 
 import java.util.ArrayList;
+import com.example.the_hawks.MainActivity;
 
 public class SearchMgr {
     private ArrayList<HawkerCentre> HCList = new ArrayList<>();
@@ -11,6 +12,8 @@ public class SearchMgr {
 
     public void SearchManager(ArrayList<HawkerCentre> hcList) {
         HCList = hcList;
+        // get hc list here
+
     }
 
 

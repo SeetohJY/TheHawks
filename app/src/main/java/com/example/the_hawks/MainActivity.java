@@ -13,27 +13,25 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.the_hawks.HC.HC;
 import com.example.the_hawks.HC.HCFragment;
 import com.example.the_hawks.Maps.MapsActivity;
 import com.example.the_hawks.NearbyHC.NearbyHC;
 import com.example.the_hawks.Stalls.Stalls;
-import com.example.the_hawks.Main2Activity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
-import androidx.annotation.NonNull;
-import androidx.drawerlayout.widget.DrawerLayout;
-import android.view.MenuItem;
-
-import androidx.appcompat.app.AppCompatActivity;
-
+import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonToMap;
     public ArrayList<HawkerCentre> HCList = new ArrayList<HawkerCentre>();
     public int count = 0;
+    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
         HC.updateActivity(this);
 //        HCFragment.updateActivity(this);
         Log.e("count1", Integer.toString(count));
+        context = this.getApplicationContext();
         checkLocationServices();
         isNetworkConnectionAvailable();
+
 
 
 //        setContentView(R.layout.activity_main);
@@ -319,6 +320,7 @@ public class MainActivity extends AppCompatActivity {
     private class RetrieveDataTask extends AsyncTask<Void, Void,  ArrayList<HawkerCentre>> {
 
         private Exception exception;
+        HttpClient httpclient;
         InitMgr DataInitialised;
         ArrayList<HawkerCentre> HCList = new ArrayList<>();
         Context context;
@@ -329,7 +331,25 @@ public class MainActivity extends AppCompatActivity {
         protected ArrayList<HawkerCentre> doInBackground(Void... strings) {
 
             try{
-                DataInitialised = new InitMgr();
+
+                boolean isFilePresent = isFilePresent(MainActivity.this, "storage.json");
+                if(isFilePresent) {
+                    String jsonString1 = read(MainActivity.this, "storage.json");
+                    JSONArray jsonList1 = new JSONArray(jsonString1);
+                    String jsonString2 = read(MainActivity.this, "storage2.json");
+                    JSONArray jsonList2 = new JSONArray(jsonString2);
+                    DataInitialised = new InitMgr(jsonList1, jsonList2);
+                    Log.e("Hello", jsonList1.toString());
+                    //do the json parsing here and do the rest of functionality of app
+                } else {
+                    httpclient = new HttpClient();
+                    httpclient.initData();
+                    DataInitialised = new InitMgr(httpclient.getArray1(), httpclient.getArray2());
+                    create(MainActivity.this, "storage.json", httpclient.getArray1().toString());
+                    create(MainActivity.this, "storage2.json", httpclient.getArray2().toString());
+                    Log.e("Hi", httpclient.getArray1().toString());
+                }
+
 
             } catch(JSONException | IOException err){
                 Log.e("Error Here", err.toString());
@@ -348,6 +368,47 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+
+    private String read(Context context, String fileName) {
+        try {
+            FileInputStream fis = context.openFileInput(fileName);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            return sb.toString();
+        } catch (FileNotFoundException fileNotFound) {
+            return null;
+        } catch (IOException ioException) {
+            return null;
+        }
+    }
+
+    private boolean create(Context context, String fileName, String jsonString){
+        String FILENAME = "storage.json";
+        try {
+            FileOutputStream fos = context.openFileOutput(fileName,Context.MODE_PRIVATE);
+            if (jsonString != null) {
+                fos.write(jsonString.getBytes());
+            }
+            fos.close();
+            return true;
+        } catch (FileNotFoundException fileNotFound) {
+            return false;
+        } catch (IOException ioException) {
+            return false;
+        }
+
+    }
+
+    public boolean isFilePresent(Context context, String fileName) {
+        String path = context.getFilesDir().getAbsolutePath() + "/" + fileName;
+        File file = new File(path);
+        return file.exists();
     }
 
 

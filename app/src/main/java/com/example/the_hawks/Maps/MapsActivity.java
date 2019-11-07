@@ -1,12 +1,20 @@
 package com.example.the_hawks.Maps;
 
+
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +23,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.the_hawks.R;
+import com.example.the_hawks.Search.SearchableActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.GeoDataClient;
@@ -49,6 +58,12 @@ public class MapsActivity extends AppCompatActivity
     private static final String TAG = MapsActivity.class.getSimpleName();
     private GoogleMap mMap;
     private CameraPosition mCameraPosition;
+    private View mapView;
+    private Context mContext;
+    private Cursor mCursor;
+    private static final int SEARCH_QUERY_THRESHOLD = 50;
+    private SearchableActivity searchableActivity;
+
 
     // The entry points to the Places API.
     private GeoDataClient mGeoDataClient;
@@ -104,7 +119,10 @@ public class MapsActivity extends AppCompatActivity
         // Build the map.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        mapView = mapFragment.getView();
+
         mapFragment.getMapAsync(this);
+
 
     }
 
@@ -127,9 +145,62 @@ public class MapsActivity extends AppCompatActivity
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.current_place_menu, menu);
+        // Inflate the options menu from XML
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        //CursorAdapter cursorAdapter = new CursorAdapter(mContext, Cursor c);
+        // Get the SearchView and set the searchable configuration
+        searchableActivity = new SearchableActivity();
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.option_search).getActionView();
+        searchView.setSearchableInfo( searchManager.getSearchableInfo(getComponentName()) );
+        //SearchView searchView = (SearchView) menu.findItem(R.id.option_search).getActionView();
+        // Assumes current activity is the searchable activity
+
+        //searchView.setSearchableInfo(searchManager.getSearchableInfo(searchableActivity.getComponentName()));
+        searchView.setIconifiedByDefault(true); // Do not iconify the widget; expand it by default
+//        searchView.setSuggestionsAdapter(new SimpleCursorAdapter(
+//                mContext, android.R.layout.simple_list_item_1, null,
+//                new String[] { SearchManager.SUGGEST_COLUMN_TEXT_1 },
+//                new int[] { android.R.id.text1 }, 0));
+
+//        searchView.setOnQueryTextListener(new OnQueryTextListener() {
+//
+//
+//            public boolean onQueryTextChange(String query) {
+//
+//                if (query.length() >= SEARCH_QUERY_THRESHOLD) {
+//                    new FetchSearchTermSuggestions().execute(query);
+//                } else {
+//                    searchView.getSuggestionsAdapter().changeCursor(null);
+//                }
+//
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//
+//                // if user presses enter, do default search, ex:
+//                if (query.length() >= SEARCH_QUERY_THRESHOLD) {
+//
+//                    Intent intent = new Intent(MapsActivity.this, SearchableActivity.class);
+//                    intent.setAction(Intent.ACTION_SEARCH);
+//                    intent.putExtra(SearchManager.QUERY, query);
+//                    startActivity(intent);
+//
+//                    searchView.getSuggestionsAdapter().changeCursor(null);
+//                    return true;
+//                }
+//            }
+//        });
+
         return true;
     }
+
+
+
+
 
     /**
      * Handles a click on the menu option to get a place.
@@ -141,6 +212,13 @@ public class MapsActivity extends AppCompatActivity
         if (item.getItemId() == R.id.option_get_place) {
             showCurrentPlace();
         }
+        else if (item.getItemId() == R.id.option_search) {
+            super.onSearchRequested();
+        }
+        else{
+            return super.onOptionsItemSelected((item));
+        }
+
         return true;
     }
 
@@ -171,6 +249,25 @@ public class MapsActivity extends AppCompatActivity
         Marker m = mMap.addMarker(markerOptions);
         m.setTag(info);
         m.showInfoWindow();
+
+        if (mapView != null &&
+                mapView.findViewById(Integer.parseInt("1")) != null) {
+            // Get the button view
+            View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+            // and next place it, on bottom right (as Google Maps app)
+            RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams)
+                    locationButton.getLayoutParams();
+            // position on right bottom
+            rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+            rlp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+            rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 0);
+            rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+
+            rlp.addRule(RelativeLayout.ALIGN_PARENT_END, 0);
+            rlp.addRule(RelativeLayout.ALIGN_END, 0);
+            rlp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            rlp.setMargins(-30, 0, 0, 90);
+        }
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(hc1));
 
@@ -210,15 +307,8 @@ public class MapsActivity extends AppCompatActivity
 //            }
 //        });
 
-        // Prompt the user for permission.
-//        getLocationPermission();
-//
-//        // Turn on the My Location layer and the related control on the map.
-//        updateLocationUI();
-//
-//        // Get the current location of the device and set the position of the map.
-//        getDeviceLocation();
     }
+
 
     /**
      * Gets the current location of the device, and positions the map's camera.
