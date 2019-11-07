@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.the_hawks.HC.HC;
+import com.example.the_hawks.HC.HCFragment;
 import com.example.the_hawks.Maps.MapsActivity;
 import com.example.the_hawks.NearbyHC.NearbyHC;
 import com.example.the_hawks.Stalls.Stalls;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HC.updateActivity(this);
+//        HCFragment.updateActivity(this);
         Log.e("count1", Integer.toString(count));
         checkLocationServices();
         isNetworkConnectionAvailable();
@@ -122,14 +125,14 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        buttonToHCList = (Button) findViewById(R.id.buttonToHCList);
+        buttonToHCList = findViewById(R.id.buttonToHCList);
         buttonToHCList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openHC();
             }
         });
 
-        buttonToMap = (Button) findViewById(R.id.buttonToMap);
+        buttonToMap = findViewById(R.id.buttonToMap);
         buttonToMap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openMapsActivity();
