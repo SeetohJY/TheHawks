@@ -24,11 +24,13 @@ import com.example.the_hawks.Stalls.Stalls;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button buttonToHCList;
     private Button buttonToMap;
+    private static WeakReference<MainActivity> mActivityRef;
     public ArrayList<HawkerCentre> HCList = new ArrayList<HawkerCentre>();
     public int count = 0;
 
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         Log.e("count1", Integer.toString(count));
         checkLocationServices();
         isNetworkConnectionAvailable();
+        HawkerMgr.updateActivity(this);
+        HC.updateActivity(this);
 
 
 //        setContentView(R.layout.activity_main);
@@ -367,6 +371,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+
+    public static void updateActivity(MainActivity activity) {
+        mActivityRef = new WeakReference<>(activity);
     }
 
 

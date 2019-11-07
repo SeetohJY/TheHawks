@@ -12,6 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< Updated upstream
+=======
+import com.example.the_hawks.HawkerCentre;
+import com.example.the_hawks.HawkerCentreActivity;
+import com.example.the_hawks.HawkerStall;
+import com.example.the_hawks.MainActivity;
+>>>>>>> Stashed changes
 import com.example.the_hawks.R;
 import com.example.the_hawks.HC.HCFragment;
 
@@ -19,6 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 
@@ -35,6 +43,13 @@ public class HCFragment extends Fragment {
     RecyclerView mRecyclerView;
     HCRecyclerViewAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
+    private static WeakReference<HC> mActivityRef;
+    private ArrayList<HawkerCentre> HCList = new ArrayList<>();
+
+
+    public static void updateActivity(HC activity) {
+        mActivityRef = new WeakReference<>(activity);
+    }
 
 
 //    private OnFragmentInteractionListener mListener;
@@ -60,6 +75,8 @@ public class HCFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HC activity = mActivityRef.get();
+        HCList = activity.getFilteredData();
     }
 
     @Override
@@ -68,10 +85,21 @@ public class HCFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hc, container, false);
 
+<<<<<<< Updated upstream
         String datatext = getArguments().getString("hctext");
 
         buildRecyclerView(view);
         createHCList(view, datatext);
+=======
+//        String datatext = getArguments().getString("hctext");
+//        ArrayList<HawkerCentre> hawkerCentreArrayList = getArguments().getParcelableArrayList("hclist");
+
+        buildRecyclerView(view);
+//        createHCList(view, datatext);
+//        if (HCList != null) {
+            loopingTextViewCreate(view, HCList);
+//        }
+>>>>>>> Stashed changes
 
 
         return view;
@@ -116,7 +144,7 @@ public class HCFragment extends Fragment {
         mAdapter.setOnItemClickListener(new HCRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                startHCItems(position);
+                startHawkerCentreActivity(position);
             }
         });
     }
@@ -171,13 +199,26 @@ public class HCFragment extends Fragment {
         }
     }
 
-    public void startHCItems (int position) {
+//    public void startHCItems (int position) {
+//        HCItem temp = exampleList.get(position);
+//
+//        Intent intent = new Intent(getActivity(), HCDesc.class);
+//        intent.putExtra("Name", temp.getText1());
+//        intent.putExtra("Address", temp.getText2());
+//        intent.putExtra("Cleanliness", temp.getText4());
+//        startActivity(intent);
+//    }
+
+    public void startHawkerCentreActivity (int position) {
         HCItem temp = exampleList.get(position);
 
-        Intent intent = new Intent(getActivity(), HCDesc.class);
-        intent.putExtra("Name", temp.getText1());
-        intent.putExtra("Address", temp.getText2());
-        intent.putExtra("Cleanliness", temp.getText4());
+        Intent intent = new Intent(getActivity(), HawkerCentreActivity.class);
+//        intent.putExtra("Name", temp.getText1());
+//        intent.putExtra("Address", temp.getText2());
+//        intent.putExtra("Cleanliness", temp.getText4());
+        intent.putExtra("HawkerCentreActivity", HCList.get(position));
+
+        Log.e("Start", "StartHawkerCentreActivity");
         startActivity(intent);
     }
 }

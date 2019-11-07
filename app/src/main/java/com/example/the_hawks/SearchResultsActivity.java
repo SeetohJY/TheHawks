@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import java.util.ArrayList;
 import android.widget.EditText;
 
+import com.example.the_hawks.HawkerMgr;
+
 public class SearchResultsActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
