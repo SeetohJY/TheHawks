@@ -271,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     public void openMapsActivity() {
         Intent intent = new Intent(this, MapsActivity.class);
     }
@@ -337,6 +338,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.navigation_menu, menu);
         return true;
+    }
+
+    public ArrayList<HawkerCentre> getData() {
+        return HCList;
     }
 
     private class RetrieveDataTask extends AsyncTask<Void, Void,  ArrayList<HawkerCentre>> {

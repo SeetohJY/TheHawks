@@ -10,15 +10,15 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-<<<<<<< Updated upstream
-=======
+
 import com.example.the_hawks.HawkerCentre;
 import com.example.the_hawks.HawkerMgr;
->>>>>>> Stashed changes
+
 import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
 
@@ -26,24 +26,21 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 
-<<<<<<< Updated upstream
-public class HC extends FragmentActivity {
-=======
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class HC extends FragmentActivity implements AdapterView.OnItemSelectedListener {
->>>>>>> Stashed changes
+
     String jString = new String(
             "{\"hcname\" : \"Jurong West Hawker Centre & Market\",\"hc\":[{\"ic\":\"01\",\"name\":\"Kim Keat Market\",\"address\":\"22A Lor 7 Toa Pa Yoh\",\"cleanliness\":\"C\"},{\"ic\":\"02\",\"name\":\"Toh Kim Food Court\",\"address\":\"4 Jelapang Drive\",\"cleanliness\":\"A\"}]}");
     private Spinner spinner;
     private Spinner spinner2;
     private static final String[] paths = {"Name (A to Z)", "Name (Z to A)", "Hygiene (Best to Worst)", "Hygiene (Best to Worst)"};
     private static final String[] paths2 = {"All", "HC", "MHC"};
-<<<<<<< Updated upstream
-=======
+
     private static WeakReference<MainActivity> mActivityRef;
     private ArrayList<HawkerCentre> HCList = new ArrayList<>();
     private ArrayList<HawkerCentre> filteredHCList = new ArrayList<>();
@@ -52,19 +49,16 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
     public static void updateActivity(MainActivity activity) {
         mActivityRef = new WeakReference<>(activity);
     }
->>>>>>> Stashed changes
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< Updated upstream
-        setContentView(R.layout.activity_hc);
-=======
+
         MainActivity activity = mActivityRef.get();
         this.HCList = activity.getData();
         setContentView(R.layout.activity_hc);
         HCFragment.updateActivity(this);
->>>>>>> Stashed changes
 
         spinner = (Spinner)findViewById(R.id.spinner);
         //spinner2 = (Spinner)findViewById(R.id.spinner2);
@@ -83,11 +77,9 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
-<<<<<<< Updated upstream
-        spinner2.setAdapter(adapter2);
-=======
+
         //spinner2.setAdapter(adapter2);
->>>>>>> Stashed changes
+
 
         JSONObject data = createData(jString);
 
