@@ -80,8 +80,9 @@
             android:exported="true"
             android:label="@string/title_activity_maps">
         <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
+            <action android:name="android.intent.action.SEND"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <data android:mimeType="text/plain"/>
         </intent-filter>
         <meta-data
             android:name="android.app.default_searchable"

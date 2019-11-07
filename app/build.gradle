@@ -70,6 +70,7 @@ dependencies {
     //implementation 'com.android.support:appcompat-v7:25.1.1'
     implementation 'com.google.android.gms:play-services:11.2.0'
     implementation 'com.google.android.gms:play-services-maps:10.0.1'
+    implementation 'com.google.maps.android:android-maps-utils:0.6.2'
 
 //    implementation 'com.google.android.gms:play-services-maps:16.1.0'
 //    implementation 'com.google.android.gms:play-services-location:17.0.0'

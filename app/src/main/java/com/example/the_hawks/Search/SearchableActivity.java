@@ -33,6 +33,11 @@ public class SearchableActivity extends AppCompatActivity {
                 Toast.makeText(SearchableActivity.this,
                         "clicked search result item is"+((TextView)view).getText(),
                         Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+
+                intent.putExtra("latitude", "1.34969997");
+                intent.putExtra("longitude", "103.7184601");
+                startActivity(intent);
 
             }
         });
@@ -40,11 +45,11 @@ public class SearchableActivity extends AppCompatActivity {
         handleSearch();
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
-        handleSearch();
-    }
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        setIntent(intent);
+//        handleSearch();
+//    }
     private void handleSearch() {
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
