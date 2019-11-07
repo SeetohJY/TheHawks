@@ -7,7 +7,7 @@
     <string name="title_activity_maps">Hawker Map</string>
     <string name="title_activity_stalls">Stalls</string>
     <string name="stalls_toolbar">Stalls</string>
-    <string name="google_maps_key">AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI</string>
+
     <string name="title_activity_search_results">SearchResultsActivity</string>
     <string name="edit_hcname">Enter a Hawker Centre name</string>
 
