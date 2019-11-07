@@ -13,19 +13,21 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InitMgr {
+   // private Context context = this.getBaseContext();
     private static JSONArray jsonList1 = new JSONArray();
     private static JSONArray jsonList2 = new JSONArray();
     public static ArrayList<HawkerCentre> HawkerCentreList = new ArrayList<>();
 
-    public InitMgr() throws JSONException, IOException {
-        HttpClient.initData();
-        this.jsonList1 = HttpClient.getArray1();
-        this.jsonList2 = HttpClient.getArray2();
+    public InitMgr(JSONArray array1, JSONArray array2) throws JSONException, IOException {
+        this.jsonList1 = array1;
+        this.jsonList2 = array2;
+
         Log.e("jsonList1:", jsonList1.toString());
         Log.e("jsonList2:", jsonList2.toString());
         createHCList();
         Log.e("HCList:", HawkerCentreList.toString());
     }
+
 
     private static void createHCList() throws JSONException{
         for (int i =0; i<jsonList1.length(); i++) {

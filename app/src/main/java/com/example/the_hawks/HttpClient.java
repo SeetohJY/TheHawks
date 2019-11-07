@@ -1,6 +1,6 @@
 package com.example.the_hawks;
 
-import android.util.Log;
+import android.app.Application;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,9 +17,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class HttpClient {
+public class HttpClient{
     private static JSONArray mergeList = new JSONArray();
     private static JSONArray mergeList2 = new JSONArray();
+    private static Application instance;
 
     public static JSONArray getArray1() {
         return mergeList;
@@ -69,6 +70,7 @@ public class HttpClient {
         return (longerLength - editDistance(longer, shorter)) / (double) longerLength;
 
     }
+
 
     private static JSONArray getJSONArray(String url) throws IOException, JSONException{
         JSONArray response_body;
@@ -123,9 +125,8 @@ public class HttpClient {
         JSONArray jsonArray_list2_reduced = new JSONArray();
 //        Log.e("List1:", jsonArray_list1.toString());
 //        Log.e("List2:", jsonArray_list2.toString());
-//        jsonArray_list2_reduced = reduceList(jsonArray_list2);
-        filter(jsonArray_list1,jsonArray_list2);
-//        filter(jsonArray_list1, jsonArray_list2_reduced);
+          jsonArray_list2_reduced = reduceList(jsonArray_list2);
+          filter(jsonArray_list1,jsonArray_list2_reduced);
     }
 
 
