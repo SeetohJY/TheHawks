@@ -129,4 +129,5 @@
 
     <string name="app_label">Hawker Centres</string>
     <string name ="search_hint">Hawker Centres</string>
+    <string name="stalls_list">Stalls List</string>
 </resources>

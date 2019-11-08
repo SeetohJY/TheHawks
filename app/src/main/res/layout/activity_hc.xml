@@ -7,17 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".HC.HC">
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView4"-->
-<!--        android:layout_width="61dp"-->
-<!--        android:layout_height="25dp"-->
-<!--        android:text="Filter by:"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.182"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.31" />-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/hc_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/colorTextLight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/ToolBarStyle"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <TextView
         android:id="@+id/textView3"
@@ -44,6 +47,23 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="0.311" />-->
 
+    <!--    <TextView-->
+<!--        android:id="@+id/hc_toolbar"-->
+<!--        android:layout_width="415dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:fontFamily="@font/cream_peach"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/hc_toolbar"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textIsSelectable="false"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:typeface="normal"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:layout_editor_absoluteX="-2dp" />-->
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
@@ -52,33 +72,16 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
-
-    <TextView
-        android:id="@+id/hc_toolbar"
-        android:layout_width="415dp"
-        android:layout_height="60dp"
-        android:background="?attr/colorPrimary"
-        android:fontFamily="@font/cream_peach"
-        android:gravity="center"
-        android:text="@string/hc_toolbar"
-        android:textColor="#FFFFFF"
-        android:textIsSelectable="false"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        android:visibility="visible"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-2dp" />
+        app:layout_constraintVertical_bias="0.234" />
 
     <ImageButton
         android:id="@+id/back_button"
-        android:layout_width="58dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
@@ -88,7 +91,7 @@
         android:scaleType="fitStart"
         android:src="@drawable/home"
         app:layout_constraintBottom_toBottomOf="@+id/hc_toolbar"
-        app:layout_constraintStart_toStartOf="@+id/hc_toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/hc_toolbar"
         app:layout_constraintTop_toTopOf="@+id/hc_toolbar" />
 
     <TextView
@@ -127,11 +130,12 @@
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="294dp"
-        android:layout_height="35dp"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
         android:background="@color/cast_libraries_material_featurehighlight_text_header_color"
         android:queryHint="Hawker Centre Name"
         android:iconifiedByDefault="false"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
