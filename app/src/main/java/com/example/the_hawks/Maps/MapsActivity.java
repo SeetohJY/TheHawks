@@ -185,7 +185,7 @@ public class MapsActivity extends AppCompatActivity
         String Latitude = getIntent().getStringExtra("Latitude");
         String Longitude = getIntent().getStringExtra("Longitude");
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(Latitude,Longitude)));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(Latitude,Longitude)));
 
         searchView.setIconifiedByDefault(true); // Do not iconify the widget; expand it by default
 //        searchView.setOnClickListener(new View.OnClickListener() {

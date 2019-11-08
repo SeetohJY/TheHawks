@@ -17,6 +17,7 @@ import com.example.the_hawks.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 
@@ -33,6 +34,11 @@ public class HCFragment extends Fragment {
     RecyclerView mRecyclerView;
     HCRecyclerViewAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
+    private static WeakReference<HC> mActivityRef;
+
+    public static void updateActivity(HC activity) {
+        mActivityRef = new WeakReference<>(activity);
+    }
 
 
 
@@ -46,12 +52,10 @@ public class HCFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment HCFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HCFragment newInstance(String param1, String param2) {
+    public static HCFragment newInstance() {
         HCFragment fragment = new HCFragment();
         return fragment;
     }
@@ -164,7 +168,7 @@ public class HCFragment extends Fragment {
             HawkerCentre hc = hcList.get(i);
 
             exampleList.add(new HCItem( hc.getName(), hc.getAddress(), Double.toString(hc.getAggregate())));
-            Log.e("aggregate", Double.toString(hc.getAggregate()));
+           // Log.e("aggregate", Double.toString(hc.getAggregate()));
         }
     }
 

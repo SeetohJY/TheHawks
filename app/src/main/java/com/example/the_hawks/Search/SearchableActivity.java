@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.the_hawks.Maps.MapsActivity;
 import com.example.the_hawks.R;
 
 
@@ -34,26 +33,26 @@ public class SearchableActivity extends AppCompatActivity {
                 Toast.makeText(SearchableActivity.this,
                         "clicked search result item is"+((TextView)view).getText(),
                         Toast.LENGTH_SHORT).show();
-                String TempListViewClickedValue = listValue[position].toString();
-
-                Intent intent = new Intent(SearchableActivity.this, MapsActivity.class);
-
-                // Sending value to another activity using intent.
-                intent.putExtra("Latitude", TempListViewClickedValue);
-                intent.putExtra("Longitude", TempListViewClickedValue);
-                startActivity(intent);
+//                String TempListViewClickedValue = listValue[position].toString();
+//
+//                Intent intent = new Intent(SearchableActivity.this, MapsActivity.class);
+//
+//                // Sending value to another activity using intent.
+//                intent.putExtra("Latitude", TempListViewClickedValue);
+//                intent.putExtra("Longitude", TempListViewClickedValue);
+//                startActivity(intent);
             }
         });
         // search
         handleSearch();
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent();
-        setIntent(intent);
-        handleSearch();
-    }
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        super.onNewIntent;
+//        setIntent(intent);
+//        handleSearch();
+//    }
     private void handleSearch() {
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
