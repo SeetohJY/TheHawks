@@ -2,28 +2,21 @@ package com.example.the_hawks.HC;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.the_hawks.HawkerCentre;
-import com.example.the_hawks.HawkerCentreActivity;
-import com.example.the_hawks.HawkerStall;
-import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
-import com.example.the_hawks.HC.HCFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 
@@ -40,12 +33,6 @@ public class HCFragment extends Fragment {
     RecyclerView mRecyclerView;
     HCRecyclerViewAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
-    ArrayList<HawkerCentre> hawkerCentreArrayList = new ArrayList<>();
-
-    private static WeakReference<HC> mActivityRef;
-    public static void updateActivity(HC activity) {
-        mActivityRef = new WeakReference<>(activity);
-    }
 
 
 
@@ -72,8 +59,6 @@ public class HCFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HC activity = mActivityRef.get();
-        hawkerCentreArrayList = activity.getData();
     }
 
     @Override
@@ -83,7 +68,7 @@ public class HCFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_hc, container, false);
 
 //        String datatext = getArguments().getString("hctext");
-//        hawkerCentreArrayList = getArguments().getParcelableArrayList("hclist");
+        ArrayList<HawkerCentre> hawkerCentreArrayList = getArguments().getParcelableArrayList("hclist");
 
         buildRecyclerView(view);
 //        createHCList(view, datatext);
@@ -131,7 +116,7 @@ public class HCFragment extends Fragment {
         mAdapter.setOnItemClickListener(new HCRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                startHawkerCentreActivity(position);
+                startHCItems(position);
             }
         });
     }
@@ -183,16 +168,13 @@ public class HCFragment extends Fragment {
         }
     }
 
-    public void startHawkerCentreActivity (int position) {
+    public void startHCItems (int position) {
         HCItem temp = exampleList.get(position);
 
-        Intent intent = new Intent(getActivity(), HawkerCentreActivity.class);
-//        intent.putExtra("Name", temp.getText1());
-//        intent.putExtra("Address", temp.getText2());
-//        intent.putExtra("Cleanliness", temp.getText4());
-        intent.putExtra("HawkerCentreActivity",hawkerCentreArrayList.get(position));
-
-        Log.e("Start", "StartHawkerCentreActivity");
+        Intent intent = new Intent(getActivity(), HCDesc.class);
+        intent.putExtra("Name", temp.getText1());
+        intent.putExtra("Address", temp.getText2());
+        intent.putExtra("Cleanliness", temp.getText4());
         startActivity(intent);
     }
 }

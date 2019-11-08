@@ -181,6 +181,13 @@ public class MapsActivity extends AppCompatActivity
         SearchView searchView = (SearchView) menu.findItem(R.id.option_search).getActionView();
         searchView.setSearchableInfo( searchManager.getSearchableInfo(getComponentName()) );
 
+        // Receiving value into activity using intent.
+        String Latitude = getIntent().getStringExtra("Latitude");
+        String Longitude = getIntent().getStringExtra("Longitude");
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(Latitude,Longitude)));
+
+        searchView.setIconifiedByDefault(true); // Do not iconify the widget; expand it by default
 //        searchView.setOnClickListener(new View.OnClickListener() {
 //
 //            @Override
@@ -202,7 +209,7 @@ public class MapsActivity extends AppCompatActivity
         // Assumes current activity is the searchable activity
 
         //searchView.setSearchableInfo(searchManager.getSearchableInfo(searchableActivity.getComponentName()));
-        searchView.setIconifiedByDefault(true); // Do not iconify the widget; expand it by default
+
 //        searchView.setSuggestionsAdapter(new SimpleCursorAdapter(
 //                mContext, android.R.layout.simple_list_item_1, null,
 //                new String[] { SearchManager.SUGGEST_COLUMN_TEXT_1 },

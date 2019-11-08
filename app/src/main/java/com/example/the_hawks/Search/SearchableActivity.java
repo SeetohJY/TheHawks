@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.the_hawks.Maps.MapsActivity;
 import com.example.the_hawks.R;
 
 
@@ -33,23 +34,26 @@ public class SearchableActivity extends AppCompatActivity {
                 Toast.makeText(SearchableActivity.this,
                         "clicked search result item is"+((TextView)view).getText(),
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Intent.ACTION_SEND);
+                String TempListViewClickedValue = listValue[position].toString();
 
-                intent.putExtra("latitude", "1.34969997");
-                intent.putExtra("longitude", "103.7184601");
+                Intent intent = new Intent(SearchableActivity.this, MapsActivity.class);
+
+                // Sending value to another activity using intent.
+                intent.putExtra("Latitude", TempListViewClickedValue);
+                intent.putExtra("Longitude", TempListViewClickedValue);
                 startActivity(intent);
-
             }
         });
         // search
         handleSearch();
     }
 
-//    @Override
-//    protected void onNewIntent(Intent intent) {
-//        setIntent(intent);
-//        handleSearch();
-//    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent();
+        setIntent(intent);
+        handleSearch();
+    }
     private void handleSearch() {
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -62,7 +66,7 @@ public class SearchableActivity extends AppCompatActivity {
 
         }else if(Intent.ACTION_VIEW.equals(intent.getAction())) {
             String selectedSuggestionRowId =  intent.getDataString();
-            //execution comes here when an item is selected from search suggestions
+            //execution comes here when an item is selected from search SUGGESTIONS
             //you can continue from here with user selected search item
             Toast.makeText(this, "selected search suggestion "+selectedSuggestionRowId,
                     Toast.LENGTH_SHORT).show();
