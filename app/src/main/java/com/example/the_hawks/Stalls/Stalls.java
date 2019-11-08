@@ -31,8 +31,6 @@ public class Stalls extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stalls);
 
-//        JSONObject data = createData(jString);
-
         final ImageButton stalls = findViewById(R.id.back_button);
         stalls.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -41,32 +39,9 @@ public class Stalls extends FragmentActivity {
         });
 
         final ArrayList<HawkerStall> hawkerStall = getIntent().getParcelableArrayListExtra("HawkerStalls");
-
-//        String stallsName = new String();
-//        JSONArray stallsdata = new JSONArray();
-//
-//        try {
-//            JSONArray sdata = new JSONArray(data.getString("stalls"));
-//            JSONObject index = sdata.getJSONObject(0);
-//
-//            stallsName = data.getString("stallsname");
-//            stallsdata = new JSONArray(data.getString("stalls"));
-//
-//        } catch(JSONException err){
-//            Log.e("Error", err.toString());
-//        }
-//
         Bundle dataBundle = new Bundle();
-//        dataBundle.putString("stallstext", stallsdata.toString());
-       dataBundle.putParcelableArrayList("HawkerStalls", hawkerStall);
-
-        Log.e("Test", hawkerStall.toString());
-
+        dataBundle.putParcelableArrayList("HawkerStalls", hawkerStall);
         stallsFragmentCreate(savedInstanceState, dataBundle);
-
-//        TextView hcname = findViewById(R.id.HCName);
-//        hcname.append(HCName);
-
     }
 
     public void backtoHome () {
@@ -80,25 +55,9 @@ public class Stalls extends FragmentActivity {
                 return;
             }
             stallsFragment firstFragment = new stallsFragment();
-
-//            firstFragment.setArguments(getIntent().getExtras());
             firstFragment.setArguments(stallsData);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.stall_layout, firstFragment).commit();
         }
     }
-
-//    protected JSONObject createData(String jString){
-//        try {
-//            JSONObject data = new JSONObject(jString);
-//            return data;
-//        } catch(JSONException err){
-//            Log.d("Error", err.toString());
-//        }
-//
-//        return null;
-//    }
-
-
-
 }

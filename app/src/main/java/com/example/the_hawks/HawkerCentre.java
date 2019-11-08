@@ -79,7 +79,6 @@ public class HawkerCentre implements Parcelable {
         dest.writeTypedList(hawkerStalls);
     }
 
-
     public enum type{
         MHC,
         HC;

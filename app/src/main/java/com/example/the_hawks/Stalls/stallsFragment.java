@@ -37,22 +37,12 @@ public class stallsFragment extends Fragment {
     StallsRecyclerViewAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
 
-
-//    private OnFragmentInteractionListener mListener;
-
     public stallsFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment stallsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
+    //this factory method creates a new instance of this fragment using the provided parameters.
     public static stallsFragment newInstance(String param1, String param2) {
         stallsFragment fragment = new stallsFragment();
         return fragment;
@@ -63,48 +53,19 @@ public class stallsFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    // Inflate the layout for this fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.stalls_fragment, container, false);
-
-//        String datatext = getArguments().getString("stallstext");
         ArrayList<HawkerStall> hawkerStall = getArguments().getParcelableArrayList("HawkerStalls");
-
         buildRecyclerView(view);
         loopingTextViewCreate(view,hawkerStall);
-
 
         return view;
 
     }
-
-//     TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
-
-
 
     public void buildRecyclerView(View v){
         mRecyclerView = v.findViewById(R.id.recyclerView);
@@ -133,38 +94,14 @@ public class stallsFragment extends Fragment {
             Log.e("Error", err.toString());
         }
 
-
-//        exampleList.add(new ExampleItem("Line 1", "Line 2"));
-//        exampleList.add(new ExampleItem("Line 3", "Line 4"));
-//        exampleList.add(new ExampleItem("Line 5", "Line 6"));
-//        loopingTextViewCreate(view, stallsdata);
     }
 
     public void loopingTextViewCreate(View v, ArrayList<HawkerStall> hawkerStalls){
 
         Log.e("Test", "LoopingText running");
-
-//        LinearLayout stall_vertical = (LinearLayout) v.findViewById(R.id.stall_layout);
-//        for (int i = 0; i < stallsdata.length(); i++) {
-//            String name = new String();
-//            String rating = new String();
-//            try {
-//                JSONObject temp = stallsdata.getJSONObject(i);
-//                name = temp.getString("name");
-//                rating = temp.getString("rating");
-//            } catch(JSONException err){
-//                Log.e("Error", err.toString());
-//            }
-//            Log.e("name", name);
-//            Log.e("rating", rating);
-//            exampleList.add(new StallsItem(name, rating));
-//
-//        }
-
         for (int i = 0; i < hawkerStalls.size(); i++) {
             HawkerStall tempHS = hawkerStalls.get(i);
             exampleList.add(new StallsItem(tempHS.getStallName(), tempHS.getHygieneRating()));
-
         }
     }
 
@@ -172,7 +109,8 @@ public class stallsFragment extends Fragment {
         StallsItem temp = exampleList.get(position);
 
         Intent intent = new Intent(getActivity(), StallDesc.class);
-        intent.putExtra("Name", temp.getText1());
+        intent.putExtra("Name", temp.getStallName());
+        intent.putExtra("Cleanliness", temp.getStallCleanliness());
         startActivity(intent);
     }
 }

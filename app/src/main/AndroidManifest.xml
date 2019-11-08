@@ -16,33 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
-        <activity android:name=".Search.SearchableActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
-        </activity>
         <activity
             android:name=".LoadingActivity"
             android:label="@string/title_activity_loading"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".NearbyHC.NearbyHCDesc"
-            android:label="@string/title_activity_nearby_hcdesc"
-            android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name=".NearbyHC.NearbyHC"
-            android:label="@string/title_activity_nearby_hc"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".NearbyHC.NearbyHCFragment" />
-
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HC.HCDesc"
             android:label="@string/title_activity_hcdesc"
@@ -87,6 +65,7 @@
             android:name="android.app.default_searchable"
             android:value=".Search.SearchableActivity" />
         </activity>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              Note that the API key is linked to the encryption key used to sign the APK.

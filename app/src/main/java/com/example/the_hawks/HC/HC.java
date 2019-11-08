@@ -28,24 +28,25 @@ import java.util.Comparator;
 
 
 public class HC extends FragmentActivity implements AdapterView.OnItemSelectedListener{
-    String jString = new String(
-            "{\"hcname\" : \"Jurong West Hawker Centre & Market\",\"hc\":[{\"ic\":\"01\",\"name\":\"Kim Keat Market\",\"address\":\"22A Lor 7 Toa Pa Yoh\",\"cleanliness\":\"C\"},{\"ic\":\"02\",\"name\":\"Toh Kim Food Court\",\"address\":\"4 Jelapang Drive\",\"cleanliness\":\"A\"}]}");
+
+
     private Spinner spinner;
     private Spinner spinner2;
     private int spinnerPos;
     private static final String[] paths = {"Hygiene (Best to Worst)","Name (A to Z)"};
-   // private static final String[] paths2 = {"All", "HC", "MHC"};
 
     private ArrayList<HawkerCentre> hcList = new ArrayList<>();
     private ArrayList<HawkerCentre> filteredHCList = new ArrayList<>();
     private static WeakReference<MainActivity> mActivityRef;
+
+
+
     public static void updateActivity(MainActivity activity) {
         mActivityRef = new WeakReference<>(activity);
     }
 
-
-
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -56,17 +57,17 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
         setContentView(R.layout.activity_hc);
 
 
+        //Search bar implementation in HC List
         final SearchView sv = findViewById(R.id.searchView);
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(String query) {
-            // do something on text submit
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-            // do something when text changes
                 Log.e("Query",sv.getQuery().toString());
                 ArrayList<HawkerCentre> tempList = new ArrayList<>();
                 Log.e("original",hcList.toString());
@@ -81,56 +82,30 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
                 fragmentChange();
 
-
                 return false;
             }
         });
 
         spinner = (Spinner)findViewById(R.id.spinner);
-        //spinner2 = (Spinner)findViewById(R.id.spinner2);
         spinner.setOnItemSelectedListener(this);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(HC.this,
                 android.R.layout.simple_spinner_item,paths);
 
-//        ArrayAdapter<String>adapter2 = new ArrayAdapter<String>(HC.this,
-//                android.R.layout.simple_spinner_item,paths2);
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinner.setAdapter(adapter);
-        //spinner2.setAdapter(adapter2);
-
-//        JSONObject data = createData(jString);
 
         final ImageButton hc = findViewById(R.id.back_button);
+
         hc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 backtoHome();
             }
         });
 
-//        String HCName = new String();
-//        JSONArray hcdata = new JSONArray();
-//
-//        try {
-//            JSONArray sdata = new JSONArray(data.getString("hc"));
-//            JSONObject index = sdata.getJSONObject(0);
-//
-//            HCName = data.getString("hcname");
-//            hcdata = new JSONArray(data.getString("hc"));
-//
-//        } catch(JSONException err){
-//            Log.e("Error", err.toString());
-//        }
-
         if (findViewById(R.id.hc_layout) != null) {
             createDynamicHCFragment(savedInstanceState);
         }
-
-//        TextView hcname = findViewById(R.id.HCName);
-//        hcname.append(HCName);
 
     }
 
@@ -141,7 +116,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
     public void createDynamicHCFragment(Bundle savedInstanceState){
         HCFragment hc = HCFragment.newInstance();
-        // adding fragment to relative layout by using layout id
+        //Add fragment to relative layout by using layout id
         getSupportFragmentManager().beginTransaction().add(R.id.hc_layout, hc).commit();
     }
 
@@ -155,52 +130,34 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
         return null;
     }
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
- //       HawkerMgr.updateHCActivity(this);
-//        Intent i = new Intent(HC.this, HCRecyclerViewAdapter.class);
+
+    //Selecting an item on dropdown filter
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         filteredHCList = searchHawkerCentre(pos);
         spinnerPos = pos;
-//       Intent i = new Intent(this,
         filteredHCList = this.getData();
         HCFragment.updateActivity(this);
         Log.e("a", "filteredHCList is called by listener");
         Log.e("a", filteredHCList.toString());
-//        i.putExtra("list", searchHawkerCentre(pos));
-//        startActivity(i);
-        //HawkerMgr.searchHawkerCentre(pos);
         fragmentChange();
 
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
     }
 
-
-
+    //Sorting items by Alphabetical order on dropdown filter
     public static Comparator<HawkerCentre> HCname = new Comparator<HawkerCentre>() {
         public int compare(HawkerCentre h1, HawkerCentre h2) {
             String h1name = h1.getName().toLowerCase();
             String h2name = h2.getName().toLowerCase();
 
-            //ascending order A-Z
+            //Sort HCList by ascending order A-Z
             return h1name.compareTo(h2name);
         }
     };
 
-    public static Comparator<HawkerCentre> HCaggwtb = new Comparator<HawkerCentre>() {
-        public int compare(HawkerCentre h1, HawkerCentre h2) {
-            double h1agg = h1.getAggregate();
-            double h2agg = h2.getAggregate();
-
-
-            return Double.compare(h1agg, h2agg);
-        }
-    };
-
+    //Sorting items by Hygiene Aggregate (best to worst) on dropdown filter
     public static Comparator<HawkerCentre> HCaggbtw = new Comparator<HawkerCentre>() {
         public int compare(HawkerCentre h1, HawkerCentre h2) {
             double h1agg = h1.getAggregate();
@@ -218,6 +175,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
     public ArrayList<HawkerCentre> searchHawkerCentre(int choice) {
         ArrayList<HawkerCentre> input = filteredHCList;
         Log.d("a", filteredHCList.toString());
+
         if (choice == 0) { //to filter by agg
             Log.d("a", "filter by agg");
 
@@ -225,12 +183,14 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
             Log.d("a", input.toString());
             return input;
         }
+
         else if (choice == 1) { // to filter by name
             Log.d("a", "filter by name");
             Collections.sort(input, HC.HCname);
             Log.d("a", input.toString());
             return input;
         }
+
         else
         Log.d("a", "no filter applied");
         return input;
@@ -243,16 +203,17 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
     }
 
+    //Replacing of fragments (i.e. individual HC cards in the HC List) to sort
     public void fragmentChange(){
         HCFragment newFragment = new HCFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack if needed
+        // Replace whatever is in the fragment_container view with this fragment,
+        // and add the transaction to the back stack if needed
         transaction.replace(R.id.hc_layout, newFragment);
         transaction.addToBackStack(null);
 
-// Commit the transaction
+        // Commit the transaction
         transaction.commit();
     }
 

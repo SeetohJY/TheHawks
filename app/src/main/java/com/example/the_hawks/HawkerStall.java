@@ -8,7 +8,6 @@ public class HawkerStall implements Parcelable {
     private String hygieneRating;
     private int demeritPoints;
     private String address;
-    //private float googleRating;
 
     //constructor
     public HawkerStall(String stallName, String hygieneRating, int demeritPoints, String address){
@@ -16,7 +15,6 @@ public class HawkerStall implements Parcelable {
         this.hygieneRating = hygieneRating;
         this.demeritPoints = demeritPoints;
         this.address = address;
-        //float googleRating;=
     }
 
     protected HawkerStall(Parcel in) {
@@ -43,8 +41,6 @@ public class HawkerStall implements Parcelable {
     public int getDemeritPoints() { return demeritPoints;}
 
     public String getAddress() { return address;}
-
-    // public float getGoogleRating(){ return googleRating;}
 
     public String getStallName() { return stallName;}
 

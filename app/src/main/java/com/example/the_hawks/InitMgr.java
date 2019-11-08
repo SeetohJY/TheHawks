@@ -13,7 +13,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InitMgr {
-   // private Context context = this.getBaseContext();
     private static JSONArray jsonList1 = new JSONArray();
     private static JSONArray jsonList2 = new JSONArray();
     public static ArrayList<HawkerCentre> HawkerCentreList = new ArrayList<>();
@@ -112,13 +111,13 @@ public class InitMgr {
             }
         }
         agg /= count;
-        //round to whole number
         BigDecimal bd = new BigDecimal(agg).setScale(0, RoundingMode.HALF_UP);
         double newAgg = bd.doubleValue();
         return newAgg;
 
     }
 
+    //Assigning scores depending on grade
     private static double getScore(String grade) {
         double score = 0;
         switch(grade)

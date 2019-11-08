@@ -2,29 +2,29 @@ package com.example.the_hawks.HC;
 
 public class HCItem {
     private int mImageResource;
-    private String mText1;
-    private String mText2;
-    private String mText4;
+    private String mHCName;
+    private String mHCAddress;
+    private String mHCCleanliness;
 
-    public HCItem(String text1, String text2, String text4) {
-        mText1 = text1;
-        mText2 = text2;
-        mText4 = text4;
+    public HCItem(String hcname, String hcaddress, String hccleanliness) {
+        mHCName = hcname;
+        mHCAddress = hcaddress;
+        mHCCleanliness = hccleanliness;
     }
 
     public int getImageResource() {
         return mImageResource;
     }
 
-    public String getText1() {
-        return mText1;
+    public String getHCName() {
+        return mHCName;
     }
 
-    public String getText2() {
-        return mText2;
+    public String getHCAddress() {
+        return mHCAddress;
     }
 
-    public String getText4() {
-        return mText4;
+    public String getHCCleanliness() {
+        return mHCCleanliness;
     }
 }

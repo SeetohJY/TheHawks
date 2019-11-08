@@ -17,7 +17,7 @@
             android:padding="2dp" />
 
         <TextView
-            android:id="@+id/Text1"
+            android:id="@+id/stallsName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -30,7 +30,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/Text2"
+            android:id="@+id/stallsCleanliness"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Text1"
