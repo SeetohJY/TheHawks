@@ -1,7 +1,6 @@
 package com.example.the_hawks.HC;
 
 public class HCItem {
-    private int mImageResource;
     private String mHCName;
     private String mHCAddress;
     private String mHCCleanliness;
@@ -12,9 +11,6 @@ public class HCItem {
         mHCCleanliness = hccleanliness;
     }
 
-    public int getImageResource() {
-        return mImageResource;
-    }
 
     public String getHCName() {
         return mHCName;
@@ -27,4 +23,6 @@ public class HCItem {
     public String getHCCleanliness() {
         return mHCCleanliness;
     }
+
+
 }

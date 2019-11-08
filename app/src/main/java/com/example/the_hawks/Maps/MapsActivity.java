@@ -184,7 +184,6 @@ public class MapsActivity extends AppCompatActivity
 //                // if user presses enter, do default search, ex:
 //                if (query.length() >= SEARCH_QUERY_THRESHOLD) {
 //
-//                    Intent intent = new Intent(MapsActivity.this, SearchableActivity.class);
 //                    intent.setAction(Intent.ACTION_SEARCH);
 //                    intent.putExtra(SearchManager.QUERY, query);
 //                    startActivity(intent);

@@ -1,8 +1,5 @@
 package com.example.the_hawks;
 
-import com.example.the_hawks.HC.HC;
-import com.example.the_hawks.Maps.MapsActivity;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +15,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.the_hawks.HC.HC;
+import com.example.the_hawks.Maps.MapsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         return HCList;
     }
 
-    public void checkLocationServices() {
+    private void checkLocationServices() {
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         boolean gps_enabled = false;
         boolean network_enabled = false;
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void checkGPSLocation() {
+    private void checkGPSLocation() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Location Services Not Enabled");
         builder.setMessage("Please Enable Location Services To Use All Functions In The App.");
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void checkNetworkConnection() {
+    private void checkNetworkConnection() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("No Internet Connection");
         builder.setMessage("Please Turn On Internet Connection To Continue");
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public boolean isNetworkConnectionAvailable() {
+    private boolean isNetworkConnectionAvailable() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -150,20 +150,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void addCount() {
+    private void addCount() {
         count = 1;
     }
 
-    public void storeData(ArrayList<HawkerCentre> hclist) {
+    private void storeData(ArrayList<HawkerCentre> hclist) {
         HCList = hclist;
     }
 
-    public void openHC() {
+    private void openHC() {
         Intent intent = new Intent(this, HC.class);
         startActivity(intent);
     }
 
-    public void openMapsActivity() {
+    private void openMapsActivity() {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean isFilePresent(Context context, String fileName) {
+    private boolean isFilePresent(Context context, String fileName) {
         String path = context.getFilesDir().getAbsolutePath() + "/" + fileName;
         File file = new File(path);
         return file.exists();

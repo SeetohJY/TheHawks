@@ -1,21 +1,19 @@
 package com.example.the_hawks.HC;
 
-import com.example.the_hawks.HawkerCentre;
-import com.example.the_hawks.HawkerCentreActivity;
-import com.example.the_hawks.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.example.the_hawks.HawkerCentre;
+import com.example.the_hawks.HawkerCentreActivity;
+import com.example.the_hawks.R;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -70,7 +68,7 @@ public class HCFragment extends Fragment {
 
     }
 
-    public void buildRecyclerView(View v){
+    private void buildRecyclerView(View v){
         mRecyclerView = v.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -87,17 +85,8 @@ public class HCFragment extends Fragment {
         });
     }
 
-    public void createHCList(View view, String hcData){
-        JSONArray hcdata = new JSONArray();
 
-        try {
-            hcdata = new JSONArray(hcData);
-        } catch(JSONException err) {
-            Log.e("Error", err.toString());
-        }
-    }
-
-    public void loopingTextViewCreate(View v, ArrayList<HawkerCentre> hcList){
+    private void loopingTextViewCreate(View v, ArrayList<HawkerCentre> hcList){
 
         Log.e("Test", "LoopingText running");
 
@@ -107,7 +96,7 @@ public class HCFragment extends Fragment {
         }
     }
 
-    public void startHawkerCentreActivity (int position) {
+    private void startHawkerCentreActivity (int position) {
         HCItem temp = exampleList.get(position);
 
         Intent intent = new Intent(getActivity(), HawkerCentreActivity.class);

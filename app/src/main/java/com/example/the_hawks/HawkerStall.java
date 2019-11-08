@@ -10,7 +10,7 @@ public class HawkerStall implements Parcelable {
     private String address;
 
     //constructor
-    public HawkerStall(String stallName, String hygieneRating, int demeritPoints, String address){
+    public HawkerStall(String stallName, String hygieneRating){
         this.stallName = stallName;
         this.hygieneRating = hygieneRating;
         this.demeritPoints = demeritPoints;
@@ -38,9 +38,6 @@ public class HawkerStall implements Parcelable {
 
     public String getHygieneRating() { return hygieneRating;}
 
-    public int getDemeritPoints() { return demeritPoints;}
-
-    public String getAddress() { return address;}
 
     public String getStallName() { return stallName;}
 

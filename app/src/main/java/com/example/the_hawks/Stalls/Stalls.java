@@ -2,23 +2,14 @@ package com.example.the_hawks.Stalls;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-
-import androidx.fragment.app.FragmentActivity;
-
-
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.the_hawks.HawkerCentre;
+import androidx.fragment.app.FragmentActivity;
+
 import com.example.the_hawks.HawkerStall;
 import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -44,12 +35,12 @@ public class Stalls extends FragmentActivity {
         stallsFragmentCreate(savedInstanceState, dataBundle);
     }
 
-    public void backtoHome () {
+    private void backtoHome () {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void stallsFragmentCreate (Bundle savedInstanceState, Bundle stallsData){
+    private void stallsFragmentCreate (Bundle savedInstanceState, Bundle stallsData){
         if (findViewById(R.id.stall_layout) != null) {
             if (savedInstanceState != null) {
                 return;

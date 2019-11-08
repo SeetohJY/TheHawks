@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.the_hawks.HawkerCentre;
 import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
-import com.example.the_hawks.Stalls.SearchMgr;
+import com.example.the_hawks.SearchMgr;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +30,6 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
 
     private Spinner spinner;
-    private Spinner spinner2;
     private int spinnerPos;
     private static final String[] paths = {"Hygiene (Best to Worst)","Name (A to Z)"};
 
@@ -113,7 +112,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
         startActivity(intent);
     }
 
-    public void createDynamicHCFragment(Bundle savedInstanceState){
+    private void createDynamicHCFragment(Bundle savedInstanceState){
         HCFragment hc = HCFragment.newInstance();
         //Add fragment to relative layout by using layout id
         getSupportFragmentManager().beginTransaction().add(R.id.hc_layout, hc).commit();

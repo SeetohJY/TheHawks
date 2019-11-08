@@ -1,6 +1,5 @@
 package com.example.the_hawks.Stalls;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.the_hawks.HawkerStall;
 import com.example.the_hawks.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -65,7 +61,7 @@ public class stallsFragment extends Fragment {
 
     }
 
-    public void buildRecyclerView(View v){
+    private void buildRecyclerView(View v){
         mRecyclerView = v.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -76,19 +72,8 @@ public class stallsFragment extends Fragment {
 
     }
 
-    public void createStallList(View view, String stallsData){
 
-        JSONArray stallsdata = new JSONArray();
-
-        try {
-            stallsdata = new JSONArray(stallsData);
-        } catch(JSONException err){
-            Log.e("Error", err.toString());
-        }
-
-    }
-
-    public void loopingTextViewCreate(View v, ArrayList<HawkerStall> hawkerStalls){
+    private void loopingTextViewCreate(View v, ArrayList<HawkerStall> hawkerStalls){
 
         Log.e("Test", "LoopingText running");
         for (int i = 0; i < hawkerStalls.size(); i++) {
@@ -97,12 +82,4 @@ public class stallsFragment extends Fragment {
         }
     }
 
-    public void startStallItems (int position) {
-        StallsItem temp = exampleList.get(position);
-
-        Intent intent = new Intent(getActivity(), StallDesc.class);
-        intent.putExtra("Name", temp.getStallName());
-        intent.putExtra("Cleanliness", temp.getStallCleanliness());
-        startActivity(intent);
-    }
 }

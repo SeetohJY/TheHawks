@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.the_hawks.R;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.the_hawks.R;
 
 import java.util.ArrayList;
 
@@ -21,9 +21,6 @@ public class StallsRecyclerViewAdapter extends RecyclerView.Adapter<StallsRecycl
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
-    }
 
     @NonNull
     @Override

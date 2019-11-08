@@ -47,6 +47,9 @@ public class HawkerCentreActivity extends AppCompatActivity {
         TextView tv3 = findViewById((R.id.Addr));
         tv3.setText(hc.getAddress());
 
+        TextView tv4 = findViewById((R.id.numStalls));
+        tv4.setText(Integer.toString(hc.getStallCount()));
+
         Button stalls = findViewById(R.id.startStalls);
         stalls.setOnClickListener(new View.OnClickListener() {
 
@@ -65,7 +68,7 @@ public class HawkerCentreActivity extends AppCompatActivity {
 
     }
 
-    public void backtoHome () {
+    private void backtoHome () {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

@@ -1,8 +1,6 @@
-package com.example.the_hawks.Stalls;
+package com.example.the_hawks;
 
 import android.util.Log;
-
-import com.example.the_hawks.HawkerCentre;
 
 import java.util.ArrayList;
 import java.util.Collections;
