@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
@@ -35,6 +36,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
             "{\"hcname\" : \"Jurong West Hawker Centre & Market\",\"hc\":[{\"ic\":\"01\",\"name\":\"Kim Keat Market\",\"address\":\"22A Lor 7 Toa Pa Yoh\",\"cleanliness\":\"C\"},{\"ic\":\"02\",\"name\":\"Toh Kim Food Court\",\"address\":\"4 Jelapang Drive\",\"cleanliness\":\"A\"}]}");
     private Spinner spinner;
     private Spinner spinner2;
+    private int spinnerPos;
     private static final String[] paths = {"Hygiene (Best to Worst)","Hygiene (Worst to Best)","Name (A to Z)"};
    // private static final String[] paths2 = {"All", "HC", "MHC"};
 
@@ -57,6 +59,37 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
         HCFragment.updateActivity(this);
         setContentView(R.layout.activity_hc);
 
+
+        final SearchView sv = findViewById(R.id.searchView);
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+            // do something on text submit
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+            // do something when text changes
+                Log.e("Query",sv.getQuery().toString());
+                ArrayList<HawkerCentre> tempList = new ArrayList<>();
+                Log.e("original",hcList.toString());
+                for(HawkerCentre HC: hcList){
+                    if (HC.getName().toLowerCase().contains(sv.getQuery().toString().toLowerCase())){
+                        tempList.add(HC);
+                    }
+                }
+                filteredHCList = tempList;
+                filteredHCList = searchHawkerCentre(spinnerPos);
+                Log.e("After", filteredHCList.toString());
+
+                fragmentChange();
+
+
+                return false;
+            }
+        });
+
         spinner = (Spinner)findViewById(R.id.spinner);
         //spinner2 = (Spinner)findViewById(R.id.spinner2);
         spinner.setOnItemSelectedListener(this);
@@ -73,7 +106,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
         spinner.setAdapter(adapter);
         //spinner2.setAdapter(adapter2);
 
-        JSONObject data = createData(jString);
+//        JSONObject data = createData(jString);
 
         final ImageButton hc = findViewById(R.id.back_button);
         hc.setOnClickListener(new View.OnClickListener() {
@@ -82,19 +115,19 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
             }
         });
 
-        String HCName = new String();
-        JSONArray hcdata = new JSONArray();
-
-        try {
-            JSONArray sdata = new JSONArray(data.getString("hc"));
-            JSONObject index = sdata.getJSONObject(0);
-
-            HCName = data.getString("hcname");
-            hcdata = new JSONArray(data.getString("hc"));
-
-        } catch(JSONException err){
-            Log.e("Error", err.toString());
-        }
+//        String HCName = new String();
+//        JSONArray hcdata = new JSONArray();
+//
+//        try {
+//            JSONArray sdata = new JSONArray(data.getString("hc"));
+//            JSONObject index = sdata.getJSONObject(0);
+//
+//            HCName = data.getString("hcname");
+//            hcdata = new JSONArray(data.getString("hc"));
+//
+//        } catch(JSONException err){
+//            Log.e("Error", err.toString());
+//        }
 
         if (findViewById(R.id.hc_layout) != null) {
             createDynamicHCFragment(savedInstanceState);
@@ -111,16 +144,6 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
     }
 
     public void createDynamicHCFragment(Bundle savedInstanceState){
-//        if (findViewById(R.id.hc_layout) != null) {
-//            if (savedInstanceState != null) {
-//                return;
-//            }
-//            HCFragment firstFragment = new HCFragment();
-//
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.hc_layout, firstFragment).commit();
-//        }
-
         HCFragment hc = HCFragment.newInstance();
         // adding fragment to relative layout by using layout id
         getSupportFragmentManager().beginTransaction().add(R.id.hc_layout, hc).commit();
@@ -143,7 +166,8 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
  //       HawkerMgr.updateHCActivity(this);
 //        Intent i = new Intent(HC.this, HCRecyclerViewAdapter.class);
         filteredHCList = searchHawkerCentre(pos);
-//        Intent i = new Intent(this,
+        spinnerPos = pos;
+//       Intent i = new Intent(this,
         filteredHCList = this.getData();
         HCFragment.updateActivity(this);
         Log.e("a", "filteredHCList is called by listener");
@@ -151,16 +175,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 //        i.putExtra("list", searchHawkerCentre(pos));
 //        startActivity(i);
         //HawkerMgr.searchHawkerCentre(pos);
-        HCFragment newFragment = new HCFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack if needed
-        transaction.replace(R.id.hc_layout, newFragment);
-        transaction.addToBackStack(null);
-
-// Commit the transaction
-        transaction.commit();
+        fragmentChange();
 
     }
 
@@ -205,8 +220,8 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
     //choice is the filter type decided by user
     public ArrayList<HawkerCentre> searchHawkerCentre(int choice) {
-        ArrayList<HawkerCentre> input = hcList;
-        Log.d("a", hcList.toString());
+        ArrayList<HawkerCentre> input = filteredHCList;
+        Log.d("a", filteredHCList.toString());
         if (choice == 0) { //to filter by agg
             Log.d("a", "filter by agg");
 
@@ -237,7 +252,20 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
         Log.e("a", filteredHCList.toString());
         return filteredHCList;
 
-        //return hcList;
     }
+
+    public void fragmentChange(){
+        HCFragment newFragment = new HCFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack if needed
+        transaction.replace(R.id.hc_layout, newFragment);
+        transaction.addToBackStack(null);
+
+// Commit the transaction
+        transaction.commit();
+    }
+
 }
 
