@@ -23,9 +23,13 @@ public class HawkerCentreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hawker_centre);
+
+        final HawkerCentre hc = getIntent().getExtras().getParcelable("HawkerCentreActivity");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle(hc.getName());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         final ImageButton back = findViewById(R.id.back_button);
         back.setOnClickListener(new View.OnClickListener() {
@@ -34,9 +38,6 @@ public class HawkerCentreActivity extends AppCompatActivity {
             }
         });
 
-
-
-        final HawkerCentre hc = getIntent().getExtras().getParcelable("HawkerCentreActivity");
 
         TextView tv1 = findViewById(R.id.hcTitle);
         tv1.setText(hc.getName());
@@ -71,5 +72,17 @@ public class HawkerCentreActivity extends AppCompatActivity {
     private void backtoHome () {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
