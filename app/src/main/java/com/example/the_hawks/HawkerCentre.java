@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class HawkerCentre implements Parcelable {
     private String name;
@@ -22,6 +23,25 @@ public class HawkerCentre implements Parcelable {
         this.aggregate = aggregate;
         this.hawkerStalls = hawkerStalls;
     }
+
+    public static Comparator<HawkerCentre> HCname = new Comparator<HawkerCentre>() {
+        public int compare(HawkerCentre h1, HawkerCentre h2) {
+            String h1name = h1.getName().toLowerCase();
+            String h2name = h2.getName().toLowerCase();
+
+            //ascending order A-Z
+            return h1name.compareTo(h2name);
+        }
+    };
+
+    public static Comparator<HawkerCentre> HCagg = new Comparator<HawkerCentre>() {
+        public int compare(HawkerCentre h1, HawkerCentre h2) {
+            double h1agg = h1.getAggregate();
+            double h2agg = h2.getAggregate();
+
+            return Double.compare(h1agg, h2agg);
+        }
+    };
 
     private HawkerCentre(Parcel in) {
         hawkerStalls = new ArrayList<>();

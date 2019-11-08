@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".HC.HC">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="61dp"
-        android:layout_height="25dp"
-        android:text="Filter by:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.182"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView4"-->
+<!--        android:layout_width="61dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:text="Filter by:"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.182"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.31" />-->
 
     <TextView
         android:id="@+id/textView3"
@@ -31,18 +31,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.233" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
+<!--    <Spinner-->
+<!--        android:id="@+id/spinner2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="center"-->
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.506"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.311" />-->
 
     <Spinner
         android:id="@+id/spinner"
@@ -88,7 +88,6 @@
         android:cropToPadding="false"
         android:scaleType="fitStart"
         android:src="@drawable/back_button"
-        android:onClick="backtoHome"
         app:layout_constraintBottom_toBottomOf="@+id/hc_toolbar"
         app:layout_constraintStart_toStartOf="@+id/hc_toolbar"
         app:layout_constraintTop_toTopOf="@+id/hc_toolbar" />
@@ -128,6 +127,7 @@
     </LinearLayout>
 
     <SearchView
+        android:id="@+id/searchView"
         android:layout_width="294dp"
         android:layout_height="35dp"
         android:background="@color/cast_libraries_material_featurehighlight_text_header_color"
