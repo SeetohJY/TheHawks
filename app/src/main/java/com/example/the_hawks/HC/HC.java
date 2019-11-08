@@ -11,7 +11,6 @@ import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -19,16 +18,13 @@ import com.example.the_hawks.HawkerCentre;
 import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-
+import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
-import org.json.JSONObject;
 
 
 public class HC extends FragmentActivity implements AdapterView.OnItemSelectedListener{
@@ -37,7 +33,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
     private Spinner spinner;
     private Spinner spinner2;
     private int spinnerPos;
-    private static final String[] paths = {"Hygiene (Best to Worst)","Hygiene (Worst to Best)","Name (A to Z)"};
+    private static final String[] paths = {"Hygiene (Best to Worst)","Name (A to Z)"};
    // private static final String[] paths2 = {"All", "HC", "MHC"};
 
     private ArrayList<HawkerCentre> hcList = new ArrayList<>();
@@ -229,14 +225,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
             Log.d("a", input.toString());
             return input;
         }
-        else if (choice == 1) { //to filter by agg
-            Log.d("a", "filter by agg");
-
-            Collections.sort(input, HC.HCaggwtb);
-            Log.d("a", input.toString());
-            return input;
-        }
-        else if (choice == 2) { // to filter by name
+        else if (choice == 1) { // to filter by name
             Log.d("a", "filter by name");
             Collections.sort(input, HC.HCname);
             Log.d("a", input.toString());

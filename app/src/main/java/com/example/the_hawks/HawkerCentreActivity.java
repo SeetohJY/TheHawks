@@ -2,12 +2,9 @@ package com.example.the_hawks;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.os.Parcelable;
-import android.util.Log;
-
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +25,14 @@ public class HawkerCentreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hawker_centre);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+
+        final ImageButton back = findViewById(R.id.back_button);
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                backtoHome();
+            }
+        });
 
 
 
@@ -58,5 +63,10 @@ public class HawkerCentreActivity extends AppCompatActivity {
 
         startActivity(intent);
 
+    }
+
+    public void backtoHome () {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

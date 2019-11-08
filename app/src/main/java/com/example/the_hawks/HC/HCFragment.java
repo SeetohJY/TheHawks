@@ -2,26 +2,21 @@ package com.example.the_hawks.HC;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.the_hawks.HawkerCentre;
 import com.example.the_hawks.HawkerCentreActivity;
-import com.example.the_hawks.HawkerStall;
-import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
-import com.example.the_hawks.HC.HCFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
