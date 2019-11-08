@@ -17,14 +17,13 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.the_hawks.HawkerCentre;
 import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
+import com.example.the_hawks.Stalls.SearchMgr;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 
 public class HC extends FragmentActivity implements AdapterView.OnItemSelectedListener{
@@ -77,7 +76,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
                     }
                 }
                 filteredHCList = tempList;
-                filteredHCList = searchHawkerCentre(spinnerPos);
+                filteredHCList = SearchMgr.searchHawkerCentre(spinnerPos, filteredHCList);
                 Log.e("After", filteredHCList.toString());
 
                 fragmentChange();
@@ -109,7 +108,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
     }
 
-    public void backtoHome () {
+    private void backtoHome () {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -133,7 +132,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
     //Selecting an item on dropdown filter
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        filteredHCList = searchHawkerCentre(pos);
+        filteredHCList = SearchMgr.searchHawkerCentre(pos, filteredHCList);;
         spinnerPos = pos;
         filteredHCList = this.getData();
         HCFragment.updateActivity(this);
@@ -146,56 +145,6 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
-    //Sorting items by Alphabetical order on dropdown filter
-    public static Comparator<HawkerCentre> HCname = new Comparator<HawkerCentre>() {
-        public int compare(HawkerCentre h1, HawkerCentre h2) {
-            String h1name = h1.getName().toLowerCase();
-            String h2name = h2.getName().toLowerCase();
-
-            //Sort HCList by ascending order A-Z
-            return h1name.compareTo(h2name);
-        }
-    };
-
-    //Sorting items by Hygiene Aggregate (best to worst) on dropdown filter
-    public static Comparator<HawkerCentre> HCaggbtw = new Comparator<HawkerCentre>() {
-        public int compare(HawkerCentre h1, HawkerCentre h2) {
-            double h1agg = h1.getAggregate();
-            double h2agg = h2.getAggregate();
-
-            if (Double.compare(h1agg, h2agg) == 0){
-                return 0;
-            } else {
-                return -Double.compare(h1agg, h2agg);
-            }
-        }
-    };
-
-    //choice is the filter type decided by user
-    public ArrayList<HawkerCentre> searchHawkerCentre(int choice) {
-        ArrayList<HawkerCentre> input = filteredHCList;
-        Log.d("a", filteredHCList.toString());
-
-        if (choice == 0) { //to filter by agg
-            Log.d("a", "filter by agg");
-
-            Collections.sort(input, HC.HCaggbtw);
-            Log.d("a", input.toString());
-            return input;
-        }
-
-        else if (choice == 1) { // to filter by name
-            Log.d("a", "filter by name");
-            Collections.sort(input, HC.HCname);
-            Log.d("a", input.toString());
-            return input;
-        }
-
-        else
-        Log.d("a", "no filter applied");
-        return input;
-    }
-
 
     public ArrayList<HawkerCentre> getData() {
         Log.e("a", filteredHCList.toString());
@@ -204,7 +153,7 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
     }
 
     //Replacing of fragments (i.e. individual HC cards in the HC List) to sort
-    public void fragmentChange(){
+    private void fragmentChange(){
         HCFragment newFragment = new HCFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
