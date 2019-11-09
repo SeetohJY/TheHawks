@@ -92,7 +92,7 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
             }
         });
 
-        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(HC.this,
@@ -139,7 +139,7 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
 
     //Selecting an item on dropdown filter
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        filteredHCList = SearchMgr.searchHawkerCentre(pos, filteredHCList);;
+        filteredHCList = SearchMgr.searchHawkerCentre(pos, filteredHCList);
         spinnerPos = pos;
         filteredHCList = this.getData();
         HCFragment.updateActivity(this);

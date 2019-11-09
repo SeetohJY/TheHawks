@@ -44,6 +44,7 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +59,7 @@ public class StoresData {
 
     }
     public void onCreate() {
-        this.centres = createLocationHashMap();
+        centres = createLocationHashMap();
         MainActivity activity = mActivityRef.get();
         String geoJSONString = activity.getGeoJSON();
         Log.e("done", geoJSONString);
@@ -111,7 +112,7 @@ public class StoresData {
 
             is.close();
 
-            json = new String(buffer, "UTF-8");
+            json = new String(buffer, StandardCharsets.UTF_8);
 
 
         } catch (Exception ex) {

@@ -42,7 +42,7 @@ public class CustomSearchAdapter extends ArrayAdapter {
                     .inflate(searchResultItemLayout, parent, false);
         }
 
-        TextView resultItem = (TextView) view.findViewById(android.R.id.text1);
+        TextView resultItem = view.findViewById(android.R.id.text1);
         resultItem.setText(getItem(position));
         return view;
     }

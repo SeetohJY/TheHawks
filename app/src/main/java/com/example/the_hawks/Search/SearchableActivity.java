@@ -52,9 +52,9 @@ public class SearchableActivity extends AppCompatActivity {
 
             String geoJSONString = activity.getGeoJSON();
             Log.e("done", geoJSONString);
-            this.centresToCoord = createLocationHashMap(geoJSONString);
-            Log.e("done hashmap", this.centresToCoord.toString());
-            this.centresList = createLocationList(geoJSONString);
+            centresToCoord = createLocationHashMap(geoJSONString);
+            Log.e("done hashmap", centresToCoord.toString());
+            centresList = createLocationList(geoJSONString);
         }
 
 

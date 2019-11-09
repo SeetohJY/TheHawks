@@ -62,7 +62,7 @@ public class HawkerCentre implements Parcelable {
 
     public enum type{
         MHC,
-        HC;
+        HC
     }
 
     public int getStallCount(){

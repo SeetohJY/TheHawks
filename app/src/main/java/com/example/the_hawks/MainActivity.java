@@ -33,6 +33,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,18 +48,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SearchableActivity.updateActivity(this);
         HC.updateActivity(this);
-//        HCFragment.updateActivity(this);
         Log.e("count1", Integer.toString(count));
         context = this.getApplicationContext();
         checkLocationServices();
         isNetworkConnectionAvailable();
-        //getJSONString();
-
-
-
-//        setContentView(R.layout.activity_main);
-
-//        initialiseTempData();
 
 
         Intent test = new Intent(this, LoadingActivity.class);
@@ -74,52 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-//        Button stalls2 = findViewById(R.id.startStalls2);
-//        stalls2.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                startStalls2();
-//            }
-//        });
-
-
-//
-//        Button nearbyHC = findViewById(R.id.nearby_hc);
-//        nearbyHC.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                nearbyHC();
-//            }
-//        });
-
-
-//        Button HawkerCentreActivity = findViewById(R.id.HawkerCentreActivity);
-//        HawkerCentreActivity.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                Log.e("1st element:", HCList.toString());
-//                HawkerCentre hawkerCentre = HCList.get(0);
-//                startHawkerCentreActivity(hawkerCentre);
-//            }
-//        });
-//
-
-
-        // wire buttonToMap
-//        Button btn = (Button) findViewById(R.id.buttonToMap);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openMapsActivity();
-//            }
-//        });
-
-//        rollButton = (Button) findViewById(R.id.rollButton);
-//        rollButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                openHC();
-//            }
-//        });
     }
     // Following 2 functions for Maps HashMap
     protected String getJSONString(){
@@ -138,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
             is.close();
 
-            json = new String(buffer, "UTF-8");
+            json = new String(buffer, StandardCharsets.UTF_8);
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -174,44 +121,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-//        Button nearbyHC = findViewById(R.id.nearby_hc);
-//        nearbyHC.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                nearbyHC();
-//            }
-//        });
-
-
-//        Button HawkerCentreActivity = findViewById(R.id.HawkerCentreActivity);
-//        HawkerCentreActivity.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//                HawkerCentre hawkerCentre = HCList.get(0);
-//                startHawkerCentreActivity(hawkerCentre);
-//            }
-//        });
-//
-
-
-        // wire buttonToMap
-//        Button btn = (Button) findViewById(R.id.buttonToMap);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openMapsActivity();
-//            }
-//        });
-
     }
 
-
-//    public void toMain(ArrayList<HawkerCentre> data){
-//        HCList = data;
-//        Intent intent = new Intent(LoadingActivity.this,MainActivity.class).putParcelableArrayListExtra("toMain",HCList);
-//        startActivity(intent);
-//    }
 
     public ArrayList<HawkerCentre> getData(){
         return HCList;
@@ -314,31 +225,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Remove when done
-    private void initialiseTempData () {
-
-//        HawkerStall hs1 = new HawkerStall("Chicken Rice 1", "C", 10, "22A Lor 7 Toa Pa Yoh");
-//        HawkerStall hs2 = new HawkerStall("Western 1", "A", 20, "22A Lor 7 Toa Pa Yoh");
-//        HawkerStall hs3 = new HawkerStall("Chicken Rice 2", "Z", 100, "4 Jelapang Drive");
-//        HawkerStall hs4 = new HawkerStall("Western 2", "Y", 200, "4 Jelapang Drive");
-
-        ArrayList<HawkerStall> temphslist1 = new ArrayList<>();
-        ArrayList<HawkerStall> temphslist2 = new ArrayList<>();
-
-//        temphslist1.add(hs1);
-//        temphslist1.add(hs2);
-//
-//        temphslist2.add(hs3);
-//        temphslist2.add(hs4);
-
-        HawkerCentre hc1 = new HawkerCentre("Kim Keat Market","22A Lor 7 Toa Pa Yoh",2,3.0,temphslist1);
-        HawkerCentre hc2 = new HawkerCentre("Toh Kim Food Court","4 Jelapang Drive",2,8.0,temphslist2);
-
-        HCList.add(hc1);
-        HCList.add(hc2);
-
-    }
-
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -372,24 +258,24 @@ public class MainActivity extends AppCompatActivity {
                     //do the json parsing here and do the rest of functionality of app
                 } else {
                     httpclient = new HttpClient();
-                    httpclient.initData();
-                    DataInitialised = new InitMgr(httpclient.getArray1(), httpclient.getArray2());
-                    create(MainActivity.this, "storage.json", httpclient.getArray1().toString());
-                    create(MainActivity.this, "storage2.json", httpclient.getArray2().toString());
-                    Log.e("Hi", httpclient.getArray1().toString());
+                    HttpClient.initData();
+                    DataInitialised = new InitMgr(HttpClient.getArray1(), HttpClient.getArray2());
+                    create(MainActivity.this, "storage.json", HttpClient.getArray1().toString());
+                    create(MainActivity.this, "storage2.json", HttpClient.getArray2().toString());
+                    Log.e("Hi", HttpClient.getArray1().toString());
                 }
 
 
             } catch(JSONException | IOException err){
                 Log.e("Error Here", err.toString());
             }
-            ArrayList<HawkerCentre> hclist = DataInitialised.getHCList();
+            ArrayList<HawkerCentre> hclist = InitMgr.getHCList();
             return hclist;
         }
 
 
         protected void onPostExecute(ArrayList<HawkerCentre> hclist) {
-            HCList = DataInitialised.getHCList();
+            HCList = InitMgr.getHCList();
             storeData(HCList);
             addCount();
             Intent intent = new Intent(context,MainActivity.class);
@@ -441,20 +327,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.navigation_menu, menu);
-//        return true;
-//    }
-
-
 }
-
-//
-//        val rollButton = findViewById<Button>(R.id.rollButton);
-//        val resultsTextView = findViewById<TextView>(R.id.resultsTextView);
-//        val seekBar =  findViewById<SeekBar>(R.id.seekBar);
-//
-//        rollButton.setOnClickListener {
-//            val rand = Random().nextInt(seekBar.progress)
-//                    resultsTextView.text =
-//        }

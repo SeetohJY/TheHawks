@@ -18,8 +18,8 @@ public class InitMgr {
     private static ArrayList<HawkerCentre> HawkerCentreList = new ArrayList<>();
 
     public InitMgr(JSONArray array1, JSONArray array2) throws JSONException, IOException {
-        this.jsonList1 = array1;
-        this.jsonList2 = array2;
+        jsonList1 = array1;
+        jsonList2 = array2;
 
         Log.e("jsonList1:", jsonList1.toString());
         Log.e("jsonList2:", jsonList2.toString());

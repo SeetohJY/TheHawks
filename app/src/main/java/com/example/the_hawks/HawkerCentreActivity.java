@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 public class HawkerCentreActivity extends AppCompatActivity {
 
-    //Delete after use
 
 
     @Override
