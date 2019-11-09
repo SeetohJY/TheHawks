@@ -2,12 +2,9 @@ package com.example.the_hawks;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.os.Parcelable;
-import android.util.Log;
-
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,12 +23,21 @@ public class HawkerCentreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hawker_centre);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
 
         final HawkerCentre hc = getIntent().getExtras().getParcelable("HawkerCentreActivity");
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Hawker Centre Details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        final ImageButton back = findViewById(R.id.back_button);
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                backtoHome();
+            }
+        });
+
 
         TextView tv1 = findViewById(R.id.hcTitle);
         tv1.setText(hc.getName());
@@ -41,6 +47,9 @@ public class HawkerCentreActivity extends AppCompatActivity {
 
         TextView tv3 = findViewById((R.id.Addr));
         tv3.setText(hc.getAddress());
+
+        TextView tv4 = findViewById((R.id.numStalls));
+        tv4.setText(Integer.toString(hc.getStallCount()));
 
         Button stalls = findViewById(R.id.startStalls);
         stalls.setOnClickListener(new View.OnClickListener() {
@@ -58,5 +67,22 @@ public class HawkerCentreActivity extends AppCompatActivity {
 
         startActivity(intent);
 
+    }
+
+    private void backtoHome () {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

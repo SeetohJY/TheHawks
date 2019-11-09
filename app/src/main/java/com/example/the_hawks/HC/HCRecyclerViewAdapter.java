@@ -38,9 +38,9 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
         HCItem currentItem = mHCList.get(position);
 
-        holder.mTextView1.setText(currentItem.getText1());
-        holder.mTextView2.setText(currentItem.getText2());
-        holder.mTextView4.setText(currentItem.getText4());
+        holder.mHCNameTextView.setText(currentItem.getHCName());
+        holder.mHCAddressTextView.setText(currentItem.getHCAddress());
+        holder.mHCCleanlinessView.setText(currentItem.getHCCleanliness());
 
     }
 
@@ -50,15 +50,15 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
     }
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView1;
-        public TextView mTextView2;
-        public TextView mTextView4;
+        public TextView mHCNameTextView;
+        public TextView mHCAddressTextView;
+        public TextView mHCCleanlinessView;
 
         public ExampleViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
-            mTextView1 = itemView.findViewById(R.id.Text1);
-            mTextView2 = itemView.findViewById(R.id.Text2);
-            mTextView4 = itemView.findViewById(R.id.text4);
+            mHCNameTextView = itemView.findViewById(R.id.hcName);
+            mHCAddressTextView = itemView.findViewById(R.id.hcAddress);
+            mHCCleanlinessView = itemView.findViewById(R.id.hcCleanliness);
 
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override

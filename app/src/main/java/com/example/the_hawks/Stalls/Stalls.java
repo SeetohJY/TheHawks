@@ -2,27 +2,20 @@ package com.example.the_hawks.Stalls;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-
-import androidx.fragment.app.FragmentActivity;
-
-
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.the_hawks.HawkerCentre;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentActivity;
+
 import com.example.the_hawks.HawkerStall;
 import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONException;
-
 import java.util.ArrayList;
 
-public class Stalls extends FragmentActivity {
+public class Stalls extends AppCompatActivity {
 
     String jString = new String("{\"stallsname\" : \"Jurong West Hawker Centre & Market\",\"stalls\":[{\"ic\":\"01\",\"name\":\"Chicken Rice\",\"rating\":\"3.5\"},{\"ic\":\"02\",\"name\":\"Western\",\"rating\":\"3.0\"}]}");
 
@@ -30,8 +23,11 @@ public class Stalls extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stalls);
-
-//        JSONObject data = createData(jString);
+        Toolbar toolbar = findViewById(R.id.stalls_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Stalls");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         final ImageButton stalls = findViewById(R.id.back_button);
         stalls.setOnClickListener(new View.OnClickListener() {
@@ -41,64 +37,37 @@ public class Stalls extends FragmentActivity {
         });
 
         final ArrayList<HawkerStall> hawkerStall = getIntent().getParcelableArrayListExtra("HawkerStalls");
-
-//        String stallsName = new String();
-//        JSONArray stallsdata = new JSONArray();
-//
-//        try {
-//            JSONArray sdata = new JSONArray(data.getString("stalls"));
-//            JSONObject index = sdata.getJSONObject(0);
-//
-//            stallsName = data.getString("stallsname");
-//            stallsdata = new JSONArray(data.getString("stalls"));
-//
-//        } catch(JSONException err){
-//            Log.e("Error", err.toString());
-//        }
-//
         Bundle dataBundle = new Bundle();
-//        dataBundle.putString("stallstext", stallsdata.toString());
-       dataBundle.putParcelableArrayList("HawkerStalls", hawkerStall);
-
-        Log.e("Test", hawkerStall.toString());
-
+        dataBundle.putParcelableArrayList("HawkerStalls", hawkerStall);
         stallsFragmentCreate(savedInstanceState, dataBundle);
-
-//        TextView hcname = findViewById(R.id.HCName);
-//        hcname.append(HCName);
-
     }
 
-    public void backtoHome () {
+    private void backtoHome () {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void stallsFragmentCreate (Bundle savedInstanceState, Bundle stallsData){
+    private void stallsFragmentCreate (Bundle savedInstanceState, Bundle stallsData){
         if (findViewById(R.id.stall_layout) != null) {
             if (savedInstanceState != null) {
                 return;
             }
             stallsFragment firstFragment = new stallsFragment();
-
-//            firstFragment.setArguments(getIntent().getExtras());
             firstFragment.setArguments(stallsData);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.stall_layout, firstFragment).commit();
         }
     }
 
-//    protected JSONObject createData(String jString){
-//        try {
-//            JSONObject data = new JSONObject(jString);
-//            return data;
-//        } catch(JSONException err){
-//            Log.d("Error", err.toString());
-//        }
-//
-//        return null;
-//    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 
-
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }

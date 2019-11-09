@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.the_hawks.R;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.the_hawks.R;
 
 import java.util.ArrayList;
 
@@ -21,9 +21,6 @@ public class StallsRecyclerViewAdapter extends RecyclerView.Adapter<StallsRecycl
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
-    }
 
     @NonNull
     @Override
@@ -38,8 +35,8 @@ public class StallsRecyclerViewAdapter extends RecyclerView.Adapter<StallsRecycl
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
         StallsItem currentItem = mStallsList.get(position);
 
-        holder.mTextView1.setText(currentItem.getText1());
-        holder.mTextView2.setText(currentItem.getText2());
+        holder.mStallNameTextView.setText(currentItem.getStallName());
+        holder.mStallCleanlinessTextView.setText(currentItem.getStallCleanliness());
 
     }
 
@@ -49,13 +46,13 @@ public class StallsRecyclerViewAdapter extends RecyclerView.Adapter<StallsRecycl
     }
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView1;
-        public TextView mTextView2;
+        public TextView mStallNameTextView;
+        public TextView mStallCleanlinessTextView;
 
         public ExampleViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
-            mTextView1 = itemView.findViewById(R.id.Text1);
-            mTextView2 = itemView.findViewById(R.id.Text2);
+            mStallNameTextView = itemView.findViewById(R.id.stallsName);
+            mStallCleanlinessTextView = itemView.findViewById(R.id.stallsCleanliness);
 
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override

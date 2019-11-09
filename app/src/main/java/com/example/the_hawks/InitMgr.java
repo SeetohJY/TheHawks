@@ -13,10 +13,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InitMgr {
-   // private Context context = this.getBaseContext();
     private static JSONArray jsonList1 = new JSONArray();
     private static JSONArray jsonList2 = new JSONArray();
-    public static ArrayList<HawkerCentre> HawkerCentreList = new ArrayList<>();
+    private static ArrayList<HawkerCentre> HawkerCentreList = new ArrayList<>();
 
     public InitMgr(JSONArray array1, JSONArray array2) throws JSONException, IOException {
         this.jsonList1 = array1;
@@ -79,9 +78,7 @@ public class InitMgr {
 
         String name = getStallName(jsonList2.getJSONObject(i).getString("premises_address"));
         String rating = jsonList2.getJSONObject(i).getString("grade");
-        int demeritPoints = Integer.parseInt(jsonList2.getJSONObject(i).getString("demerit_points").replaceAll("na", "0"));
-        String addr = jsonList1.getJSONObject(i).getString("location_of_centre");
-        hawkerstall = new HawkerStall(name, rating, demeritPoints, addr);
+        hawkerstall = new HawkerStall(name, rating);
         return hawkerstall;
 
     }
@@ -112,13 +109,13 @@ public class InitMgr {
             }
         }
         agg /= count;
-        //round to whole number
-        BigDecimal bd = new BigDecimal(agg).setScale(0, RoundingMode.HALF_UP);
+        BigDecimal bd = new BigDecimal(agg).setScale(2, RoundingMode.HALF_UP);
         double newAgg = bd.doubleValue();
         return newAgg;
 
     }
 
+    //Assigning scores depending on grade
     private static double getScore(String grade) {
         double score = 0;
         switch(grade)

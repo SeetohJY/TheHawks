@@ -224,72 +224,7 @@ public class HttpClient{
         }
 
     }
-	  /*private static JSONArray test(String url) throws IOException, JSONException{
-	  int offset=0;
-	  boolean test = false;
 
-
-	  JSONArray finalArray = new JSONArray();
-	  do {
-		  int count = 0;
-		  JSONObject json_list = readJsonFromUrl(url+"&offset="+offset);
-		  System.out.println(json_list.toString());
-		  JSONObject result= json_list.getJSONObject("result");
-		  Iterator x = result.keys();
-		  JSONArray jsonArray = new JSONArray();
-
-		  while (x.hasNext()){
-		      String key = (String) x.next();
-              jsonArray.put(result.get(key));
-              if (count==0) {
-            	  if(!key.equals("total")) {
-            		  test = true;
-            		  break;
-            	  }
-              }
-              count++;
-		  }
-		  //test = jsonArray.get(0).toString();
-
-		  if (!test) {
-
-			  String newStr = jsonArray.get(2).toString();
-			  JSONArray jsonObj = new JSONArray(newStr); //string to jsonobj
-
-			  for (int i = 0; i < jsonObj.length(); i++) {
-				    finalArray.put(jsonObj.getJSONObject(i));
-				}
-		  }
-		  offset += 100;
-
-
-	  }while(!test);
-
-	  // System.out.println(finalArray.toString());
-	  return finalArray;
-  }
-
-  private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
-        }
-        return sb.toString();
-    }
-
-    private static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
-        InputStream is = new URL(url).openStream();
-        try {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-            String jsonText = readAll(rd);
-            JSONObject json = new JSONObject(jsonText);
-            return json;
-        } finally {
-            is.close();
-        }
-    }
-	   */
 
 
 }

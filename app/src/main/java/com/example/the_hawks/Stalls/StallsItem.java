@@ -1,24 +1,19 @@
 package com.example.the_hawks.Stalls;
 
 public class StallsItem {
-    private int mImageResource;
-    private String mText1;
-    private String mText2;
+    private String mStallName;
+    private String mStallCleanliness;
 
-    public StallsItem(String text1, String text2) {
-        mText1 = text1;
-        mText2 = text2;
+    public StallsItem(String stallname, String stallcleanliness) {
+        mStallName = stallname;
+        mStallCleanliness = stallcleanliness;
     }
 
-    public int getImageResource() {
-        return mImageResource;
+    public String getStallName() {
+        return mStallName;
     }
 
-    public String getText1() {
-        return mText1;
-    }
-
-    public String getText2() {
-        return mText2;
+    public String getStallCleanliness() {
+        return mStallCleanliness;
     }
 }
