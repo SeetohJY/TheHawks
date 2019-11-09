@@ -1,6 +1,7 @@
 package com.example.the_hawks.HC;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -26,7 +29,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 
-public class HC extends FragmentActivity implements AdapterView.OnItemSelectedListener{
+public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
 
     private Spinner spinner;
@@ -53,6 +56,11 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
         filteredHCList = activity.getData();
         HCFragment.updateActivity(this);
         setContentView(R.layout.activity_hc);
+        Toolbar toolbar = findViewById(R.id.hc_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Search Hawker Centres");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         //Search bar implementation in HC List
@@ -163,6 +171,18 @@ public class HC extends FragmentActivity implements AdapterView.OnItemSelectedLi
 
         // Commit the transaction
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }

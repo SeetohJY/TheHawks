@@ -27,7 +27,7 @@ public class HawkerCentreActivity extends AppCompatActivity {
         final HawkerCentre hc = getIntent().getExtras().getParcelable("HawkerCentreActivity");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(hc.getName());
+        getSupportActionBar().setTitle("Hawker Centre Details");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
