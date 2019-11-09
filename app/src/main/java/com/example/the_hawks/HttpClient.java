@@ -110,8 +110,6 @@ public class HttpClient{
                 }
             }
         });
-        //Log.e("Printing-1:", response_body.toString());
-
         return response_body;
     }
 
@@ -123,8 +121,7 @@ public class HttpClient{
         jsonArray_list1 = getJSONArray("https://data.gov.sg/api/action/datastore_search?resource_id=8f6bba57-19fc-4f36-8dcf-c0bda382364d&limit=200");
         jsonArray_list2 = getJSONArray("https://data.gov.sg/api/action/datastore_search?resource_id=34f86c3e-a90c-4de9-a69f-afc86b7f31b6&offset=30000&limit=6000");
         JSONArray jsonArray_list2_reduced = new JSONArray();
-//        Log.e("List1:", jsonArray_list1.toString());
-//        Log.e("List2:", jsonArray_list2.toString());
+
           jsonArray_list2_reduced = reduceList(jsonArray_list2);
           filter(jsonArray_list1,jsonArray_list2_reduced);
     }
@@ -142,11 +139,9 @@ public class HttpClient{
                 }
 
                 jsonObj_red.put(jsonArray_list2.getJSONObject(y));
-                //System.out.println(jsonArray_list2.getJSONObject(y).getString("premises_address"));
 
                 if(y==jsonArray_list2.length()-2 && similarity(s1,s3) >= 0.7) {
                     jsonObj_red.put(jsonArray_list2.getJSONObject(y+1));
-                    //System.out.println(jsonArray_list2.getJSONObject(y+1).getString("premises_address"));
                 }
             }
         } return jsonObj_red;
@@ -160,9 +155,7 @@ public class HttpClient{
         Matcher match = blk_pattern.matcher(s2);
         if (match.find()) {
             temp = match.group(0);
-            //System.out.println(temp);
             s2 = s2.replaceAll(temp, "");
-            //System.out.println(s2);
             s2 = temp + s2;
         }
         return s2;
@@ -177,17 +170,13 @@ public class HttpClient{
 
     private static void filter(JSONArray jsonArray_list1, JSONArray jsonArray_list2) throws JSONException{
         boolean ismatch = false;
-        //Log.e("Printing1:", jsonArray_list1.toString());
-        //Log.e("Printing2:", jsonArray_list2.toString());
         for (int i=0; i<jsonArray_list1.length(); i++) {
             double similarity = 0;
             for (int j=0; j<jsonArray_list2.length(); j++) {
                 String s1 = cleanString_1(jsonArray_list1.getJSONObject(i).getString("location_of_centre"));
                 String s2 = cleanString_2(jsonArray_list2.getJSONObject(j).getString("premises_address"));
                 String s3 = jsonArray_list1.getJSONObject(i).getString("name_of_centre");
-                //Log.e("s1:", s1);
-                //Log.e("s2:", s2);
-//                Log.e("s3:", s3);
+
                 if (similarity(s1, s2) >= 0.7 || similarity(s2, s3) >= 0.7) {
 
                     ismatch = true;
@@ -205,14 +194,10 @@ public class HttpClient{
                     String s2 = cleanString_2(jsonArray_list2.getJSONObject(k).getString("premises_address"));
                     String s3 = jsonArray_list1.getJSONObject(i).getString("name_of_centre");
                     if(similarity(s1, s2) == similarity) {
-                        //System.out.println("new " + "Similarity" + similarity(s1, s2));
-                        //System.out.println("new " + jsonArray_list1.getJSONObject(i).getString("location_of_centre") + jsonArray_list2.getJSONObject(k).getString("premises_address"));
                         mergeList.put(jsonArray_list1.getJSONObject(i));
                         mergeList2.put(jsonArray_list2.getJSONObject(k));
                     }
                     else if(similarity(s2, s3) == similarity){
-                        //System.out.println("new " + "Similarity" + similarity(s2, s3));
-                        //System.out.println("new " + jsonArray_list1.getJSONObject(i).getString("name_of_centre") + jsonArray_list2.getJSONObject(k).getString("premises_address"));
                         mergeList.put(jsonArray_list1.getJSONObject(i));
                         mergeList2.put(jsonArray_list2.getJSONObject(k));
                     }

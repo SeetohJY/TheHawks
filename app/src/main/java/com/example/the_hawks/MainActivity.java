@@ -16,11 +16,10 @@ import android.widget.Button;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.the_hawks.HC.HC;
-import com.example.the_hawks.HC.HCFragment;
+import com.example.the_hawks.HC.HCActivity;
 import com.example.the_hawks.Maps.MapsActivity;
 import com.example.the_hawks.Search.SearchableActivity;
-import com.example.the_hawks.Stalls.Stalls;
+import com.example.the_hawks.Stalls.StallsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SearchableActivity.updateActivity(this);
-        HC.updateActivity(this);
+        HCActivity.updateActivity(this);
         Log.e("count1", Integer.toString(count));
         context = this.getApplicationContext();
         checkLocationServices();
@@ -206,12 +205,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openHC() {
-        Intent intent = new Intent(this, HC.class);
+        Intent intent = new Intent(this, HCActivity.class);
         startActivity(intent);
     }
 
     public void startStalls2 () {
-        Intent intent = new Intent(this, Stalls.class);
+        Intent intent = new Intent(this, StallsActivity.class);
         startActivity(intent);
     }
 

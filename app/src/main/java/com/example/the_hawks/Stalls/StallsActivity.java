@@ -15,7 +15,7 @@ import com.example.the_hawks.R;
 
 import java.util.ArrayList;
 
-public class Stalls extends AppCompatActivity {
+public class StallsActivity extends AppCompatActivity {
 
     String jString = "{\"stallsname\" : \"Jurong West Hawker Centre & Market\",\"stalls\":[{\"ic\":\"01\",\"name\":\"Chicken Rice\",\"rating\":\"3.5\"},{\"ic\":\"02\",\"name\":\"Western\",\"rating\":\"3.0\"}]}";
 
@@ -25,7 +25,7 @@ public class Stalls extends AppCompatActivity {
         setContentView(R.layout.activity_stalls);
         Toolbar toolbar = findViewById(R.id.stalls_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Stalls");
+        getSupportActionBar().setTitle("StallsActivity");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 

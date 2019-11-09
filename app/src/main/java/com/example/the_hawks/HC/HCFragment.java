@@ -33,8 +33,8 @@ public class HCFragment extends Fragment {
     RecyclerView.LayoutManager mLayoutManager;
     ArrayList<HawkerCentre> hawkerCentreArrayList = new ArrayList<>();
 
-    private static WeakReference<HC> mActivityRef;
-    public static void updateActivity(HC activity) {
+    private static WeakReference<HCActivity> mActivityRef;
+    public static void updateActivity(HCActivity activity) {
         mActivityRef = new WeakReference<>(activity);
     }
 
@@ -52,7 +52,7 @@ public class HCFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HC activity = mActivityRef.get();
+        HCActivity activity = mActivityRef.get();
         hawkerCentreArrayList = activity.getData();
     }
 
@@ -87,9 +87,6 @@ public class HCFragment extends Fragment {
 
 
     private void loopingTextViewCreate(View v, ArrayList<HawkerCentre> hcList){
-
-        Log.e("Test", "LoopingText running");
-
         for (int i = 0; i < hcList.size(); i++) {
             HawkerCentre hc = hcList.get(i);
             exampleList.add(new HCItem( hc.getName(), hc.getAddress(), Double.toString(hc.getAggregate())));

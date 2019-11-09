@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HC.HC">
+    tools:context=".HC.HCActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/hc_toolbar"
@@ -21,18 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView4"-->
-<!--        android:layout_width="61dp"-->
-<!--        android:layout_height="25dp"-->
-<!--        android:text="Filter by:"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.182"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.31" />-->
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -44,36 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.233" />
-
-<!--    <Spinner-->
-<!--        android:id="@+id/spinner2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:textAlignment="center"-->
-
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.506"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.311" />-->
-
-    <!--    <TextView-->
-<!--        android:id="@+id/hc_toolbar"-->
-<!--        android:layout_width="415dp"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:background="?attr/colorPrimary"-->
-<!--        android:fontFamily="@font/cream_peach"-->
-<!--        android:gravity="center"-->
-<!--        android:text="@string/hc_toolbar"-->
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:textIsSelectable="false"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:typeface="normal"-->
-<!--        android:visibility="visible"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:layout_editor_absoluteX="-2dp" />-->
 
     <Spinner
         android:id="@+id/spinner"
@@ -129,13 +87,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hcName">
-
-        <!--        <fragment-->
-        <!--            android:id="@+id/stallsFragment"-->
-        <!--            android:name="com.example.the_hawks.Stalls.stallsFragment"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_weight="1" />-->
 
     </LinearLayout>
 

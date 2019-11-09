@@ -246,37 +246,6 @@ public class MapsActivity extends AppCompatActivity
                 return true;
             }
         });
-
-
-//        searchView.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(1.34969997,103.7184601)));
-//
-//                CameraPosition cameraPosition = new CameraPosition.Builder()
-//                        .target(new LatLng(1.34969997,103.7184601))      // Sets the center of the map to location user
-//                        .zoom(17)                   // Sets the zoom
-//                        .build();                   // Creates a CameraPosition from the builder
-//                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-//
-//            }
-//        });
-
-        //SearchView searchView = (SearchView) menu.findItem(R.id.option_search).getActionView();
-        // Assumes current activity is the searchable activity
-
-        //searchView.setSearchableInfo(searchManager.getSearchableInfo(searchableActivity.getComponentName()));
-
-//        searchView.setSuggestionsAdapter(new SimpleCursorAdapter(
-//                mContext, android.R.layout.simple_list_item_1, null,
-//                new String[] { SearchManager.SUGGEST_COLUMN_TEXT_1 },
-//                new int[] { android.R.id.text1 }, 0));
-
-
-
         return true;
     }
 
@@ -292,8 +261,6 @@ public class MapsActivity extends AppCompatActivity
         }
         else if (item.getItemId() == R.id.option_search) {
             super.onSearchRequested();
-
-           // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(1.34969997, 103.71846), DEFAULT_ZOOM));
         }
         else{
             return super.onOptionsItemSelected((item));
@@ -309,20 +276,6 @@ public class MapsActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
-
-
-
-
-//            if (SearchableActivity.clickedLocation != null) {
-//                MarkerOptions markerOptions = new MarkerOptions();
-//                markerOptions.position()
-//                        .title(SearchableActivity.HCclicked);
-////                .snippet("ABC Hawker Centre has the best BCM")
-////                .icon(BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_BLUE));
-////
-
-
-
 
         try {
             geoJsonLayer = new GeoJsonLayer(mMap, R.raw.hc_geojson, getApplicationContext());
@@ -350,8 +303,6 @@ public class MapsActivity extends AppCompatActivity
             rlp.setMargins(-30, 0, 0, 90);
         }
 
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(hc1));
-
         // Prompt the user for permission.
         getLocationPermission();
 
@@ -368,39 +319,6 @@ public class MapsActivity extends AppCompatActivity
         }
 
     }
-
-
-
-//        // Use a custom info window adapter to handle multiple lines of text in the
-//        // info window contents.
-//        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-//
-//            @Override
-//            // Return null here, so that getInfoContents() is called next.
-//            public View getInfoWindow(Marker arg0) {
-//                return null;
-//            }
-//
-//
-//            @Override
-//            public View getInfoContents(Marker marker) {
-//                // Inflate the layouts for the info window, title and snippet.
-//                View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents,
-//                        (FrameLayout) findViewById(R.id.map), false);
-//
-//                TextView title = ((TextView) infoWindow.findViewById(R.id.title));
-//                title.setText(marker.getTitle());
-//
-//                TextView snippet = ((TextView) infoWindow.findViewById(R.id.snippet));
-//                snippet.setText(marker.getSnippet());
-//
-//                return infoWindow;
-//            }
-//        });
-
-    //}
-
-
     /**
      * Gets the current location of the device, and positions the map's camera.
      */

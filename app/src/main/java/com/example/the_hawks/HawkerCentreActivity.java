@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.the_hawks.Stalls.Stalls;
+import com.example.the_hawks.Stalls.StallsActivity;
 
 import java.util.ArrayList;
 
@@ -62,7 +62,7 @@ public class HawkerCentreActivity extends AppCompatActivity {
 
     public void startStalls (ArrayList<HawkerStall> stalls) {
 
-        Intent intent = new Intent(this, Stalls.class).putParcelableArrayListExtra("HawkerStalls",stalls);
+        Intent intent = new Intent(this, StallsActivity.class).putParcelableArrayListExtra("HawkerStalls",stalls);
 
         startActivity(intent);
 

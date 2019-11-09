@@ -64,28 +64,6 @@
             android:text="Cleanliness:"
             android:textSize="15sp" />
 
-        <!--<Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="7dp"
-            android:layout_marginEnd="0dp"
-            android:stateListAnimator="@null"
-            android:text="See Details" />-->
-
-        <!--<ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="23dp"
-            android:layout_height="15dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="14dp"
-            android:layout_marginEnd="36dp"
-            android:scaleX="-1"
-            app:srcCompat="@drawable/back_button" />-->
-
 
     </RelativeLayout>
 

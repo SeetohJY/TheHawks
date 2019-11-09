@@ -51,9 +51,7 @@ public class SearchableActivity extends AppCompatActivity {
             MainActivity activity = mActivityRef.get();
 
             String geoJSONString = activity.getGeoJSON();
-            Log.e("done", geoJSONString);
             centresToCoord = createLocationHashMap(geoJSONString);
-            Log.e("done hashmap", centresToCoord.toString());
             centresList = createLocationList(geoJSONString);
         }
 
@@ -74,13 +72,8 @@ public class SearchableActivity extends AppCompatActivity {
                 Toast.makeText(SearchableActivity.this,
                         "clicked search result item is"+((TextView)view).getText(),
                         Toast.LENGTH_SHORT).show();
-//                TextView textView = (TextView) view.findViewById(R.id.listView);
-//                String text = textView.getText().toString();
-//                String HCclicked= listView.getItemAtPosition(position).toString();
-                Log.d("HCclicked", ((TextView)view).getText().toString());
                 HCclicked = ((TextView)view).getText().toString();
                 LatLng latlngHC = centresToCoord.get(HCclicked);
-                Log.d("HCclicked", latlngHC.toString());
 
                 clickedLocation = latlngHC;
                 Intent intent = new Intent(SearchableActivity.this, MapsActivity.class);
@@ -92,12 +85,6 @@ public class SearchableActivity extends AppCompatActivity {
         handleSearch();
     }
 
-//    @Override
-//    protected void onNewIntent(Intent intent) {
-//        super.onNewIntent;
-//        setIntent(intent);
-//        handleSearch();
-//    }
     public static HashMap<String, LatLng> createLocationHashMap(String JSONString) {
         HashMap<String, LatLng> result = new HashMap<String, LatLng>();
         try {
@@ -111,12 +98,9 @@ public class SearchableActivity extends AppCompatActivity {
                 JSONObject obj = mArray.getJSONObject(i);
 
                 String strToSearch = obj.getJSONObject("properties").getString("Description");
-                //Log.d("strtosearch", strToSearch);
                 Pattern pattern = Pattern.compile("<th>NAME</th> <td>(.*?)</td>", Pattern.DOTALL);
                 Matcher matcher = pattern.matcher(strToSearch);
                 if (matcher.find()) {
-                    //Log.d("matcher", matcher.toString());
-
                 }
 
                 String HCname = matcher.group(1);
@@ -130,9 +114,7 @@ public class SearchableActivity extends AppCompatActivity {
             }
 
         } catch (Exception ex) {
-            // Log.d("ash123", "failed");
             ex.printStackTrace();
-            //handle Exception
         }
 
         return result;
@@ -150,7 +132,6 @@ public class SearchableActivity extends AppCompatActivity {
                 JSONObject obj = mArray.getJSONObject(i);
 
                 String strToSearch = obj.getJSONObject("properties").getString("Description");
-                //Log.d("strtosearch", strToSearch);
                 Pattern pattern = Pattern.compile("<th>NAME</th> <td>(.*?)</td>", Pattern.DOTALL);
                 Matcher matcher = pattern.matcher(strToSearch);
                 if (matcher.find()) {
@@ -163,7 +144,6 @@ public class SearchableActivity extends AppCompatActivity {
             }
 
         } catch (Exception ex) {
-            // Log.d("ash123", "failed");
             ex.printStackTrace();
             //handle Exception
         }

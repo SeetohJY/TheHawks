@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stalls.Stalls">
+    tools:context=".Stalls.StallsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/stalls_toolbar"
@@ -20,23 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-<!--    <TextView-->
-<!--        android:id="@+id/stalls_toolbar"-->
-<!--        android:layout_width="415dp"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:background="?attr/colorPrimary"-->
-<!--        android:fontFamily="@font/cream_peach"-->
-<!--        android:gravity="center"-->
-<!--        android:text="@string/stalls_toolbar"-->
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:textIsSelectable="false"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:typeface="normal"-->
-<!--        android:visibility="visible"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:layout_editor_absoluteX="0dp" />-->
 
     <ImageButton
         android:id="@+id/back_button"
@@ -78,14 +61,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stallsName">
-
-<!--        <fragment-->
-<!--            android:id="@+id/stallsFragment"-->
-<!--            android:name="com.example.the_hawks.Stalls.stallsFragment"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1" />-->
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

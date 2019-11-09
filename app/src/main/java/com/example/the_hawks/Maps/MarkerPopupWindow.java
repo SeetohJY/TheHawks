@@ -23,18 +23,7 @@ public class MarkerPopupWindow implements GoogleMap.InfoWindowAdapter {
                 .inflate(R.layout.maps_marker_popup, null);
 
         TextView name_tv = view.findViewById(R.id.centrename);
-        TextView details_tv = view.findViewById(R.id.details);
-        TextView food_tv = view.findViewById(R.id.food);
-
-
         name_tv.setText(marker.getTitle());
-        //details_tv.setText(marker.getSnippet());
-
-        PopupInfo infoWindowData = (PopupInfo) marker.getTag();
-
-
-        //food_tv.setText(infoWindowData.getFood());
-
 
         return view;
     }
@@ -45,18 +34,7 @@ public class MarkerPopupWindow implements GoogleMap.InfoWindowAdapter {
                 .inflate(R.layout.maps_marker_popup, null);
 
         TextView name_tv = view.findViewById(R.id.centrename);
-        TextView details_tv = view.findViewById(R.id.details);
-        TextView food_tv = view.findViewById(R.id.food);
-
-
         name_tv.setText(marker.getTitle());
-        //details_tv.setText(marker.getSnippet());
-
-        PopupInfo infoWindowData = (PopupInfo) marker.getTag();
-
-
-        //food_tv.setText(infoWindowData.getFood());
-
 
         return view;
     }

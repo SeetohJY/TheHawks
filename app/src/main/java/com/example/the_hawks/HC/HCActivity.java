@@ -1,7 +1,5 @@
 package com.example.the_hawks.HC;
 
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +12,6 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.the_hawks.HawkerCentre;
@@ -29,7 +26,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 
-public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class HCActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
 
     private Spinner spinner;
@@ -63,7 +60,7 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-        //Search bar implementation in HC List
+        //Search bar implementation in HCActivity List
         final SearchView sv = findViewById(R.id.searchView);
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
@@ -74,9 +71,7 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.e("Query",sv.getQuery().toString());
                 ArrayList<HawkerCentre> tempList = new ArrayList<>();
-                Log.e("original",hcList.toString());
                 for(HawkerCentre HC: hcList){
                     if (HC.getName().toLowerCase().contains(sv.getQuery().toString().toLowerCase())){
                         tempList.add(HC);
@@ -84,7 +79,6 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
                 }
                 filteredHCList = tempList;
                 filteredHCList = SearchMgr.searchHawkerCentre(spinnerPos, filteredHCList);
-                Log.e("After", filteredHCList.toString());
 
                 fragmentChange();
 
@@ -95,7 +89,7 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
         spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(HC.this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(HCActivity.this,
                 android.R.layout.simple_spinner_item,paths);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -143,8 +137,6 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
         spinnerPos = pos;
         filteredHCList = this.getData();
         HCFragment.updateActivity(this);
-        Log.e("a", "filteredHCList is called by listener");
-        Log.e("a", filteredHCList.toString());
         fragmentChange();
 
     }
@@ -154,12 +146,11 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
 
 
     public ArrayList<HawkerCentre> getData() {
-        Log.e("a", filteredHCList.toString());
         return filteredHCList;
 
     }
 
-    //Replacing of fragments (i.e. individual HC cards in the HC List) to sort
+    //Replacing of fragments (i.e. individual HCActivity cards in the HCActivity List) to sort
     private void fragmentChange(){
         HCFragment newFragment = new HCFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

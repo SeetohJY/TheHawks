@@ -27,7 +27,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".HC.HC"
+            android:name=".HC.HCActivity"
             android:label="@string/title_activity_hc"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
@@ -36,7 +36,7 @@
             android:label="@string/title_activity_hawker_centre"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Stalls.Stalls"
+            android:name=".Stalls.StallsActivity"
             android:label="@string/title_activity_stalls"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -85,7 +85,7 @@
         -->
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.the_hawks.Stalls.Stalls" />
+            android:value="com.example.the_hawks.Stalls.StallsActivity" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDzEdj2Nvh7o-ZZQfPNp-q3F26u09E5CpI" />
