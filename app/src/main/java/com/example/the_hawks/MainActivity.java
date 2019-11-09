@@ -17,9 +17,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.the_hawks.HC.HC;
+import com.example.the_hawks.HC.HCFragment;
 import com.example.the_hawks.Maps.MapsActivity;
 import com.example.the_hawks.Search.SearchableActivity;
-import com.example.the_hawks.NearbyHC.NearbyHC;
 import com.example.the_hawks.Stalls.Stalls;
 
 import org.json.JSONArray;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SearchableActivity.updateActivity(this);
-        //HC.updateActivity(this);
+        HC.updateActivity(this);
 //        HCFragment.updateActivity(this);
         Log.e("count1", Integer.toString(count));
         context = this.getApplicationContext();
@@ -299,10 +299,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void nearbyHC() {
-        Intent intent = new Intent(this, NearbyHC.class);
-        startActivity(intent);
-    }
     public void startStalls2 () {
         Intent intent = new Intent(this, Stalls.class);
         startActivity(intent);
@@ -321,19 +317,19 @@ public class MainActivity extends AppCompatActivity {
     // Remove when done
     private void initialiseTempData () {
 
-        HawkerStall hs1 = new HawkerStall("Chicken Rice 1", "C", 10, "22A Lor 7 Toa Pa Yoh");
-        HawkerStall hs2 = new HawkerStall("Western 1", "A", 20, "22A Lor 7 Toa Pa Yoh");
-        HawkerStall hs3 = new HawkerStall("Chicken Rice 2", "Z", 100, "4 Jelapang Drive");
-        HawkerStall hs4 = new HawkerStall("Western 2", "Y", 200, "4 Jelapang Drive");
+//        HawkerStall hs1 = new HawkerStall("Chicken Rice 1", "C", 10, "22A Lor 7 Toa Pa Yoh");
+//        HawkerStall hs2 = new HawkerStall("Western 1", "A", 20, "22A Lor 7 Toa Pa Yoh");
+//        HawkerStall hs3 = new HawkerStall("Chicken Rice 2", "Z", 100, "4 Jelapang Drive");
+//        HawkerStall hs4 = new HawkerStall("Western 2", "Y", 200, "4 Jelapang Drive");
 
         ArrayList<HawkerStall> temphslist1 = new ArrayList<>();
         ArrayList<HawkerStall> temphslist2 = new ArrayList<>();
 
-        temphslist1.add(hs1);
-        temphslist1.add(hs2);
-
-        temphslist2.add(hs3);
-        temphslist2.add(hs4);
+//        temphslist1.add(hs1);
+//        temphslist1.add(hs2);
+//
+//        temphslist2.add(hs3);
+//        temphslist2.add(hs4);
 
         HawkerCentre hc1 = new HawkerCentre("Kim Keat Market","22A Lor 7 Toa Pa Yoh",2,3.0,temphslist1);
         HawkerCentre hc2 = new HawkerCentre("Toh Kim Food Court","4 Jelapang Drive",2,8.0,temphslist2);

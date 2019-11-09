@@ -68,6 +68,14 @@
             android:value=".Search.SearchableActivity" />
         </activity>
 
+        <activity android:name=".Search.SearchableActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              Note that the API key is linked to the encryption key used to sign the APK.
