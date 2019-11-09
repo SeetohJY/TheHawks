@@ -1,20 +1,23 @@
 package com.example.the_hawks.Maps;
 
 public class PopupInfo {
-    private String image;
-    private String hotel;
+    private String centreName;
     private String food;
-    private String transport;
+    private String description;
 
-    public String getImage() {
-        return image;
+    public String getCentreName() {
+        return centreName;
+    }
+    public void setCentreName(String centreName) {
+        this.centreName= centreName;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public String getDescription() {
+        return description;
     }
-
-
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public String getFood() {
         return food;
     }
@@ -23,11 +26,4 @@ public class PopupInfo {
         this.food = food;
     }
 
-    public String getTransport() {
-        return transport;
-    }
-
-    public void setTransport(String transport) {
-        this.transport = transport;
-    }
 }

@@ -36,13 +36,14 @@ package com.example.the_hawks.Search;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.the_hawks.R;
+import com.example.the_hawks.MainActivity;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,23 +53,55 @@ import java.util.regex.Pattern;
 public class StoresData {
     private static Context context;
     private static HashMap<String, LatLng> centres;
+    private static WeakReference<MainActivity> mActivityRef;
     public StoresData() {
 
     }
     public void onCreate() {
         this.centres = createLocationHashMap();
+        MainActivity activity = mActivityRef.get();
+        String geoJSONString = activity.getGeoJSON();
+        Log.e("done", geoJSONString);
+
     }
 
     static {
         centres = new HashMap<String, LatLng>();
         createLocationHashMap();
     }
-
-    public static String loadJSONFromAsset(Context context) {
+//    protected String getJSONString(){
+//        String json = null;
+//        try {
+//
+//            InputStream is = getResources().openRawResource(
+//                    getResources().getIdentifier("hawkercentre",
+//                            "raw", getPackageName()));
+//
+//            int size = is.available();
+//
+//            byte[] buffer = new byte[size];
+//
+//            is.read(buffer);
+//
+//            is.close();
+//
+//            json = new String(buffer, "UTF-8");
+//
+//
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//            Log.e("failure", ex.toString());
+//            return null;
+//        }
+//        return json;
+//    }
+    public static void loadJSONFromAsset() {
         String json = null;
         try {
             //File file = new File("../../../res/raw/hc_geojson.geojson");
-            InputStream is = context.getResources().openRawResource(R.raw.hc_geojson);
+            InputStream is = context.getResources().openRawResource(
+                    context.getResources().getIdentifier("hc_geojson",
+                            "raw", context.getPackageName()));
 
             int size = is.available();
 
@@ -80,22 +113,24 @@ public class StoresData {
 
             json = new String(buffer, "UTF-8");
 
-            Log.d("ash123", json.toString());
 
         } catch (Exception ex) {
-            Log.d("ash123", "failed");
+
             ex.printStackTrace();
-            return null;
+            return;
         }
-        return json;
+
+
+
 
     }
+
 
     public static HashMap<String, LatLng> createLocationHashMap() {
         HashMap<String, LatLng> result = new HashMap<String, LatLng>();
         try {
-            String JSON_String = loadJSONFromAsset(context);
-            JSONObject object = new JSONObject(JSON_String);
+            //String JSON_String = loadJSONFromAsset(context);
+            JSONObject object = null;
             JSONArray mArray = object.getJSONArray("features");
 
             for (int i = 0; i < mArray.length(); i++) {
@@ -106,7 +141,7 @@ public class StoresData {
                 Pattern pattern = Pattern.compile("<th>NAME<\\/th> <td>(.*?)<\\/td> <\\/tr>", Pattern.DOTALL);
                 Matcher matcher = pattern.matcher(strToSearch);
                 String HCname = matcher.group(1);
-                Log.d("ash123", HCname);
+
 
 
                 JSONObject geometryObject = obj.getJSONObject("geometry");
@@ -117,7 +152,7 @@ public class StoresData {
             }
 
         } catch (Exception ex) {
-            Log.d("ash123", "failed");
+           // Log.d("ash123", "failed");
             ex.printStackTrace();
             //handle Exception
         }

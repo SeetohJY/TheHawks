@@ -7,7 +7,7 @@ android {
     defaultConfig {
 
         applicationId "com.example.the_hawks"
-        minSdkVersion 19
+        minSdkVersion 26
 
         targetSdkVersion 29
         versionCode 1
@@ -79,6 +79,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     //noinspection GradleCompatible
     implementation 'com.android.support:design:22.2.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
 //    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (3)', include: ['*.aar', '*.jar'], exclude: [])
 //    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (5)', include: ['*.aar', '*.jar'], exclude: [])
 //    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (7)', include: ['*.aar', '*.jar'], exclude: [])

@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.the_hawks.HC.HC;
 import com.example.the_hawks.Maps.MapsActivity;
+import com.example.the_hawks.Search.SearchableActivity;
 import com.example.the_hawks.NearbyHC.NearbyHC;
 import com.example.the_hawks.Stalls.Stalls;
 
@@ -30,6 +31,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -43,12 +45,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SearchableActivity.updateActivity(this);
         //HC.updateActivity(this);
 //        HCFragment.updateActivity(this);
         Log.e("count1", Integer.toString(count));
         context = this.getApplicationContext();
         checkLocationServices();
         isNetworkConnectionAvailable();
+        //getJSONString();
 
 
 
@@ -116,6 +120,36 @@ public class MainActivity extends AppCompatActivity {
 //                openHC();
 //            }
 //        });
+    }
+    // Following 2 functions for Maps HashMap
+    protected String getJSONString(){
+        String json = null;
+        try {
+
+            InputStream is = getResources().openRawResource(
+                    getResources().getIdentifier("hc_geojson",
+                            "raw", getPackageName()));
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Log.e("failure", ex.toString());
+            return null;
+        }
+        return json;
+    }
+
+    public String getGeoJSON(){
+        return getJSONString();
     }
 
     protected void onNewIntent(Intent intent) {

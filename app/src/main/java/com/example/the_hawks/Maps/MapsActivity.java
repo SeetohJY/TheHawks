@@ -3,6 +3,7 @@ package com.example.the_hawks.Maps;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Location;
@@ -34,14 +35,17 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //import android.support.annotation.NonNull;
 //import android.support.v4.app.ActivityCompat;
@@ -66,6 +70,7 @@ public class MapsActivity extends AppCompatActivity
 
     private ArrayList<Marker> markerArrayList;
     private GeoJsonLayer geoJsonLayer;
+    private String geojsonString;
 
     // The entry points to the Places API.
     private GeoDataClient mGeoDataClient;
@@ -96,9 +101,19 @@ public class MapsActivity extends AppCompatActivity
     private String[] mLikelyPlaceAttributions;
     private LatLng[] mLikelyPlaceLatLngs;
 
+   // private HashMap<String, LatLng> centresToCoord;
+
+//    private static WeakReference<MainActivity> mActivityRef;
+//
+//
+//    public static void updateActivity(MainActivity activity){
+//        mActivityRef = new WeakReference<>(activity);
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
@@ -124,37 +139,64 @@ public class MapsActivity extends AppCompatActivity
         mapView = mapFragment.getView();
 
         mapFragment.getMapAsync(this);
+        //geojsonString = loadJSONFromAsset();
+//        Log.d("ash123", geojsonString);
 
 
     }
-//    @Override
-//    protected void createMarkerList() {
+
+    protected void createMarkerList() {
+
+        Intent intent = getIntent();
+        HashMap<String, LatLng> centresToCoord = (HashMap<String, LatLng>) intent.getSerializableExtra("hashMap");
+        if (centresToCoord != null) {
+            Log.e("hashmap in maps", centresToCoord.toString());
+
+            for (String centre : centresToCoord.keySet()) {
+                Log.e("centre", centre);
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(centresToCoord.get(centre))
+                        .title(centre).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                Marker m = mMap.addMarker(markerOptions);
+                PopupInfo info = new PopupInfo();
+                info.setCentreName(centre);
 //
-//        LatLng hc1 = new LatLng(1.337146, 103.697001);
+                MarkerPopupWindow customInfoWindow = new MarkerPopupWindow(this);
+                mMap.setInfoWindowAdapter(customInfoWindow);
+
+
+                m.setTag(info);
+                m.showInfoWindow();
+
+            }
+
+        }
+    }
+
+//    public String loadJSONFromAsset() {
+//        String json = null;
 //
-//        MarkerOptions markerOptions = new MarkerOptions();
-//        markerOptions.position(hc1)
-//                .title("Pioneer Hawker Centre")
-//                .snippet("ABC Hawker Centre has the best BCM")
-//                .icon(BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_BLUE));
-//
-//        PopupInfo info = new PopupInfo();
-//        info.setImage("hc1");
-//        info.setFood("Food : Ah Lian beehoon is here");
-//        info.setTransport("Reach the site by bus, car, train or plane.");
-//
-//        MarkerPopupWindow customInfoWindow = new MarkerPopupWindow(this);
-//        mMap.setInfoWindowAdapter(customInfoWindow);
-//
-//        Marker m = mMap.addMarker(markerOptions);
-//        m.setTag(info);
-//        m.showInfoWindow();
-//
-//        this.markerArrayList.add(curMarker);
+//        try {
+//            InputStream is = MapsActivity.this.getAssets().open("/app/res/raw/hc_geojson");
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//            json = new String(buffer, "UTF-8");
+//        } catch (IOException ex) {
+//            Log.d("ash123", ex.toString());
+//            ex.printStackTrace();
+//            return null;
+//        }
+//        return json;
 //    }
+
     /**
      * Saves the state of the map when the activity is paused.
      */
+
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         if (mMap != null) {
@@ -178,16 +220,34 @@ public class MapsActivity extends AppCompatActivity
         // Get the SearchView and set the searchable configuration
         searchableActivity = new SearchableActivity();
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.option_search).getActionView();
+        SearchView  searchView = (SearchView) menu.findItem(R.id.option_search).getActionView();
         searchView.setSearchableInfo( searchManager.getSearchableInfo(getComponentName()) );
 
         // Receiving value into activity using intent.
-        String Latitude = getIntent().getStringExtra("Latitude");
-        String Longitude = getIntent().getStringExtra("Longitude");
+        double newlat = getIntent().getDoubleExtra("latitude",0);
+        double newlong = getIntent().getDoubleExtra("longitude", 0);
 
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(Latitude,Longitude)));
+
 
         searchView.setIconifiedByDefault(true); // Do not iconify the widget; expand it by default
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(SearchableActivity.clickedLocation, 200));
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+//                if (query.length() >= SEARCH_QUERY_THRESHOLD) {
+//
+//                }
+
+                return true;
+            }
+        });
+
+
 //        searchView.setOnClickListener(new View.OnClickListener() {
 //
 //            @Override
@@ -215,43 +275,10 @@ public class MapsActivity extends AppCompatActivity
 //                new String[] { SearchManager.SUGGEST_COLUMN_TEXT_1 },
 //                new int[] { android.R.id.text1 }, 0));
 
-//        searchView.setOnQueryTextListener(new OnQueryTextListener() {
-//
-//
-//            public boolean onQueryTextChange(String query) {
-//
-//                if (query.length() >= SEARCH_QUERY_THRESHOLD) {
-//                    new FetchSearchTermSuggestions().execute(query);
-//                } else {
-//                    searchView.getSuggestionsAdapter().changeCursor(null);
-//                }
-//
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//
-//                // if user presses enter, do default search, ex:
-//                if (query.length() >= SEARCH_QUERY_THRESHOLD) {
-//
-//                    Intent intent = new Intent(MapsActivity.this, SearchableActivity.class);
-//                    intent.setAction(Intent.ACTION_SEARCH);
-//                    intent.putExtra(SearchManager.QUERY, query);
-//                    startActivity(intent);
-//
-//                    searchView.getSuggestionsAdapter().changeCursor(null);
-//                    return true;
-//                }
-//            }
-//        });
+
 
         return true;
     }
-
-
-
-
 
     /**
      * Handles a click on the menu option to get a place.
@@ -261,11 +288,11 @@ public class MapsActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_get_place) {
-            showCurrentPlace();
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(SearchableActivity.clickedLocation, 200));
         }
         else if (item.getItemId() == R.id.option_search) {
             super.onSearchRequested();
-           // mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(1.34969997,103.7184601)));
+
            // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(1.34969997, 103.71846), DEFAULT_ZOOM));
         }
         else{
@@ -284,25 +311,18 @@ public class MapsActivity extends AppCompatActivity
         mMap = map;
 
 
-        //LatLng hc1 = new LatLng(1.337146, 103.697001);
-//
-//        MarkerOptions markerOptions = new MarkerOptions();
-//        markerOptions.position(hc1)
-//                .title("Pioneer Hawker Centre")
-//                .snippet("ABC Hawker Centre has the best BCM")
-//                .icon(BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_BLUE));
-//
-//        PopupInfo info = new PopupInfo();
-//        info.setImage("hc1");
-//        info.setFood("Food : Ah Lian beehoon is here");
-//        info.setTransport("Reach the site by bus, car, train or plane.");
-//
-//        MarkerPopupWindow customInfoWindow = new MarkerPopupWindow(this);
-//        mMap.setInfoWindowAdapter(customInfoWindow);
-//
-//        Marker m = mMap.addMarker(markerOptions);
-//        m.setTag(info);
-//        m.showInfoWindow();
+
+
+//            if (SearchableActivity.clickedLocation != null) {
+//                MarkerOptions markerOptions = new MarkerOptions();
+//                markerOptions.position()
+//                        .title(SearchableActivity.HCclicked);
+////                .snippet("ABC Hawker Centre has the best BCM")
+////                .icon(BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_BLUE));
+////
+
+
+
 
         try {
             geoJsonLayer = new GeoJsonLayer(mMap, R.raw.hc_geojson, getApplicationContext());
@@ -339,7 +359,17 @@ public class MapsActivity extends AppCompatActivity
         updateLocationUI();
 
         // Get the current location of the device and set the position of the map.
-        getDeviceLocation();
+        createMarkerList();
+
+        if (SearchableActivity.clickedLocation == null) {
+            getDeviceLocation();
+        } else {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SearchableActivity.clickedLocation, 50));
+        }
+
+    }
+
+
 
 //        // Use a custom info window adapter to handle multiple lines of text in the
 //        // info window contents.
@@ -350,8 +380,8 @@ public class MapsActivity extends AppCompatActivity
 //            public View getInfoWindow(Marker arg0) {
 //                return null;
 //            }
-
-
+//
+//
 //            @Override
 //            public View getInfoContents(Marker marker) {
 //                // Inflate the layouts for the info window, title and snippet.
@@ -368,7 +398,7 @@ public class MapsActivity extends AppCompatActivity
 //            }
 //        });
 
-    }
+    //}
 
 
     /**
@@ -380,6 +410,7 @@ public class MapsActivity extends AppCompatActivity
          * cases when a location is not available.
          */
         try {
+
             if (mLocationPermissionGranted) {
                 Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
                 locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
@@ -540,6 +571,7 @@ public class MapsActivity extends AppCompatActivity
                     markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[which];
                 }
 
+
                 // Add a marker for the selected place, with an info window
                 // showing information about that place.
 //              mMap.addMarker(new MarkerOptions()
@@ -548,8 +580,8 @@ public class MapsActivity extends AppCompatActivity
 //                        .snippet(markerSnippet));
 
                 // Position the map's camera at the location of the marker.
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,
-                        DEFAULT_ZOOM));
+//                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,
+//                        DEFAULT_ZOOM));
             }
         };
 
