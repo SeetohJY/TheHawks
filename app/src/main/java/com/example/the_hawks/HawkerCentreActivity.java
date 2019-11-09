@@ -64,6 +64,7 @@ public class HawkerCentreActivity extends AppCompatActivity {
     public void startStalls (ArrayList<HawkerStall> stalls) {
 
         Intent intent = new Intent(this, Stalls.class).putParcelableArrayListExtra("HawkerStalls",stalls);
+
         startActivity(intent);
 
     }

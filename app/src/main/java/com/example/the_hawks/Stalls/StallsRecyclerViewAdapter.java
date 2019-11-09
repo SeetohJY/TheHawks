@@ -1,7 +1,5 @@
 package com.example.the_hawks.Stalls;
 
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,35 +35,8 @@ public class StallsRecyclerViewAdapter extends RecyclerView.Adapter<StallsRecycl
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
         StallsItem currentItem = mStallsList.get(position);
 
-        String name = currentItem.getStallName();
-        String cleanliness = currentItem.getStallCleanliness();
-        Log.d("e", cleanliness);
-
-        holder.mStallNameTextView.setText(name);
-        holder.mStallCleanlinessTextView.setText(cleanliness);
-        switch(cleanliness) {
-            case "A":
-                // green
-                holder.mStallCleanlinessTextView.setTextColor(Color.parseColor("#417F0C"));
-                break;
-            case "B":
-                // orange
-                holder.mStallCleanlinessTextView.setTextColor(Color.parseColor("#D29900"));
-                break;
-            case "C":
-                // orangier
-                holder.mStallCleanlinessTextView.setTextColor(Color.parseColor("#DE8B0C"));
-                break;
-            case "D":
-                // red
-                holder.mStallCleanlinessTextView.setTextColor(Color.parseColor("#D4370A"));
-                break;
-            default:
-                holder.mStallCleanlinessTextView.setTextColor(Color.parseColor("#FFFFFF"));
-                Log.d("e", "oi why is it default switch ah");
-                break;
-
-        }
+        holder.mStallNameTextView.setText(currentItem.getStallName());
+        holder.mStallCleanlinessTextView.setText(currentItem.getStallCleanliness());
 
     }
 

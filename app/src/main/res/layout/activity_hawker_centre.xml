@@ -18,26 +18,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:theme="@style/ToolBarStyle" />
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/hcTitle"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="92dp"-->
-    <!--        android:layout_alignParentStart="true"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:background="?attr/colorAccent"-->
-    <!--        android:gravity="center"-->
-    <!--        android:text="title"-->
-    <!--        android:textColor="@color/colorTextLight"-->
-    <!--        android:textSize="30dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.0"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/toolbar" />-->
+    <TextView
+        android:id="@+id/hcTitle"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:background="?attr/colorAccent"
+        android:gravity="center"
+        android:text="title"
+        android:textColor="@color/colorTextLight"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/textView5"
@@ -49,12 +48,11 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="40dp"
         android:text="@string/clean"
-        android:textSize="16sp"
+        android:textSize="22dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/hcTitle" />
 
     <TextView
-        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -63,23 +61,22 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:text="Number Of Stalls:"
-        android:textSize="16sp"
+        android:textSize="22dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:text="Address:"
-        android:textSize="16sp"
+        android:textSize="22dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/CRating"
@@ -87,12 +84,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="40dp"
         android:text="here"
         android:textColor="#5cadec"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hcTitle" />
 
     <TextView
         android:id="@+id/numStalls"
@@ -100,26 +98,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="210dp"
+        android:layout_marginTop="90dp"
         android:text="here"
         android:textColor="#5cadec"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
-
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hcTitle" />
 
     <TextView
         android:id="@+id/Addr"
-        android:layout_width="270dp"
+        android:layout_width="230dp"
         android:layout_height="159dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="70dp"
         android:text="here"
         android:textColor="#5cadec"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CRating" />
+
 
     <Button
         android:id="@+id/startStalls"
@@ -129,6 +129,8 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:text="See Stalls List"
+        android:textAllCaps="false"
+        android:textSize="22dp"
         app:layout_constraintBottom_toTopOf="@+id/getDirections"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -142,10 +144,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:background="@color/colorAccent"
+        android:background="?attr/colorPrimary"
         android:text="Get Directions"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:theme="@style/Butto"
+        android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -154,7 +157,7 @@
         android:id="@+id/back_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="40dp"
         android:background="#00000000"
         android:cropToPadding="true"
         android:scaleType="fitStart"
