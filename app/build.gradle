@@ -7,7 +7,7 @@ android {
     defaultConfig {
 
         applicationId "com.example.the_hawks"
-        minSdkVersion 19
+        minSdkVersion 26
 
         targetSdkVersion 29
         versionCode 1
@@ -70,6 +70,7 @@ dependencies {
     //implementation 'com.android.support:appcompat-v7:25.1.1'
     implementation 'com.google.android.gms:play-services:11.2.0'
     implementation 'com.google.android.gms:play-services-maps:10.0.1'
+    implementation 'com.google.maps.android:android-maps-utils:0.6.2'
 
 //    implementation 'com.google.android.gms:play-services-maps:16.1.0'
 //    implementation 'com.google.android.gms:play-services-location:17.0.0'
@@ -78,6 +79,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     //noinspection GradleCompatible
     implementation 'com.android.support:design:22.2.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
 //    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (3)', include: ['*.aar', '*.jar'], exclude: [])
 //    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (5)', include: ['*.aar', '*.jar'], exclude: [])
 //    implementation fileTree(dir: 'C:\\Users\\Ellen\\Downloads\\jar_files (7)', include: ['*.aar', '*.jar'], exclude: [])

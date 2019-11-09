@@ -186,4 +186,3 @@ public class HC extends AppCompatActivity implements AdapterView.OnItemSelectedL
     }
 
 }
-
