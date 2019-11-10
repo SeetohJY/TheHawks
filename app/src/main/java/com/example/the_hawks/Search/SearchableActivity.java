@@ -70,7 +70,7 @@ public class SearchableActivity extends AppCompatActivity {
                 //the search results displayed after search form is submitted
                 //you can continue from here with user clicked search item
                 Toast.makeText(SearchableActivity.this,
-                        "clicked search result item is"+((TextView)view).getText(),
+                        "Loading map for "+((TextView)view).getText(),
                         Toast.LENGTH_SHORT).show();
                 HCclicked = ((TextView)view).getText().toString();
                 LatLng latlngHC = centresToCoord.get(HCclicked);

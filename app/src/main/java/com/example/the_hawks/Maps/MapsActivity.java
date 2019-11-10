@@ -19,9 +19,11 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.the_hawks.MainActivity;
 import com.example.the_hawks.R;
 import com.example.the_hawks.Search.SearchableActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -46,12 +48,7 @@ import com.google.maps.android.data.geojson.GeoJsonLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-//import android.support.annotation.NonNull;
-//import android.support.v4.app.ActivityCompat;
-//import android.support.v4.content.ContextCompat;
-//import android.support.v7.app.AlertDialog;
-//import android.support.v7.app.AppCompatActivity;
+import java.util.Objects;
 
 /**
  * An activity that displays a map showing the place at the device's current location.
@@ -123,6 +120,11 @@ public class MapsActivity extends AppCompatActivity
 
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_maps);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Hawker Centre Map");
+        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Construct a GeoDataClient.
         mGeoDataClient = Places.getGeoDataClient(this, null);
@@ -530,5 +532,22 @@ public class MapsActivity extends AppCompatActivity
         } catch (SecurityException e)  {
             Log.e("Exception: %s", e.getMessage());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        returnHome();
+        this.finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        returnHome();
+        return true;
+    }
+
+    public void returnHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
