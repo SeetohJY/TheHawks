@@ -60,12 +60,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
-        android:text="Number Of Stalls:"
+        android:text="Number of Stalls:"
         android:textSize="22dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -106,20 +107,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hcTitle" />
 
+
     <TextView
         android:id="@+id/Addr"
         android:layout_width="230dp"
         android:layout_height="159dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="68dp"
         android:text="here"
         android:textColor="#5cadec"
         android:textSize="22dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/CRating" />
-
 
     <Button
         android:id="@+id/startStalls"
@@ -129,8 +130,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:text="See Stalls List"
-        android:textAllCaps="false"
-        android:textSize="22dp"
+
         app:layout_constraintBottom_toTopOf="@+id/getDirections"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -146,9 +146,7 @@
         android:layout_marginBottom="40dp"
         android:background="?attr/colorPrimary"
         android:text="Get Directions"
-        android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -157,7 +155,7 @@
         android:id="@+id/back_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="20dp"
         android:background="#00000000"
         android:cropToPadding="true"
         android:scaleType="fitStart"
