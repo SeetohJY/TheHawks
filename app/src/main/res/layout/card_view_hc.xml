@@ -8,8 +8,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_margin="4dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp">
 
         <TextView
             android:id="@+id/hcName"
@@ -17,9 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Line 1"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:text="Hawker Centre Name"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -32,7 +34,7 @@
             android:layout_alignStart="@+id/hcName"
             android:layout_marginStart="0dp"
             android:layout_marginTop="10dp"
-            android:text="Line 2"
+            android:text="Hawker Centre Address"
             android:textSize="15sp" />
 
         <TextView

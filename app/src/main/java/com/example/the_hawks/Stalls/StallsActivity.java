@@ -25,7 +25,7 @@ public class StallsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stalls);
         Toolbar toolbar = findViewById(R.id.stalls_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("StallsActivity");
+        getSupportActionBar().setTitle("Stalls List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 

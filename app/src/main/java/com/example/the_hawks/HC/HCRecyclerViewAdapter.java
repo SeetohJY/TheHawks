@@ -1,5 +1,7 @@
 package com.example.the_hawks.HC;
 
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +44,21 @@ public class HCRecyclerViewAdapter extends RecyclerView.Adapter<HCRecyclerViewAd
         holder.mHCAddressTextView.setText(currentItem.getHCAddress());
         holder.mHCCleanlinessView.setText(currentItem.getHCCleanliness());
 
+        float clean_rating = Float.parseFloat(currentItem.getHCCleanliness());
+
+        if (clean_rating >= 9) {
+            // green
+            holder.mHCCleanlinessView.setTextColor(Color.parseColor("#417F0C"));
+        }
+        else if (clean_rating >= 7.5 && clean_rating <9) {
+            // orange
+            holder.mHCCleanlinessView.setTextColor(Color.parseColor("#D29900"));
+        }
+        else if (clean_rating >= 5 && clean_rating <7.5) {
+            // orangier
+            holder.mHCCleanlinessView.setTextColor(Color.parseColor("#DE8B0C"));
+        }
+        else { }
     }
 
     @Override
